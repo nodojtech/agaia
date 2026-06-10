@@ -14,7 +14,7 @@ const nav = [
 export function Header() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-background/70 border-b border-border/60">
+    <header className="fixed top-8 inset-x-0 z-50 backdrop-blur-xl bg-background/70 border-b border-border/60">
       <div className="container-prose flex items-center justify-between h-16 md:h-20">
         <a href="#inicio" className="flex items-center gap-3">
           <img src={logo} alt="Agaia" className="h-9 w-auto" width={36} height={44} />
