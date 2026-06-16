@@ -8,12 +8,10 @@ export const WHATSAPP_DEFAULT_MSG =
 export const waLink = (msg: string = WHATSAPP_DEFAULT_MSG) =>
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
 
+// Mensajes breves que rotan, uno a la vez, con pausa serena.
 export const ANNOUNCEMENTS: string[] = [
-  "Envío gratis en compras desde $180.000",
-  "Promociones especiales de temporada botánica",
-  "Compra rituales completos y recibe beneficios",
+  "Envío gratis desde $180.000",
   "Asesoría personalizada por WhatsApp",
-  "Regalos personalizados disponibles",
-  "Nuevos productos botánicos disponibles",
-  "Descuentos especiales para distribuidores",
+  "Nuevos rituales botánicos disponibles",
+  "Regalos personalizados con intención",
 ];

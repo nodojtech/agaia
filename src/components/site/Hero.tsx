@@ -1,5 +1,6 @@
 import hero from "@/assets/hero-wellness.jpg";
 import isotipo from "@/assets/agaia-isotipo.png";
+import { Link } from "@tanstack/react-router";
 
 export function Hero() {
   return (
@@ -23,14 +24,14 @@ export function Hero() {
             sensaciones que acompañan una vida más consciente.
           </p>
           <div className="mt-9 flex flex-wrap gap-3">
-            <a href="#productos"
+            <Link to="/productos"
               className="inline-flex items-center px-7 py-3.5 rounded-full bg-primary text-primary-foreground text-sm tracking-wider hover:bg-primary/90 transition-all hover:translate-y-[-1px]">
               Explorar productos
-            </a>
-            <a href="#nosotros"
+            </Link>
+            <Link to="/nosotros"
               className="inline-flex items-center px-7 py-3.5 rounded-full border border-primary/30 text-primary text-sm tracking-wider hover:bg-primary/5 transition-colors">
               Conocer la marca
-            </a>
+            </Link>
           </div>
           <div className="mt-12 flex items-center gap-8 text-xs uppercase tracking-[0.22em] text-foreground/50">
             <span>Ingredientes limpios</span>
