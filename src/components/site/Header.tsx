@@ -7,7 +7,9 @@ const nav: { to: string; label: string; exact?: boolean }[] = [
   { to: "/", label: "Inicio", exact: true },
   { to: "/productos", label: "Productos" },
   { to: "/bienestar", label: "Bienestar" },
+  { to: "/manta-grounding", label: "Manta grounding" },
   { to: "/ingredientes", label: "Ingredientes" },
+  { to: "/regalos", label: "Regalos" },
   { to: "/nosotros", label: "Nosotros" },
 ];
 

@@ -2,8 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Products } from "@/components/site/Products";
 import { BestSellers } from "@/components/site/BestSellers";
 import { RelatedCombos } from "@/components/site/RelatedCombos";
-import { Gifts } from "@/components/site/Gifts";
-import { Distributors } from "@/components/site/Distributors";
 
 export const Route = createFileRoute("/productos")({
   head: () => ({
@@ -24,8 +22,6 @@ function ProductosPage() {
       <Products />
       <BestSellers />
       <RelatedCombos />
-      <Gifts />
-      <Distributors />
     </div>
   );
 }

@@ -9,12 +9,19 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as RegalosRouteImport } from './routes/regalos'
 import { Route as ProductosRouteImport } from './routes/productos'
 import { Route as NosotrosRouteImport } from './routes/nosotros'
+import { Route as MantaGroundingRouteImport } from './routes/manta-grounding'
 import { Route as IngredientesRouteImport } from './routes/ingredientes'
 import { Route as BienestarRouteImport } from './routes/bienestar'
 import { Route as IndexRouteImport } from './routes/index'
 
+const RegalosRoute = RegalosRouteImport.update({
+  id: '/regalos',
+  path: '/regalos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProductosRoute = ProductosRouteImport.update({
   id: '/productos',
   path: '/productos',
@@ -23,6 +30,11 @@ const ProductosRoute = ProductosRouteImport.update({
 const NosotrosRoute = NosotrosRouteImport.update({
   id: '/nosotros',
   path: '/nosotros',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MantaGroundingRoute = MantaGroundingRouteImport.update({
+  id: '/manta-grounding',
+  path: '/manta-grounding',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IngredientesRoute = IngredientesRouteImport.update({
@@ -45,48 +57,79 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/bienestar': typeof BienestarRoute
   '/ingredientes': typeof IngredientesRoute
+  '/manta-grounding': typeof MantaGroundingRoute
   '/nosotros': typeof NosotrosRoute
   '/productos': typeof ProductosRoute
+  '/regalos': typeof RegalosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/bienestar': typeof BienestarRoute
   '/ingredientes': typeof IngredientesRoute
+  '/manta-grounding': typeof MantaGroundingRoute
   '/nosotros': typeof NosotrosRoute
   '/productos': typeof ProductosRoute
+  '/regalos': typeof RegalosRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/bienestar': typeof BienestarRoute
   '/ingredientes': typeof IngredientesRoute
+  '/manta-grounding': typeof MantaGroundingRoute
   '/nosotros': typeof NosotrosRoute
   '/productos': typeof ProductosRoute
+  '/regalos': typeof RegalosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/bienestar' | '/ingredientes' | '/nosotros' | '/productos'
+  fullPaths:
+    | '/'
+    | '/bienestar'
+    | '/ingredientes'
+    | '/manta-grounding'
+    | '/nosotros'
+    | '/productos'
+    | '/regalos'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/bienestar' | '/ingredientes' | '/nosotros' | '/productos'
+  to:
+    | '/'
+    | '/bienestar'
+    | '/ingredientes'
+    | '/manta-grounding'
+    | '/nosotros'
+    | '/productos'
+    | '/regalos'
   id:
     | '__root__'
     | '/'
     | '/bienestar'
     | '/ingredientes'
+    | '/manta-grounding'
     | '/nosotros'
     | '/productos'
+    | '/regalos'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BienestarRoute: typeof BienestarRoute
   IngredientesRoute: typeof IngredientesRoute
+  MantaGroundingRoute: typeof MantaGroundingRoute
   NosotrosRoute: typeof NosotrosRoute
   ProductosRoute: typeof ProductosRoute
+  RegalosRoute: typeof RegalosRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/regalos': {
+      id: '/regalos'
+      path: '/regalos'
+      fullPath: '/regalos'
+      preLoaderRoute: typeof RegalosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/productos': {
       id: '/productos'
       path: '/productos'
@@ -99,6 +142,13 @@ declare module '@tanstack/react-router' {
       path: '/nosotros'
       fullPath: '/nosotros'
       preLoaderRoute: typeof NosotrosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/manta-grounding': {
+      id: '/manta-grounding'
+      path: '/manta-grounding'
+      fullPath: '/manta-grounding'
+      preLoaderRoute: typeof MantaGroundingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ingredientes': {
@@ -129,8 +179,10 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BienestarRoute: BienestarRoute,
   IngredientesRoute: IngredientesRoute,
+  MantaGroundingRoute: MantaGroundingRoute,
   NosotrosRoute: NosotrosRoute,
   ProductosRoute: ProductosRoute,
+  RegalosRoute: RegalosRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
