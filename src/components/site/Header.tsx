@@ -34,13 +34,6 @@ export function Header() {
               {n.label}
             </Link>
           ))}
-          <Link
-            to="/"
-            hash="contacto"
-            className="text-[0.78rem] uppercase tracking-[0.22em] text-foreground/70 hover:text-primary transition-colors"
-          >
-            Contacto
-          </Link>
         </nav>
         <Link
           to="/"
