@@ -63,18 +63,11 @@ export function Header() {
             <Link
               to="/"
               hash="contacto"
-              onClick={() => setOpen(false)}
-              className="text-sm uppercase tracking-[0.22em] text-foreground/80 hover:text-primary"
-            >
-              Contacto
-            </Link>
-            <Link
-              to="/"
-              hash="contacto"
+              hashScrollIntoView={{ behavior: "smooth", block: "start" }}
               onClick={() => setOpen(false)}
               className="mt-2 inline-flex justify-center px-5 py-3 rounded-full bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em]"
             >
-              Conecta con nosotros
+              Contacta
             </Link>
           </div>
         </div>
