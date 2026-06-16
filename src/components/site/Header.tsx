@@ -4,7 +4,6 @@ import { Link } from "@tanstack/react-router";
 import logo from "@/assets/agaia-isotipo.png";
 
 const nav: { to: string; label: string; exact?: boolean }[] = [
-  { to: "/", label: "Inicio", exact: true },
   { to: "/productos", label: "Productos" },
   { to: "/bienestar", label: "Bienestar" },
   { to: "/manta-grounding", label: "Manta grounding" },
