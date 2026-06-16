@@ -45,9 +45,10 @@ export function Header() {
         <Link
           to="/"
           hash="contacto"
+          hashScrollIntoView={{ behavior: "smooth", block: "start" }}
           className="hidden md:inline-flex items-center px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] hover:bg-primary/90 transition-colors"
         >
-          Conecta
+          Contacta
         </Link>
         <button onClick={() => setOpen(!open)} className="lg:hidden text-primary p-2" aria-label="Menú">
           {open ? <X size={22} /> : <Menu size={22} />}
