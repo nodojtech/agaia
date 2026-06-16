@@ -3,13 +3,13 @@ import { Menu, X } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import logo from "@/assets/agaia-isotipo.png";
 
-const nav = [
+const nav: { to: string; label: string; exact?: boolean }[] = [
   { to: "/", label: "Inicio", exact: true },
   { to: "/productos", label: "Productos" },
   { to: "/bienestar", label: "Bienestar" },
   { to: "/ingredientes", label: "Ingredientes" },
   { to: "/nosotros", label: "Nosotros" },
-] as const;
+];
 
 export function Header() {
   const [open, setOpen] = useState(false);
