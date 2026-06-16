@@ -1,5 +1,15 @@
 import logo from "@/assets/agaia-isotipo.png";
 import { Instagram, Music2, Facebook, MessageCircle } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+
+const navLinks: { label: string; to: string; hash?: string; exact?: boolean }[] = [
+  { label: "Inicio", to: "/", exact: true },
+  { label: "Productos", to: "/productos" },
+  { label: "Bienestar", to: "/bienestar" },
+  { label: "Ingredientes", to: "/ingredientes" },
+  { label: "Nosotros", to: "/nosotros" },
+  { label: "Contacto", to: "/", hash: "contacto" },
+];
 
 export function Footer() {
   return (
@@ -20,8 +30,16 @@ export function Footer() {
         <div className="md:col-span-3">
           <p className="eyebrow text-secondary">Navega</p>
           <ul className="mt-5 space-y-2.5 text-sm text-primary-foreground/80">
-            {["Inicio","Productos","Bienestar","Ingredientes","Nosotros","Contacto"].map(l => (
-              <li key={l}><a href={`#${l.toLowerCase()}`} className="hover:text-secondary transition-colors">{l}</a></li>
+            {navLinks.map((l) => (
+              <li key={l.label}>
+                <Link
+                  to={l.to}
+                  hash={l.hash}
+                  className="hover:text-secondary transition-colors"
+                >
+                  {l.label}
+                </Link>
+              </li>
             ))}
           </ul>
         </div>
