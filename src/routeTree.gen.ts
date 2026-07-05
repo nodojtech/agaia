@@ -12,9 +12,6 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as RegalosRouteImport } from './routes/regalos'
 import { Route as ProductosRouteImport } from './routes/productos'
 import { Route as NosotrosRouteImport } from './routes/nosotros'
-import { Route as MantaGroundingRouteImport } from './routes/manta-grounding'
-import { Route as IngredientesRouteImport } from './routes/ingredientes'
-import { Route as BienestarRouteImport } from './routes/bienestar'
 import { Route as IndexRouteImport } from './routes/index'
 
 const RegalosRoute = RegalosRouteImport.update({
@@ -32,21 +29,6 @@ const NosotrosRoute = NosotrosRouteImport.update({
   path: '/nosotros',
   getParentRoute: () => rootRouteImport,
 } as any)
-const MantaGroundingRoute = MantaGroundingRouteImport.update({
-  id: '/manta-grounding',
-  path: '/manta-grounding',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const IngredientesRoute = IngredientesRouteImport.update({
-  id: '/ingredientes',
-  path: '/ingredientes',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BienestarRoute = BienestarRouteImport.update({
-  id: '/bienestar',
-  path: '/bienestar',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -55,18 +37,12 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/bienestar': typeof BienestarRoute
-  '/ingredientes': typeof IngredientesRoute
-  '/manta-grounding': typeof MantaGroundingRoute
   '/nosotros': typeof NosotrosRoute
   '/productos': typeof ProductosRoute
   '/regalos': typeof RegalosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/bienestar': typeof BienestarRoute
-  '/ingredientes': typeof IngredientesRoute
-  '/manta-grounding': typeof MantaGroundingRoute
   '/nosotros': typeof NosotrosRoute
   '/productos': typeof ProductosRoute
   '/regalos': typeof RegalosRoute
@@ -74,48 +50,20 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/bienestar': typeof BienestarRoute
-  '/ingredientes': typeof IngredientesRoute
-  '/manta-grounding': typeof MantaGroundingRoute
   '/nosotros': typeof NosotrosRoute
   '/productos': typeof ProductosRoute
   '/regalos': typeof RegalosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/bienestar'
-    | '/ingredientes'
-    | '/manta-grounding'
-    | '/nosotros'
-    | '/productos'
-    | '/regalos'
+  fullPaths: '/' | '/nosotros' | '/productos' | '/regalos'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/bienestar'
-    | '/ingredientes'
-    | '/manta-grounding'
-    | '/nosotros'
-    | '/productos'
-    | '/regalos'
-  id:
-    | '__root__'
-    | '/'
-    | '/bienestar'
-    | '/ingredientes'
-    | '/manta-grounding'
-    | '/nosotros'
-    | '/productos'
-    | '/regalos'
+  to: '/' | '/nosotros' | '/productos' | '/regalos'
+  id: '__root__' | '/' | '/nosotros' | '/productos' | '/regalos'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  BienestarRoute: typeof BienestarRoute
-  IngredientesRoute: typeof IngredientesRoute
-  MantaGroundingRoute: typeof MantaGroundingRoute
   NosotrosRoute: typeof NosotrosRoute
   ProductosRoute: typeof ProductosRoute
   RegalosRoute: typeof RegalosRoute
@@ -144,27 +92,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NosotrosRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/manta-grounding': {
-      id: '/manta-grounding'
-      path: '/manta-grounding'
-      fullPath: '/manta-grounding'
-      preLoaderRoute: typeof MantaGroundingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/ingredientes': {
-      id: '/ingredientes'
-      path: '/ingredientes'
-      fullPath: '/ingredientes'
-      preLoaderRoute: typeof IngredientesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/bienestar': {
-      id: '/bienestar'
-      path: '/bienestar'
-      fullPath: '/bienestar'
-      preLoaderRoute: typeof BienestarRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -177,9 +104,6 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  BienestarRoute: BienestarRoute,
-  IngredientesRoute: IngredientesRoute,
-  MantaGroundingRoute: MantaGroundingRoute,
   NosotrosRoute: NosotrosRoute,
   ProductosRoute: ProductosRoute,
   RegalosRoute: RegalosRoute,

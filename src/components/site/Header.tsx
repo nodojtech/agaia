@@ -2,13 +2,14 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import logo from "@/assets/agaia-isotipo.png";
+import { waLink } from "@/lib/site-config";
 
-const nav: { to: string; label: string; exact?: boolean }[] = [
+const nav: { to: string; label: string }[] = [
   { to: "/productos", label: "Productos" },
-  { to: "/bienestar", label: "Bienestar" },
-  { to: "/manta-grounding", label: "Manta grounding" },
-  { to: "/ingredientes", label: "Ingredientes" },
+  { to: "/tu-ritual", label: "Tu Ritual" },
+  { to: "/manta-origen", label: "Manta Origen" },
   { to: "/regalos", label: "Regalos" },
+  { to: "/distribuidor", label: "Distribuidor" },
   { to: "/nosotros", label: "Nosotros" },
 ];
 
@@ -21,28 +22,27 @@ export function Header() {
           <img src={logo} alt="Agaia" className="h-9 w-auto" width={36} height={44} />
           <span className="font-display text-lg tracking-[0.2em] text-primary">AGAIA</span>
         </Link>
-        <nav className="hidden lg:flex items-center gap-9">
+        <nav className="hidden lg:flex items-center gap-7">
           {nav.map((n) => (
             <Link
               key={n.to}
               to={n.to}
-              activeOptions={{ exact: n.exact ?? false }}
               activeProps={{ className: "text-primary" }}
               inactiveProps={{ className: "text-foreground/70 hover:text-primary" }}
-              className="text-[0.78rem] uppercase tracking-[0.22em] transition-colors"
+              className="text-[0.75rem] uppercase tracking-[0.22em] transition-colors"
             >
               {n.label}
             </Link>
           ))}
         </nav>
-        <Link
-          to="/"
-          hash="contacto"
-          hashScrollIntoView={{ behavior: "smooth", block: "start" }}
+        <a
+          href={waLink()}
+          target="_blank"
+          rel="noopener noreferrer"
           className="hidden md:inline-flex items-center px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] hover:bg-primary/90 transition-colors"
         >
           Contacta
-        </Link>
+        </a>
         <button onClick={() => setOpen(!open)} className="lg:hidden text-primary p-2" aria-label="Menú">
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
@@ -60,15 +60,15 @@ export function Header() {
                 {n.label}
               </Link>
             ))}
-            <Link
-              to="/"
-              hash="contacto"
-              hashScrollIntoView={{ behavior: "smooth", block: "start" }}
+            <a
+              href={waLink()}
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setOpen(false)}
               className="mt-2 inline-flex justify-center px-5 py-3 rounded-full bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em]"
             >
               Contacta
-            </Link>
+            </a>
           </div>
         </div>
       )}
