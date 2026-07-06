@@ -8,8 +8,8 @@ const nav: { to: string; label: string }[] = [
   { to: "/productos", label: "Productos" },
   { to: "/tu-ritual", label: "Tu Ritual" },
   { to: "/manta-origen", label: "Manta Origen" },
-  { to: "/regalos", label: "Regalos" },
-  { to: "/distribuidor", label: "Distribuidor" },
+  { to: "/regalos", label: "Bienestar Corporativo" },
+  { to: "/distribuidor", label: "Conviértete en Distribuidor" },
   { to: "/nosotros", label: "Nosotros" },
 ];
 

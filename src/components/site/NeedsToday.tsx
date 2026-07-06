@@ -149,7 +149,7 @@ export function NeedsToday() {
                   hashScrollIntoView={{ behavior: "smooth", block: "start" }}
                   className="inline-flex items-center px-5 py-3 rounded-full border border-primary/30 text-primary text-xs uppercase tracking-[0.22em] hover:bg-primary/5 transition-colors"
                 >
-                  Hacer el test
+                  Test: Descubre tu ritual ideal
                 </Link>
               </div>
             </div>

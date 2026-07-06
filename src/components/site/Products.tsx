@@ -1,6 +1,14 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { waLink } from "@/lib/site-config";
+import { Reveal } from "@/components/site/Reveal";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import calmaImg from "@/assets/product-calma.jpg";
 import energiaImg from "@/assets/product-energia.jpg";
 import equilibrioImg from "@/assets/product-equilibrio.jpg";
@@ -205,7 +213,7 @@ const CATEGORIES: Category[] = [
         ingredients: ["Vainilla Bourbon", "Naranja", "Eucalipto"],
         use: "Rocía sobre almohadas, sábanas, cortinas, sofás o espacios de trabajo.",
         presentations: [
-          { size: "Caja con Gratitud 30 ml + Energía Vital 30 ml + Equilibrio Natural 30 ml", price: "$32.000" },
+          { size: "Caja regalo · 🤍 Gratitud 30 ml + 🍊 Energía Vital 30 ml + 🌿 Equilibrio Natural 30 ml", price: "$32.000" },
         ],
       },
     ],
@@ -386,124 +394,145 @@ export function Products() {
           </p>
         )}
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {category.products.map((p) => (
-            <article
-              key={p.name}
-              className="group rounded-3xl bg-card border border-border/60 overflow-hidden shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-glow)] transition-all"
-            >
-              {p.image && (
-                <div className="aspect-[16/10] overflow-hidden bg-secondary/40">
-                  <img
-                    src={p.image}
-                    alt={p.name}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
-              )}
-              <div className="p-6 md:p-8">
-                {p.tag && <p className="eyebrow">{p.tag}</p>}
-                <h3 className="mt-3 font-display text-2xl text-primary">{p.name}</h3>
-                <p className="mt-3 text-sm text-foreground/75 leading-relaxed">{p.desc}</p>
-
-                <details className="mt-5 group/details">
-                  <summary className="cursor-pointer text-xs uppercase tracking-[0.22em] text-primary/80 hover:text-primary select-none">
-                    Ver detalle
-                  </summary>
-                  <div className="mt-4 space-y-4">
-                    <div>
-                      <p className="text-[0.65rem] uppercase tracking-[0.22em] text-foreground/55 mb-2">
-                        Beneficios
-                      </p>
-                      <ul className="space-y-1.5 text-sm text-foreground/75">
-                        {p.benefits.map((b) => (
-                          <li key={b}>✨ {b}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div>
-                      <p className="text-[0.65rem] uppercase tracking-[0.22em] text-foreground/55 mb-2">
-                        Ingredientes destacados
-                      </p>
-                      <p className="text-sm text-foreground/75">🌿 {p.ingredients.join(" · ")}</p>
-                    </div>
-                    <div>
-                      <p className="text-[0.65rem] uppercase tracking-[0.22em] text-foreground/55 mb-2">
-                        Modo de uso
-                      </p>
-                      <p className="text-sm text-foreground/75">{p.use}</p>
-                    </div>
+        {(() => {
+          const cards = category.products.map((p, i) => (
+            <Reveal key={p.name} delay={i * 80} className="h-full">
+              <article className="group h-full rounded-3xl bg-card border border-border/60 overflow-hidden shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-glow)] transition-all flex flex-col">
+                {p.image && (
+                  <div className="aspect-[16/10] overflow-hidden bg-secondary/40">
+                    <img
+                      src={p.image}
+                      alt={p.name}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
                   </div>
-                </details>
+                )}
+                <div className="p-6 md:p-8 flex flex-col flex-1">
+                  {p.tag && <p className="eyebrow">{p.tag}</p>}
+                  <h3 className="mt-3 font-display text-2xl text-primary">{p.name}</h3>
+                  <p className="mt-3 text-sm text-foreground/75 leading-relaxed">{p.desc}</p>
 
-                <div className="mt-5 pt-5 border-t border-border/60">
-                  <p className="text-[0.65rem] uppercase tracking-[0.22em] text-foreground/55 mb-2">
-                    Presentaciones
-                  </p>
-                  <ul className="space-y-1.5">
-                    {p.presentations.map((pr) => (
-                      <li key={pr.size} className="flex items-center justify-between text-sm">
-                        <span className="text-foreground/75">{pr.size}</span>
-                        <span className="text-primary font-medium">{pr.price}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                  <details className="mt-5 group/details">
+                    <summary className="cursor-pointer text-xs uppercase tracking-[0.22em] text-primary/80 hover:text-primary select-none">
+                      Ver detalle
+                    </summary>
+                    <div className="mt-4 space-y-4 animate-fade-in">
+                      <div>
+                        <p className="text-[0.65rem] uppercase tracking-[0.22em] text-foreground/55 mb-2">Beneficios</p>
+                        <ul className="space-y-1.5 text-sm text-foreground/75">
+                          {p.benefits.map((b) => (
+                            <li key={b}>✨ {b}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div>
+                        <p className="text-[0.65rem] uppercase tracking-[0.22em] text-foreground/55 mb-2">Ingredientes destacados</p>
+                        <p className="text-sm text-foreground/75">🌿 {p.ingredients.join(" · ")}</p>
+                      </div>
+                      <div>
+                        <p className="text-[0.65rem] uppercase tracking-[0.22em] text-foreground/55 mb-2">Modo de uso</p>
+                        <p className="text-sm text-foreground/75">{p.use}</p>
+                      </div>
+                    </div>
+                  </details>
 
-                <div className="mt-6 flex flex-wrap gap-2">
-                  <a
-                    href={waLink(`Hola, me interesa: ${p.name}.`)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center px-4 py-2.5 rounded-full bg-primary text-primary-foreground text-xs uppercase tracking-[0.22em] hover:bg-primary/90 transition-colors"
-                  >
-                    Consultar
-                  </a>
-                  {category.id === "manta-origen" && (
-                    <Link
-                      to="/manta-origen"
-                      className="inline-flex items-center px-4 py-2.5 rounded-full border border-primary/30 text-primary text-xs uppercase tracking-[0.22em] hover:bg-primary/5 transition-colors"
-                    >
-                      Conoce Manta Origen
-                    </Link>
-                  )}
-                  {category.id === "plantas" && (
+                  <div className="mt-5 pt-5 border-t border-border/60">
+                    <p className="text-[0.65rem] uppercase tracking-[0.22em] text-foreground/55 mb-2">Presentaciones</p>
+                    <ul className="space-y-1.5">
+                      {p.presentations.map((pr) => (
+                        <li key={pr.size} className="flex items-start justify-between gap-3 text-sm">
+                          <span className="text-foreground/75">{pr.size}</span>
+                          <span className="text-primary font-medium whitespace-nowrap">{pr.price}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="mt-6 flex flex-wrap gap-2">
                     <a
-                      href={waLink("Hola, quiero conocer las plantas disponibles.")}
+                      href={waLink(`Hola, me interesa: ${p.name}.`)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center px-4 py-2.5 rounded-full border border-primary/30 text-primary text-xs uppercase tracking-[0.22em] hover:bg-primary/5 transition-colors"
+                      className="inline-flex items-center px-4 py-2.5 rounded-full bg-primary text-primary-foreground text-xs uppercase tracking-[0.22em] hover:bg-primary/90 transition-colors"
                     >
-                      Plantas disponibles
+                      Consultar
                     </a>
-                  )}
+                    {category.id === "manta-origen" && (
+                      <Link
+                        to="/manta-origen"
+                        className="inline-flex items-center px-4 py-2.5 rounded-full border border-primary/30 text-primary text-xs uppercase tracking-[0.22em] hover:bg-primary/5 transition-colors"
+                      >
+                        Conoce Manta Origen
+                      </Link>
+                    )}
+                    {category.id === "plantas" && (
+                      <a
+                        href={waLink("Hola, quiero conocer las plantas disponibles.")}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center px-4 py-2.5 rounded-full border border-primary/30 text-primary text-xs uppercase tracking-[0.22em] hover:bg-primary/5 transition-colors"
+                      >
+                        Quiero conocer plantas disponibles
+                      </a>
+                    )}
+                  </div>
                 </div>
-              </div>
-            </article>
-          ))}
-        </div>
+              </article>
+            </Reveal>
+          ));
 
-        {/* Empresarial CTA */}
+          if (category.products.length > 2) {
+            return (
+              <Carousel opts={{ align: "start" }} className="w-full">
+                <CarouselContent className="-ml-4">
+                  {cards.map((card, i) => (
+                    <CarouselItem key={i} className="pl-4 md:basis-1/2 lg:basis-1/2">
+                      {card}
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <div className="mt-6 flex justify-end gap-2">
+                  <CarouselPrevious className="static translate-y-0" />
+                  <CarouselNext className="static translate-y-0" />
+                </div>
+              </Carousel>
+            );
+          }
+          return <div className="grid md:grid-cols-2 gap-8">{cards}</div>;
+        })()}
+
+        {/* Kits Empresariales — texto tal cual del brief */}
         {category.id === "kits" && (
-          <div className="mt-12 p-8 md:p-10 rounded-3xl bg-primary text-primary-foreground text-center">
-            <span className="eyebrow text-secondary">Kits Empresariales</span>
-            <h3 className="mt-3 font-display text-2xl md:text-3xl">
-              Regalos con intención para tu empresa
-            </h3>
-            <p className="mt-3 text-sm text-primary-foreground/80 max-w-2xl mx-auto">
-              Diseñamos cada propuesta de forma personalizada, combinando nuestros productos según
-              las necesidades, presupuesto y objetivo de cada empresa.
-            </p>
-            <a
-              href={waLink("Hola, quiero cotizar kits empresariales AGAIA.")}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 inline-flex items-center px-6 py-3 rounded-full bg-secondary text-primary text-xs uppercase tracking-[0.22em] hover:bg-secondary/90 transition-colors"
-            >
-              ✨ Cotiza tus detalles personalizados
-            </a>
-          </div>
+          <Reveal className="mt-12">
+            <div className="p-8 md:p-10 rounded-3xl bg-primary text-primary-foreground">
+              <div className="max-w-3xl mx-auto text-center">
+                <span className="eyebrow text-secondary">Kits Empresariales</span>
+                <h3 className="mt-3 font-display text-2xl md:text-3xl">
+                  Regalos con intención para empresas, equipos y eventos especiales
+                </h3>
+                <p className="mt-4 text-sm md:text-base text-primary-foreground/85 leading-relaxed">
+                  Creamos regalos con intención para empresas, equipos y eventos especiales.
+                </p>
+                <p className="mt-3 text-sm md:text-base text-primary-foreground/85 leading-relaxed">
+                  Diseñamos cada propuesta de forma personalizada, combinando nuestros productos
+                  según las necesidades, presupuesto y objetivo de cada empresa. Porque creemos
+                  que un buen regalo también puede convertirse en una experiencia de bienestar.
+                </p>
+                <p className="mt-4 italic text-primary-foreground/90">
+                  Hablemos y creemos juntos el detalle perfecto para tu equipo.
+                </p>
+                <a
+                  href={waLink("Hola, quiero cotizar detalles o experiencias personalizadas para mi empresa.")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 inline-flex items-center px-6 py-3 rounded-full bg-secondary text-primary text-xs uppercase tracking-[0.22em] hover:bg-secondary/90 transition-colors"
+                >
+                  Cotiza tus detalles o experiencias personalizados
+                </a>
+              </div>
+            </div>
+          </Reveal>
         )}
       </div>
     </section>

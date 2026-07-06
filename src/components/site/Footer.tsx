@@ -7,8 +7,8 @@ const navLinks: { label: string; to: string; hash?: string; exact?: boolean }[] 
   { label: "Productos", to: "/productos" },
   { label: "Tu Ritual", to: "/tu-ritual" },
   { label: "Manta Origen", to: "/manta-origen" },
-  { label: "Regalos", to: "/regalos" },
-  { label: "Distribuidor", to: "/distribuidor" },
+  { label: "Bienestar Corporativo", to: "/regalos" },
+  { label: "Conviértete en Distribuidor", to: "/distribuidor" },
   { label: "Nosotros", to: "/nosotros" },
   { label: "Contacto", to: "/", hash: "contacto" },
 ];

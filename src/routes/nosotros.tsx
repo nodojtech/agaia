@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { About } from "@/components/site/About";
-import { BrandStory } from "@/components/site/BrandStory";
+import { Reveal } from "@/components/site/Reveal";
 
 export const Route = createFileRoute("/nosotros")({
   head: () => ({
@@ -28,39 +27,40 @@ function NosotrosPage() {
   return (
     <div className="pt-32 md:pt-40">
       {/* Historia */}
-      <section className="container-prose max-w-4xl text-center pb-12">
-        <span className="eyebrow">Nuestra historia</span>
-        <h1 className="mt-4 font-display text-4xl md:text-6xl text-primary leading-tight">
-          Un laboratorio botánico<br />
-          <em className="font-light italic">nacido del bienestar.</em>
-        </h1>
-        <p className="mt-6 text-foreground/70 leading-relaxed max-w-2xl mx-auto">
-          AGAIA nació a finales del año 2024 como una búsqueda personal de bienestar y hoy se ha
-          convertido en un laboratorio botánico que acompaña los rituales de cientos de personas.
-        </p>
+      <section className="container-prose max-w-4xl text-center pb-16">
+        <Reveal>
+          <span className="eyebrow">Nuestra historia</span>
+          <h1 className="mt-4 font-display text-4xl md:text-6xl text-primary leading-tight">
+            Un laboratorio botánico<br />
+            <em className="font-light italic">nacido del bienestar.</em>
+          </h1>
+          <p className="mt-6 text-foreground/70 leading-relaxed max-w-2xl mx-auto">
+            AGAIA nació a finales del año 2024 como una búsqueda personal de bienestar y hoy se ha
+            convertido en un laboratorio botánico que acompaña los rituales de cientos de personas.
+          </p>
+        </Reveal>
       </section>
-
-      <About />
-      <BrandStory />
 
       {/* Laboratorio Botánico */}
       <section className="py-20 bg-secondary/40">
         <div className="container-prose max-w-3xl text-center">
-          <span className="eyebrow">Nuestro Laboratorio Botánico</span>
-          <h2 className="mt-3 font-display text-3xl md:text-5xl text-primary leading-tight">
-            Creemos en el poder de las plantas
-          </h2>
-          <p className="mt-5 text-foreground/70 leading-relaxed">
-            En nuestro Laboratorio Botánico seleccionamos cuidadosamente especies reconocidas por
-            sus beneficios para desarrollar experiencias que acompañen tu bienestar.
-          </p>
+          <Reveal>
+            <span className="eyebrow">Nuestro Laboratorio Botánico</span>
+            <h2 className="mt-3 font-display text-3xl md:text-5xl text-primary leading-tight">
+              Creemos en el poder de las plantas
+            </h2>
+            <p className="mt-5 text-foreground/70 leading-relaxed">
+              En nuestro Laboratorio Botánico seleccionamos cuidadosamente especies reconocidas por
+              sus beneficios para desarrollar experiencias que acompañen tu bienestar.
+            </p>
+          </Reveal>
         </div>
       </section>
 
       {/* Herbario */}
       <section id="herbario" className="py-20 md:py-24">
         <div className="container-prose">
-          <div className="max-w-2xl mb-12">
+          <Reveal className="max-w-2xl mb-12">
             <span className="eyebrow">Herbario AGAIA</span>
             <h2 className="mt-3 font-display text-3xl md:text-5xl text-primary leading-tight">
               Las plantas que nos inspiran
@@ -68,25 +68,27 @@ function NosotrosPage() {
             <p className="mt-4 text-foreground/70">
               Conoce las plantas que inspiran cada una de nuestras experiencias de bienestar.
             </p>
-          </div>
+          </Reveal>
           <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {herbario.map((h) => (
-              <li key={h.name} className="p-7 rounded-3xl bg-card border border-border/60 shadow-[var(--shadow-soft)] flex flex-col">
-                <p className="text-3xl">🌿</p>
-                <h3 className="mt-3 font-display text-2xl text-primary">{h.name}</h3>
-                <p className="mt-2 text-sm text-foreground/70 leading-relaxed">{h.desc}</p>
-                <ul className="mt-4 space-y-1.5 text-xs text-foreground/70">
-                  {h.benefits.map((b) => (
-                    <li key={b}>✨ {b}</li>
-                  ))}
-                </ul>
-                <Link
-                  to="/productos"
-                  className="mt-6 inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.22em] text-primary border-b border-primary/30 pb-1 hover:border-primary transition-colors self-start"
-                >
-                  ➔ Ver productos con {h.name}
-                </Link>
-              </li>
+            {herbario.map((h, i) => (
+              <Reveal as="li" key={h.name} delay={i * 70}>
+                <div className="h-full p-7 rounded-3xl bg-card border border-border/60 shadow-[var(--shadow-soft)] flex flex-col">
+                  <p className="text-3xl">🌿</p>
+                  <h3 className="mt-3 font-display text-2xl text-primary">{h.name}</h3>
+                  <p className="mt-2 text-sm text-foreground/70 leading-relaxed">{h.desc}</p>
+                  <ul className="mt-4 space-y-1.5 text-xs text-foreground/70">
+                    {h.benefits.map((b) => (
+                      <li key={b}>✨ {b}</li>
+                    ))}
+                  </ul>
+                  <Link
+                    to="/productos"
+                    className="mt-6 inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.22em] text-primary border-b border-primary/30 pb-1 hover:border-primary transition-colors self-start"
+                  >
+                    ➔ Ver productos con {h.name}
+                  </Link>
+                </div>
+              </Reveal>
             ))}
           </ul>
         </div>
@@ -94,3 +96,4 @@ function NosotrosPage() {
     </div>
   );
 }
+

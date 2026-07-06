@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Store, Gift, TreePine, Coffee, Sparkles, Home, Heart, PersonStanding, Check } from "lucide-react";
 import { waLink } from "@/lib/site-config";
+import { Reveal } from "@/components/site/Reveal";
 
 export const Route = createFileRoute("/distribuidor")({
   head: () => ({
@@ -47,20 +48,22 @@ function DistribuidorPage() {
   return (
     <div className="pt-32 md:pt-40">
       <section className="container-prose text-center pb-16">
-        <span className="eyebrow">Conviértete en distribuidor</span>
-        <h1 className="mt-3 font-display text-4xl md:text-6xl text-primary leading-tight">
-          Lleva el bienestar de AGAIA<br />
-          <em className="font-light italic">a más personas.</em>
-        </h1>
-        <p className="mt-5 max-w-2xl mx-auto text-foreground/70">
-          Si compartes nuestra pasión por el bienestar, las plantas y las experiencias con
-          propósito, nos encantará conocerte. Buscamos aliados que quieran llevar nuestros
-          productos a nuevos espacios, ciudades y personas.
-        </p>
-        <a href={cta} target="_blank" rel="noopener noreferrer"
-          className="mt-8 inline-flex items-center px-7 py-3.5 rounded-full bg-primary text-primary-foreground text-xs uppercase tracking-[0.22em] hover:bg-primary/90 transition-colors">
-          ✨ Quiero ser distribuidor
-        </a>
+        <Reveal>
+          <span className="eyebrow">Conviértete en Distribuidor AGAIA</span>
+          <h1 className="mt-3 font-display text-4xl md:text-6xl text-primary leading-tight">
+            Lleva el bienestar de AGAIA<br />
+            <em className="font-light italic">a más personas.</em>
+          </h1>
+          <p className="mt-5 max-w-2xl mx-auto text-foreground/70">
+            Si compartes nuestra pasión por el bienestar, las plantas y las experiencias con
+            propósito, nos encantará conocerte. Buscamos aliados que quieran hacer parte de
+            nuestra comunidad y llevar nuestros productos a nuevos espacios, ciudades y personas.
+          </p>
+          <a href={cta} target="_blank" rel="noopener noreferrer"
+            className="mt-8 inline-flex items-center px-7 py-3.5 rounded-full bg-primary text-primary-foreground text-xs uppercase tracking-[0.22em] hover:bg-primary/90 transition-colors">
+            ✨ Quiero ser distribuidor
+          </a>
+        </Reveal>
       </section>
 
       <section className="py-20 bg-secondary/40">
@@ -70,15 +73,17 @@ function DistribuidorPage() {
             <h2 className="mt-3 font-display text-3xl md:text-4xl text-primary">Nuestros productos son ideales para</h2>
           </div>
           <ul className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {perfiles.map((p) => {
+            {perfiles.map((p, i) => {
               const Icon = p.icon;
               return (
-                <li key={p.label} className="p-5 rounded-2xl bg-card border border-border/60 flex items-center gap-4">
-                  <div className="h-10 w-10 rounded-full bg-primary/10 text-primary inline-flex items-center justify-center">
-                    <Icon size={18} strokeWidth={1.4} />
+                <Reveal as="li" key={p.label} delay={i * 60}>
+                  <div className="h-full p-5 rounded-2xl bg-card border border-border/60 flex items-center gap-4">
+                    <div className="h-10 w-10 rounded-full bg-primary/10 text-primary inline-flex items-center justify-center">
+                      <Icon size={18} strokeWidth={1.4} />
+                    </div>
+                    <p className="text-sm text-foreground/80">{p.label}</p>
                   </div>
-                  <p className="text-sm text-foreground/80">{p.label}</p>
-                </li>
+                </Reveal>
               );
             })}
           </ul>
