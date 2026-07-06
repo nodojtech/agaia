@@ -73,15 +73,17 @@ function DistribuidorPage() {
             <h2 className="mt-3 font-display text-3xl md:text-4xl text-primary">Nuestros productos son ideales para</h2>
           </div>
           <ul className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {perfiles.map((p) => {
+            {perfiles.map((p, i) => {
               const Icon = p.icon;
               return (
-                <li key={p.label} className="p-5 rounded-2xl bg-card border border-border/60 flex items-center gap-4">
-                  <div className="h-10 w-10 rounded-full bg-primary/10 text-primary inline-flex items-center justify-center">
-                    <Icon size={18} strokeWidth={1.4} />
+                <Reveal as="li" key={p.label} delay={i * 60}>
+                  <div className="h-full p-5 rounded-2xl bg-card border border-border/60 flex items-center gap-4">
+                    <div className="h-10 w-10 rounded-full bg-primary/10 text-primary inline-flex items-center justify-center">
+                      <Icon size={18} strokeWidth={1.4} />
+                    </div>
+                    <p className="text-sm text-foreground/80">{p.label}</p>
                   </div>
-                  <p className="text-sm text-foreground/80">{p.label}</p>
-                </li>
+                </Reveal>
               );
             })}
           </ul>
