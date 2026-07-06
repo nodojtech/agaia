@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { About } from "@/components/site/About";
-import { BrandStory } from "@/components/site/BrandStory";
+import { Reveal } from "@/components/site/Reveal";
 
 export const Route = createFileRoute("/nosotros")({
   head: () => ({
