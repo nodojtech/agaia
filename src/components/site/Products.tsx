@@ -1,6 +1,14 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { waLink } from "@/lib/site-config";
+import { Reveal } from "@/components/site/Reveal";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import calmaImg from "@/assets/product-calma.jpg";
 import energiaImg from "@/assets/product-energia.jpg";
 import equilibrioImg from "@/assets/product-equilibrio.jpg";
@@ -205,7 +213,7 @@ const CATEGORIES: Category[] = [
         ingredients: ["Vainilla Bourbon", "Naranja", "Eucalipto"],
         use: "Rocía sobre almohadas, sábanas, cortinas, sofás o espacios de trabajo.",
         presentations: [
-          { size: "Caja con Gratitud 30 ml + Energía Vital 30 ml + Equilibrio Natural 30 ml", price: "$32.000" },
+          { size: "Caja regalo · 🤍 Gratitud 30 ml + 🍊 Energía Vital 30 ml + 🌿 Equilibrio Natural 30 ml", price: "$32.000" },
         ],
       },
     ],
