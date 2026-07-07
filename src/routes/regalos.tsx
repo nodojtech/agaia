@@ -96,13 +96,13 @@ function RegalosPage() {
                 </li>
               ))}
             </ul>
-            <div className="mt-8 p-6 rounded-3xl bg-primary text-primary-foreground text-center">
+            <div className="mt-8 p-6 rounded-3xl bg-primary text-primary-foreground text-center flex flex-col items-center">
               <p className="font-display text-xl">¿Hablamos?</p>
               <a
                 href={waLink("Hola, quiero crear una experiencia de bienestar con AGAIA.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 inline-flex items-center px-6 py-3 rounded-full bg-secondary text-primary text-xs uppercase tracking-[0.22em] hover:bg-secondary/90 transition-colors"
+                className="mt-4 mx-auto inline-flex items-center justify-center px-6 py-3 rounded-full bg-secondary text-primary text-xs uppercase tracking-[0.22em] hover:bg-secondary/90 transition-colors"
               >
                 ➔ Quiero crear una experiencia de bienestar con AGAIA
               </a>
