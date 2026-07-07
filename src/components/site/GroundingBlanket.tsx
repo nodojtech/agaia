@@ -219,7 +219,7 @@ export function GroundingBlanket() {
                 <ul className="flex flex-wrap gap-2">
                   {usos.map((u) => (
                     <li key={u.label} className="px-3 py-1.5 rounded-full bg-secondary/60 text-xs text-primary/85">
-                      {u.emoji} mientras {u.label}
+                      {u.emoji} {u.label}
                     </li>
                   ))}
                 </ul>
