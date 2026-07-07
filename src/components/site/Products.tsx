@@ -484,7 +484,7 @@ export function Products() {
 
           if (category.products.length > 2) {
             return (
-              <Carousel opts={{ align: "start" }} className="w-full">
+              <Carousel opts={{ align: "start", loop: true }} className="w-full">
                 <CarouselContent className="-ml-4">
                   {cards.map((card, i) => (
                     <CarouselItem key={i} className="pl-4 md:basis-1/2 lg:basis-1/2">
