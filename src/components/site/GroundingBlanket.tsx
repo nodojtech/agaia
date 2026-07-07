@@ -36,12 +36,13 @@ const faq = [
   { q: "¿Puedo usarla si tengo un marcapasos u otro dispositivo médico implantado?", a: "Si utilizas un marcapasos, desfibrilador u otro dispositivo médico implantado, te recomendamos consultar previamente con tu médico tratante antes de usar cualquier producto de conexión a tierra." },
 ];
 
+// Ordenadas de más cortas a más largas para lograr filas simétricas.
 const research = [
-  { title: "Practical applications of grounding to support health", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10105020/" },
-  { title: "The effects of grounding on inflammation, immune response, wound healing and chronic inflammatory diseases", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4378297/" },
-  { title: "Earthing: Health Implications of Reconnecting the Human Body to the Earth's Surface Electrons", url: "https://pubmed.ncbi.nlm.nih.gov/22291721/" },
-  { title: "The biologic effects of grounding the human body during sleep", url: "https://pubmed.ncbi.nlm.nih.gov/15650465/" },
   { title: "Otras investigaciones en PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/31831261/" },
+  { title: "The biologic effects of grounding the human body during sleep", url: "https://pubmed.ncbi.nlm.nih.gov/15650465/" },
+  { title: "Practical applications of grounding to support health", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10105020/" },
+  { title: "Earthing: Health Implications of Reconnecting the Human Body to the Earth's Surface Electrons", url: "https://pubmed.ncbi.nlm.nih.gov/22291721/" },
+  { title: "The effects of grounding on inflammation, immune response, wound healing and chronic inflammatory diseases", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4378297/" },
 ];
 
 export function GroundingBlanket() {
