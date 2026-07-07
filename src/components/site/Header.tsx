@@ -17,19 +17,19 @@ export function Header() {
   const [open, setOpen] = useState(false);
   return (
     <header className="fixed top-8 inset-x-0 z-50 backdrop-blur-xl bg-background/70 border-b border-border/60">
-      <div className="container-prose flex items-center justify-between h-16 md:h-20">
-        <Link to="/" className="flex items-center gap-3">
+      <div className="w-full max-w-[1500px] mx-auto pl-4 pr-4 lg:pl-6 lg:pr-6 flex items-center justify-between h-16 md:h-20 gap-4">
+        <Link to="/" className="flex items-center gap-3 shrink-0">
           <img src={logo} alt="Agaia" className="h-9 w-auto" width={36} height={44} />
           <span className="font-display text-lg tracking-[0.2em] text-primary">AGAIA</span>
         </Link>
-        <nav className="hidden lg:flex items-center gap-7">
+        <nav className="hidden lg:flex items-center gap-4 xl:gap-6 whitespace-nowrap">
           {nav.map((n) => (
             <Link
               key={n.to}
               to={n.to}
               activeProps={{ className: "text-primary" }}
               inactiveProps={{ className: "text-foreground/70 hover:text-primary" }}
-              className="text-[0.75rem] uppercase tracking-[0.22em] transition-colors"
+              className="text-[0.68rem] xl:text-[0.72rem] uppercase tracking-[0.18em] transition-colors"
             >
               {n.label}
             </Link>
@@ -39,7 +39,7 @@ export function Header() {
           href={waLink()}
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden md:inline-flex items-center px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] hover:bg-primary/90 transition-colors"
+          className="hidden md:inline-flex shrink-0 items-center px-4 xl:px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-[0.68rem] xl:text-xs uppercase tracking-[0.18em] hover:bg-primary/90 transition-colors"
         >
           Contacta
         </a>
