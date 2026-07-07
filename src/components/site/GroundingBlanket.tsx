@@ -13,11 +13,12 @@ const benefits = [
 ];
 
 const usos = [
-  { emoji: "🌙", label: "duermes" },
-  { emoji: "💻", label: "trabajas" },
-  { emoji: "📖", label: "lees" },
-  { emoji: "🧘", label: "meditas" },
-  { emoji: "📺", label: "ves televisión" },
+  { emoji: "📖", label: "Leer" },
+  { emoji: "💻", label: "Trabajar" },
+  { emoji: "🧘", label: "Meditar" },
+  { emoji: "🛋️", label: "Descansar" },
+  { emoji: "📺", label: "Ver televisión" },
+  { emoji: "🌙", label: "Dormir" },
 ];
 
 const steps = [
