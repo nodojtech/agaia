@@ -61,9 +61,14 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-primary-foreground/10">
-        <div className="container-prose py-6 flex flex-col md:flex-row items-center justify-between gap-2 text-xs text-primary-foreground/50">
-          <p>© {new Date().getFullYear()} Agaia · Laboratorio de bienestar</p>
-          <p className="uppercase tracking-[0.22em]">Hecho con calma</p>
+        <div className="container-prose py-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-primary-foreground/60">
+          <p>© {new Date().getFullYear()} AGAIA · Laboratorio de bienestar</p>
+          <ul className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+            <li><a href="#" className="hover:text-secondary transition-colors">Política de privacidad</a></li>
+            <li><a href="#" className="hover:text-secondary transition-colors">Términos y condiciones</a></li>
+            <li><a href="#" className="hover:text-secondary transition-colors">Información legal</a></li>
+          </ul>
+          <p className="uppercase tracking-[0.22em] text-primary-foreground/50">Desarrollado con calma</p>
         </div>
       </div>
     </footer>

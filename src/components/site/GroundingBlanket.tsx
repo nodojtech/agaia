@@ -13,11 +13,12 @@ const benefits = [
 ];
 
 const usos = [
-  { emoji: "🌙", label: "duermes" },
-  { emoji: "💻", label: "trabajas" },
-  { emoji: "📖", label: "lees" },
-  { emoji: "🧘", label: "meditas" },
-  { emoji: "📺", label: "ves televisión" },
+  { emoji: "📖", label: "Leer" },
+  { emoji: "💻", label: "Trabajar" },
+  { emoji: "🧘", label: "Meditar" },
+  { emoji: "🛋️", label: "Descansar" },
+  { emoji: "📺", label: "Ver televisión" },
+  { emoji: "🌙", label: "Dormir" },
 ];
 
 const steps = [
@@ -35,12 +36,13 @@ const faq = [
   { q: "¿Puedo usarla si tengo un marcapasos u otro dispositivo médico implantado?", a: "Si utilizas un marcapasos, desfibrilador u otro dispositivo médico implantado, te recomendamos consultar previamente con tu médico tratante antes de usar cualquier producto de conexión a tierra." },
 ];
 
+// Ordenadas de más cortas a más largas para lograr filas simétricas.
 const research = [
-  { title: "Practical applications of grounding to support health", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10105020/" },
-  { title: "The effects of grounding on inflammation, immune response, wound healing and chronic inflammatory diseases", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4378297/" },
-  { title: "Earthing: Health Implications of Reconnecting the Human Body to the Earth's Surface Electrons", url: "https://pubmed.ncbi.nlm.nih.gov/22291721/" },
-  { title: "The biologic effects of grounding the human body during sleep", url: "https://pubmed.ncbi.nlm.nih.gov/15650465/" },
   { title: "Otras investigaciones en PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/31831261/" },
+  { title: "The biologic effects of grounding the human body during sleep", url: "https://pubmed.ncbi.nlm.nih.gov/15650465/" },
+  { title: "Practical applications of grounding to support health", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10105020/" },
+  { title: "Earthing: Health Implications of Reconnecting the Human Body to the Earth's Surface Electrons", url: "https://pubmed.ncbi.nlm.nih.gov/22291721/" },
+  { title: "The effects of grounding on inflammation, immune response, wound healing and chronic inflammatory diseases", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4378297/" },
 ];
 
 export function GroundingBlanket() {
@@ -217,7 +219,7 @@ export function GroundingBlanket() {
                 <ul className="flex flex-wrap gap-2">
                   {usos.map((u) => (
                     <li key={u.label} className="px-3 py-1.5 rounded-full bg-secondary/60 text-xs text-primary/85">
-                      {u.emoji} mientras {u.label}
+                      {u.emoji} {u.label}
                     </li>
                   ))}
                 </ul>
@@ -305,21 +307,24 @@ export function GroundingBlanket() {
 
           <Reveal className="mt-14">
             <p className="eyebrow text-secondary mb-4 text-center">Ver investigaciones</p>
-            <ul className="grid md:grid-cols-2 gap-3 max-w-4xl mx-auto">
+            <ul className="grid sm:grid-cols-2 gap-3 max-w-5xl mx-auto items-stretch">
               {research.map((r) => (
-                <li key={r.url}>
+                <li key={r.url} className="h-full">
                   <a
                     href={r.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-start gap-3 p-4 rounded-2xl bg-primary-foreground/5 border border-primary-foreground/10 hover:bg-primary-foreground/10 transition-colors"
+                    className="h-full min-h-[88px] flex items-center gap-3 p-4 md:p-5 rounded-2xl bg-primary-foreground/5 border border-primary-foreground/10 hover:bg-primary-foreground/10 transition-colors"
                   >
-                    <ExternalLink size={16} className="text-secondary shrink-0 mt-0.5" />
+                    <ExternalLink size={16} className="text-secondary shrink-0" />
                     <span className="text-sm text-primary-foreground/85 leading-snug">{r.title}</span>
                   </a>
                 </li>
               ))}
             </ul>
+            <p className="mt-6 text-[0.7rem] text-primary-foreground/60 italic text-center max-w-2xl mx-auto">
+              Manta Origen es un producto de bienestar y no sustituye tratamientos médicos, medicamentos ni el diagnóstico de profesionales de la salud.
+            </p>
           </Reveal>
 
           {/* 7 · Cierre: Aprende a usar tu manta */}

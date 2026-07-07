@@ -131,8 +131,21 @@
 @utility container-prose {
   width: 100%;
   margin-inline: auto;
-  padding-inline: 1.5rem;
-  max-width: 1200px;
+  padding-inline: 1.25rem;
+  max-width: 1360px;
+}
+
+@media (min-width: 1024px) {
+  .container-prose { padding-inline: 2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 @utility eyebrow {

@@ -108,9 +108,6 @@ function DistribuidorPage() {
           </div>
           <div>
             <span className="eyebrow">¿Cómo funciona?</span>
-            <h2 className="mt-3 font-display text-3xl md:text-4xl text-primary leading-tight">
-              Cinco pasos sencillos
-            </h2>
             <ol className="mt-6 space-y-4">
               {pasos.map((p) => (
                 <li key={p.n} className="flex gap-4 p-4 rounded-2xl bg-card border border-border/60">
