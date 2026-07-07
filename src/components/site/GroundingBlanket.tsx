@@ -307,21 +307,24 @@ export function GroundingBlanket() {
 
           <Reveal className="mt-14">
             <p className="eyebrow text-secondary mb-4 text-center">Ver investigaciones</p>
-            <ul className="grid md:grid-cols-2 gap-3 max-w-4xl mx-auto">
+            <ul className="grid sm:grid-cols-2 gap-3 max-w-5xl mx-auto items-stretch">
               {research.map((r) => (
-                <li key={r.url}>
+                <li key={r.url} className="h-full">
                   <a
                     href={r.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-start gap-3 p-4 rounded-2xl bg-primary-foreground/5 border border-primary-foreground/10 hover:bg-primary-foreground/10 transition-colors"
+                    className="h-full min-h-[88px] flex items-center gap-3 p-4 md:p-5 rounded-2xl bg-primary-foreground/5 border border-primary-foreground/10 hover:bg-primary-foreground/10 transition-colors"
                   >
-                    <ExternalLink size={16} className="text-secondary shrink-0 mt-0.5" />
+                    <ExternalLink size={16} className="text-secondary shrink-0" />
                     <span className="text-sm text-primary-foreground/85 leading-snug">{r.title}</span>
                   </a>
                 </li>
               ))}
             </ul>
+            <p className="mt-6 text-[0.7rem] text-primary-foreground/60 italic text-center max-w-2xl mx-auto">
+              Manta Origen es un producto de bienestar y no sustituye tratamientos médicos, medicamentos ni el diagnóstico de profesionales de la salud.
+            </p>
           </Reveal>
 
           {/* 7 · Cierre: Aprende a usar tu manta */}
