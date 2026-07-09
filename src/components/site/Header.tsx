@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Link } from "@tanstack/react-router";
-import logoAsset from "@/assets/agaia-logo-white-bg.png.asset.json";
+import logoAsset from "@/assets/agaia-logo-home.png.asset.json";
 import { waLink } from "@/lib/site-config";
 
 const nav: { to: string; label: string }[] = [
