@@ -16,7 +16,7 @@ const items = [
 
 export function BestSellers() {
   return (
-    <section id="mas-vendidos" className="py-20 md:py-28">
+    <section id="mas-vendidos" className="py-20 md:py-28 bg-muted">
       <div className="container-prose">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
           <div>
