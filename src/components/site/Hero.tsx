@@ -4,7 +4,7 @@ import { Link } from "@tanstack/react-router";
 
 export function Hero() {
   return (
-    <section id="inicio" className="relative pt-36 md:pt-44 pb-20 md:pb-28 overflow-hidden bg-muted">
+    <section id="inicio" className="relative pt-36 md:pt-44 pb-20 md:pb-28 overflow-hidden">
       <div aria-hidden className="absolute inset-0 -z-10"
         style={{ background: "radial-gradient(60% 50% at 80% 20%, var(--mist) 0%, transparent 70%), radial-gradient(50% 40% at 10% 90%, var(--mist) 0%, transparent 70%)" }} />
       <div className="container-prose grid lg:grid-cols-12 gap-12 items-center">

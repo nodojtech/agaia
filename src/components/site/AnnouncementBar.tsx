@@ -30,12 +30,12 @@ export function AnnouncementBar() {
   }, []);
 
   return (
-    <div className="fixed top-0 inset-x-0 z-[60] bg-background text-primary h-8 flex items-center justify-center overflow-hidden border-b border-border">
+    <div className="fixed top-0 inset-x-0 z-[60] bg-primary text-primary-foreground h-8 flex items-center justify-center overflow-hidden border-b border-primary-foreground/10">
       <span
-        className="flex items-center gap-3 px-6 text-[0.7rem] uppercase tracking-[0.28em] text-primary/80 transition-opacity duration-[1200ms] ease-in-out"
+        className="flex items-center gap-3 px-6 text-[0.7rem] uppercase tracking-[0.28em] text-primary-foreground/90 transition-opacity duration-[1200ms] ease-in-out"
         style={{ opacity: visible ? 1 : 0 }}
       >
-        <Leaf size={11} strokeWidth={1.4} className="text-primary" />
+        <Leaf size={11} strokeWidth={1.4} className="text-secondary" />
         {ANNOUNCEMENTS[i]}
       </span>
     </div>
