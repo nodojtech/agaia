@@ -27,10 +27,6 @@ export function Footer() {
             Elementos simples y naturales para acompañar momentos de calma, presencia y bienestar.
           </p>
         </div>
-          <p className="mt-6 text-sm text-primary-foreground/70 max-w-sm leading-relaxed">
-            Elementos simples y naturales para acompañar momentos de calma, presencia y bienestar.
-          </p>
-        </div>
         <div className="md:col-span-3">
           <p className="eyebrow text-secondary">Navega</p>
           <ul className="mt-5 space-y-2.5 text-sm text-primary-foreground/80">
