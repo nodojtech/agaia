@@ -9,7 +9,7 @@ const socials = [
 
 export function Community() {
   return (
-    <section className="py-24 md:py-32 bg-secondary/40">
+    <section className="py-24 md:py-32 bg-background">
       <div className="container-prose grid lg:grid-cols-2 gap-16 items-center">
         <div>
           <span className="eyebrow">Comunidad</span>
