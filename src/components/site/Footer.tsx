@@ -1,4 +1,4 @@
-import logo from "@/assets/agaia-isotipo.png";
+import logoAsset from "@/assets/agaia-logo-blue-bg.png.asset.json";
 import { Instagram, Music2, Facebook, MessageCircle } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
