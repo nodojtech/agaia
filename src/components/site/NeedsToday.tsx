@@ -81,7 +81,7 @@ export function NeedsToday() {
   const [active, setActive] = useState<Need>(NEEDS[0]);
 
   return (
-    <section id="necesitas" className="py-20 md:py-28 bg-gradient-to-b from-secondary/30 to-background">
+    <section id="necesitas" className="py-20 md:py-28 bg-background">
       <div className="container-prose">
         <div className="max-w-2xl mb-12">
           <span className="eyebrow">Tu Ritual · Empieza aquí</span>
