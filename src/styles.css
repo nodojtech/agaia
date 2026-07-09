@@ -2,6 +2,22 @@
 @source "../src";
 @import "tw-animate-css";
 
+@font-face {
+  font-family: "Powell";
+  src: url("/__l5e/assets-v1/df5555fc-c0cd-4452-9c3c-8d6ff4b47578/Powell.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Citrine";
+  src: url("/__l5e/assets-v1/6a2d0a4f-d4f2-46d9-94e1-b0e76a1075fb/citrine-regular.otf") format("opentype");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 /* AGAIA — Laboratorio de Bienestar
