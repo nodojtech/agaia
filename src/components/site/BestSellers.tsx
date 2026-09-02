@@ -35,7 +35,7 @@ export function BestSellers() {
           <div className="flex md:grid md:grid-cols-3 lg:grid-cols-3 gap-5 md:gap-7 overflow-x-auto md:overflow-visible snap-x snap-mandatory px-6 md:px-0 pb-4 md:pb-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {items.map((p) => (
               <article key={p.name}
-                className="snap-start shrink-0 w-[78%] sm:w-[55%] md:w-auto group rounded-3xl bg-card border border-border/60 overflow-hidden shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-glow)] hover:-translate-y-1 transition-all">
+                className="snap-start shrink-0 w-[78%] sm:w-[55%] md:w-auto group rounded-3xl bg-card border border-border/60 overflow-hidden shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-glow)] hover:-translate-y-1 transition-all flex flex-col h-full">
                 <div className="relative aspect-[4/5] overflow-hidden bg-secondary/40">
                   <img src={p.img} alt={p.name} loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
@@ -43,13 +43,13 @@ export function BestSellers() {
                     {p.tag}
                   </span>
                 </div>
-                <div className="p-5">
+                <div className="p-5 flex flex-col flex-1">
                   <h3 className="font-display text-xl text-primary leading-tight">{p.name}</h3>
                   <p className="mt-1.5 text-xs text-foreground/65 leading-relaxed">{p.desc}</p>
                   <div className="mt-4 flex items-center justify-between">
                     <span className="font-display text-lg text-primary">{p.price}</span>
                   </div>
-                  <div className="mt-4 flex items-center gap-2">
+                  <div className="mt-auto pt-4 flex items-center gap-2">
                     <button className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-full bg-primary text-primary-foreground text-[0.7rem] uppercase tracking-[0.18em] hover:bg-primary/90 transition-colors">
                       <ShoppingBag size={13} /> Ver producto
                     </button>

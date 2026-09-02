@@ -406,7 +406,7 @@ export function Products() {
         {(() => {
           const cards = category.products.map((p, i) => (
             <Reveal key={p.name} delay={i * 80} className="h-full">
-              <article className="group h-full rounded-3xl bg-card border border-border/60 overflow-hidden shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-glow)] transition-all flex flex-col">
+              <article className="group h-full rounded-3xl bg-card border border-border/60 overflow-hidden shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-glow)] transition-all flex flex-col justify-between">
                 {p.image && (
                   <div className="aspect-[16/10] overflow-hidden bg-secondary/40">
                     <img
@@ -458,7 +458,7 @@ export function Products() {
                     </ul>
                   </div>
 
-                  <div className="mt-6 flex flex-wrap gap-2">
+                  <div className="mt-auto pt-6 flex flex-wrap gap-2">
                     <a
                       href={waLink(`Hola, me interesa: ${p.name}.`)}
                       target="_blank"
@@ -496,7 +496,7 @@ export function Products() {
               <Carousel opts={{ align: "start", loop: true }} className="w-full">
                 <CarouselContent className="-ml-4">
                   {cards.map((card, i) => (
-                    <CarouselItem key={i} className="pl-4 md:basis-1/2 lg:basis-1/2">
+                    <CarouselItem key={i} className="pl-4 md:basis-1/2 lg:basis-1/2 h-full">
                       {card}
                     </CarouselItem>
                   ))}
