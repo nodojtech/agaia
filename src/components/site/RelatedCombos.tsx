@@ -30,7 +30,7 @@ export function RelatedCombos() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-7">
           {combos.map((c) => (
-            <article key={c.name} className="rounded-3xl bg-gradient-to-b from-secondary/40 to-card border border-border/60 p-5 hover:shadow-[var(--shadow-glow)] hover:-translate-y-1 transition-all">
+            <article key={c.name} className="rounded-3xl bg-gradient-to-b from-secondary/40 to-card border border-border/60 p-5 hover:shadow-[var(--shadow-glow)] hover:-translate-y-1 transition-all flex flex-col h-full">
               <div className="flex items-center gap-2">
                 {c.items.map((img, i) => (
                   <div key={i} className="relative">
@@ -43,7 +43,7 @@ export function RelatedCombos() {
               </div>
               <h3 className="mt-5 font-display text-xl text-primary">{c.name}</h3>
               <p className="mt-1.5 text-xs text-foreground/65 leading-relaxed">{c.desc}</p>
-              <div className="mt-4 flex items-center justify-between">
+              <div className="mt-auto pt-4 flex items-center justify-between">
                 <span className="font-display text-lg text-primary">{c.price}</span>
                 <a href={waLink(`Hola, me interesa el ${c.name}.`)} target="_blank" rel="noopener noreferrer"
                   className="text-[0.7rem] uppercase tracking-[0.2em] text-primary border-b border-primary/30 pb-0.5 hover:border-primary transition-colors">
