@@ -40,7 +40,7 @@ export function Header() {
           rel="noopener noreferrer"
           className="hidden md:inline-flex shrink-0 items-center px-4 xl:px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-[0.68rem] xl:text-xs uppercase tracking-[0.18em] hover:bg-primary/90 transition-colors"
         >
-          Contacta
+          Contáctanos
         </a>
         <button onClick={() => setOpen(!open)} className="lg:hidden text-primary p-2" aria-label="Menú">
           {open ? <X size={22} /> : <Menu size={22} />}
@@ -66,7 +66,7 @@ export function Header() {
               onClick={() => setOpen(false)}
               className="mt-2 inline-flex justify-center px-5 py-3 rounded-full bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em]"
             >
-              Contacta
+              Contáctanos
             </a>
           </div>
         </div>

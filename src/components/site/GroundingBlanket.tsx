@@ -13,12 +13,12 @@ const benefits = [
 ];
 
 const usos = [
-  { emoji: "📖", label: "Leer" },
-  { emoji: "💻", label: "Trabajar" },
-  { emoji: "🧘", label: "Meditar" },
-  { emoji: "🛋️", label: "Descansar" },
-  { emoji: "📺", label: "Ver televisión" },
-  { emoji: "🌙", label: "Dormir" },
+  { emoji: "📖", label: "lees" },
+  { emoji: "💻", label: "trabajas" },
+  { emoji: "🧘", label: "meditas" },
+  { emoji: "🛋️", label: "descansas" },
+  { emoji: "📺", label: "ves televisión" },
+  { emoji: "🌙", label: "duermes" },
 ];
 
 const steps = [
@@ -60,20 +60,34 @@ export function GroundingBlanket() {
             Manta de conexión a tierra (Grounding) para incorporar el hábito de estar en contacto
             con la Tierra a tu rutina diaria, desde la comodidad de tu hogar.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-wrap gap-2.5">
+            <a
+              href="#que-es"
+              className="inline-flex items-center px-5 py-3 rounded-full border border-primary/30 text-primary text-xs uppercase tracking-[0.18em] hover:bg-primary/5 transition-colors"
+            >
+              ¿Qué es Manta Origen?
+            </a>
+            <a
+              href="#como-funciona"
+              className="inline-flex items-center px-5 py-3 rounded-full border border-primary/30 text-primary text-xs uppercase tracking-[0.18em] hover:bg-primary/5 transition-colors"
+            >
+              ¿Cómo funciona?
+            </a>
+            <a
+              href="#laboratorio"
+              className="inline-flex items-center px-5 py-3 rounded-full border border-primary/30 text-primary text-xs uppercase tracking-[0.18em] hover:bg-primary/5 transition-colors"
+            >
+              Laboratorio de Grounding
+            </a>
+          </div>
+          <div className="mt-4">
             <a
               href={waLink("Hola, quiero comprar Manta Origen.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-6 py-3 rounded-full bg-primary text-primary-foreground text-xs uppercase tracking-[0.22em] hover:bg-primary/90 transition-colors"
+              className="inline-flex items-center px-7 py-3.5 rounded-full bg-secondary text-primary text-xs uppercase tracking-[0.22em] hover:bg-secondary/80 transition-colors shadow-[var(--shadow-soft)]"
             >
               Comprar Manta Origen
-            </a>
-            <a
-              href="#laboratorio"
-              className="inline-flex items-center px-6 py-3 rounded-full border border-primary/30 text-primary text-xs uppercase tracking-[0.22em] hover:bg-primary/5 transition-colors"
-            >
-              Laboratorio de Grounding
             </a>
           </div>
           <div className="mt-8 grid grid-cols-2 gap-3 max-w-md">
@@ -113,7 +127,7 @@ export function GroundingBlanket() {
         </div>
         <div className="container-prose grid md:grid-cols-2 gap-6">
           <Reveal>
-            <div className="h-full p-7 md:p-9 rounded-3xl bg-card border border-border/60">
+            <div id="que-es" className="h-full p-7 md:p-9 rounded-3xl bg-card border border-border/60 scroll-mt-32">
               <div className="h-11 w-11 rounded-full bg-primary/10 text-primary inline-flex items-center justify-center">
                 <BookOpen size={18} strokeWidth={1.4} />
               </div>
@@ -126,7 +140,7 @@ export function GroundingBlanket() {
             </div>
           </Reveal>
           <Reveal delay={100}>
-            <div className="h-full p-7 md:p-9 rounded-3xl bg-card border border-border/60">
+            <div id="como-funciona" className="h-full p-7 md:p-9 rounded-3xl bg-card border border-border/60 scroll-mt-32">
               <div className="h-11 w-11 rounded-full bg-primary/10 text-primary inline-flex items-center justify-center">
                 <FlaskConical size={18} strokeWidth={1.4} />
               </div>
@@ -255,7 +269,7 @@ export function GroundingBlanket() {
       </section>
 
       {/* 6 · LABORATORIO DE GROUNDING — simétrico */}
-      <section id="laboratorio" className="py-20 md:py-28 bg-primary text-primary-foreground">
+      <section id="laboratorio" className="scroll-mt-24 py-20 md:py-28 bg-primary text-primary-foreground">
         <div className="container-prose">
           <Reveal className="max-w-3xl mx-auto text-center">
             <span className="eyebrow text-secondary">Laboratorio de Grounding</span>
