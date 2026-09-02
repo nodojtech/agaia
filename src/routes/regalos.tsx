@@ -66,8 +66,8 @@ function RegalosPage() {
 
       {/* 2. Experiencias corporativas — texto tal cual */}
       <section className="py-20 md:py-24">
-        <div className="container-prose grid lg:grid-cols-12 gap-12">
-          <Reveal className="lg:col-span-6">
+        <div className="container-prose">
+          <Reveal className="max-w-2xl mx-auto text-center">
             <span className="eyebrow">Experiencias corporativas de Bienestar</span>
             <h2 className="mt-3 font-display text-4xl md:text-5xl text-primary leading-tight">
               Porque el bienestar<br />
@@ -75,34 +75,34 @@ function RegalosPage() {
             </h2>
             <p className="mt-5 text-foreground/75 leading-relaxed">
               Además de nuestros regalos corporativos, diseñamos experiencias para empresas que
-              buscan ofrecer momentos significativos a sus equipos.
-            </p>
-            <p className="mt-4 text-foreground/75 leading-relaxed">
-              Podemos crear jornadas enfocadas en el bienestar, combinando actividades como:
-            </p>
-            <p className="mt-6 italic text-foreground/70">
-              Cada experiencia se adapta a las necesidades y objetivos de tu empresa.
+              buscan ofrecer momentos significativos a sus equipos, combinando actividades como:
             </p>
           </Reveal>
-          <Reveal delay={120} className="lg:col-span-6">
-            <ul className="grid sm:grid-cols-1 gap-3">
-              {experiencias.map((e, i) => (
-                <li
-                  key={e}
-                  className="p-5 rounded-2xl bg-card border border-border/60 flex gap-4 items-start"
-                >
-                  <span className="font-display text-primary text-lg leading-none">0{i + 1}</span>
-                  <p className="text-sm text-foreground/80">{e}</p>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-8 p-6 rounded-3xl bg-primary text-primary-foreground text-center flex flex-col items-center">
-              <p className="font-display text-xl">¿Hablamos?</p>
+
+          <ul className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-4 items-stretch">
+            {experiencias.map((e, i) => (
+              <Reveal as="li" key={e} delay={i * 70} className="h-full">
+                <div className="h-full min-h-[150px] p-6 rounded-3xl bg-card border border-border/60 flex flex-col">
+                  <span className="font-display text-2xl text-primary/60 leading-none">
+                    0{i + 1}
+                  </span>
+                  <p className="mt-3 text-sm text-foreground/80 leading-relaxed">{e}</p>
+                </div>
+              </Reveal>
+            ))}
+          </ul>
+
+          <Reveal className="mt-12">
+            <div className="p-8 md:p-10 rounded-3xl bg-primary text-primary-foreground text-center max-w-3xl mx-auto">
+              <p className="italic text-primary-foreground/85">
+                Cada experiencia se adapta a las necesidades y objetivos de tu empresa.
+              </p>
+              <p className="mt-4 font-display text-2xl">¿Hablamos?</p>
               <a
                 href={waLink("Hola, quiero crear una experiencia de bienestar con AGAIA.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 mx-auto inline-flex items-center justify-center px-6 py-3 rounded-full bg-secondary text-primary text-xs uppercase tracking-[0.22em] hover:bg-secondary/90 transition-colors"
+                className="mt-6 inline-flex items-center justify-center px-6 py-3 rounded-full bg-secondary text-primary text-xs uppercase tracking-[0.22em] hover:bg-secondary/90 transition-colors"
               >
                 ➔ Quiero crear una experiencia de bienestar con AGAIA
               </a>

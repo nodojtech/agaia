@@ -93,6 +93,35 @@ function NosotrosPage() {
           </ul>
         </div>
       </section>
+
+      {/* Galería */}
+      <section className="py-20 md:py-24 bg-secondary/40">
+        <div className="container-prose">
+          <Reveal className="max-w-2xl mx-auto text-center mb-12">
+            <span className="eyebrow">Galería AGAIA</span>
+            <h2 className="mt-3 font-display text-3xl md:text-5xl text-primary leading-tight">
+              Nuestro mundo botánico
+            </h2>
+            <p className="mt-4 text-foreground/70">
+              Momentos, texturas e ingredientes que dan vida a cada experiencia AGAIA.
+            </p>
+          </Reveal>
+          <ul className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {galeria.map((g, i) => (
+              <Reveal as="li" key={g.src} delay={i * 70}>
+                <div className="aspect-square overflow-hidden rounded-3xl bg-card border border-border/60">
+                  <img
+                    src={g.src}
+                    alt={g.alt}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                  />
+                </div>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
+      </section>
     </div>
   );
 }
