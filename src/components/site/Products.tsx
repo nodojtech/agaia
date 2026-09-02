@@ -351,8 +351,17 @@ const CATEGORIES: Category[] = [
 ];
 
 export function Products() {
-  const [active, setActive] = useState<string>(CATEGORIES[0].id);
-  const category = CATEGORIES.find((c) => c.id === active) ?? CATEGORIES[0];
+  const [active, setActive] = useState<string>("todos");
+  const category =
+    active === "todos"
+      ? {
+          id: "todos",
+          label: "Todos",
+          intro: undefined,
+          products: CATEGORIES.flatMap((c) => c.products),
+        }
+      : CATEGORIES.find((c) => c.id === active) ?? CATEGORIES[0];
+  const tabs = [{ id: "todos", label: "Todos" }, ...CATEGORIES.map((c) => ({ id: c.id, label: c.label }))];
 
   return (
     <section id="productos" className="py-20 md:py-24">
@@ -369,14 +378,14 @@ export function Products() {
         </div>
 
         {/* Tabs */}
-        <div className="flex flex-wrap gap-2 mb-12 border-b border-border/60 pb-4">
-          {CATEGORIES.map((c) => {
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-12 border-b border-border/60 pb-4">
+          {tabs.map((c) => {
             const isActive = c.id === active;
             return (
               <button
                 key={c.id}
                 onClick={() => setActive(c.id)}
-                className={`px-4 py-2 rounded-full text-xs uppercase tracking-[0.2em] transition-colors ${
+                className={`w-full px-4 py-2.5 rounded-full text-center text-xs uppercase tracking-[0.2em] transition-colors ${
                   isActive
                     ? "bg-primary text-primary-foreground"
                     : "text-foreground/60 hover:text-primary hover:bg-secondary/40"
@@ -456,7 +465,7 @@ export function Products() {
                       rel="noopener noreferrer"
                       className="inline-flex items-center px-4 py-2.5 rounded-full bg-primary text-primary-foreground text-xs uppercase tracking-[0.22em] hover:bg-primary/90 transition-colors"
                     >
-                      Consultar
+                      Consultar por WhatsApp
                     </a>
                     {category.id === "manta-origen" && (
                       <Link
@@ -482,7 +491,7 @@ export function Products() {
             </Reveal>
           ));
 
-          if (category.products.length > 2) {
+          if (active !== "todos" && category.products.length > 2) {
             return (
               <Carousel opts={{ align: "start", loop: true }} className="w-full">
                 <CarouselContent className="-ml-4">
@@ -499,7 +508,7 @@ export function Products() {
               </Carousel>
             );
           }
-          return <div className="grid md:grid-cols-2 gap-8">{cards}</div>;
+          return <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">{cards}</div>;
         })()}
 
         {/* Kits Empresariales — texto tal cual del brief */}

@@ -127,7 +127,7 @@ export function GroundingBlanket() {
         </div>
         <div className="container-prose grid md:grid-cols-2 gap-6">
           <Reveal>
-            <div className="h-full p-7 md:p-9 rounded-3xl bg-card border border-border/60">
+            <div id="que-es" className="h-full p-7 md:p-9 rounded-3xl bg-card border border-border/60 scroll-mt-32">
               <div className="h-11 w-11 rounded-full bg-primary/10 text-primary inline-flex items-center justify-center">
                 <BookOpen size={18} strokeWidth={1.4} />
               </div>
@@ -140,7 +140,7 @@ export function GroundingBlanket() {
             </div>
           </Reveal>
           <Reveal delay={100}>
-            <div className="h-full p-7 md:p-9 rounded-3xl bg-card border border-border/60">
+            <div id="como-funciona" className="h-full p-7 md:p-9 rounded-3xl bg-card border border-border/60 scroll-mt-32">
               <div className="h-11 w-11 rounded-full bg-primary/10 text-primary inline-flex items-center justify-center">
                 <FlaskConical size={18} strokeWidth={1.4} />
               </div>
@@ -269,7 +269,7 @@ export function GroundingBlanket() {
       </section>
 
       {/* 6 · LABORATORIO DE GROUNDING — simétrico */}
-      <section id="laboratorio" className="py-20 md:py-28 bg-primary text-primary-foreground">
+      <section id="laboratorio" className="scroll-mt-24 py-20 md:py-28 bg-primary text-primary-foreground">
         <div className="container-prose">
           <Reveal className="max-w-3xl mx-auto text-center">
             <span className="eyebrow text-secondary">Laboratorio de Grounding</span>
