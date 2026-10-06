@@ -44,6 +44,9 @@ import jabonEquilibrioFrente from "@/assets/jabon-equilibrio-frente.png.asset.js
 import jabonGratitudFondo from "@/assets/jabon-gratitud-fondo.png.asset.json";
 import jabonGratitudVainilla from "@/assets/jabon-gratitud-vainilla.png.asset.json";
 import jabonGratitudFrente from "@/assets/jabon-gratitud-frente.png.asset.json";
+import kitTresPausasFondo from "@/assets/kit-tres-pausas-fondo.png.asset.json";
+import kitTresPausasRegalo from "@/assets/kit-tres-pausas-regalo.png.asset.json";
+import kitTresPausasFrente from "@/assets/kit-tres-pausas-frente.png.asset.json";
 
 type Presentation = { size: string; price: string };
 type ProductImage = { src: string; alt: string };
@@ -319,7 +322,20 @@ const CATEGORIES: Category[] = [
       {
         name: "Kit Tres Pausas de Bienestar",
         tag: "Tres aromas · Tres intenciones",
-        image: naturalezaImg,
+        images: [
+          {
+            src: kitTresPausasFondo.url,
+            alt: "Caja de regalo AGAIA abierta con las tres brumas de ambiente mientras unas manos la presentan",
+          },
+          {
+            src: kitTresPausasRegalo.url,
+            alt: "Caja de regalo AGAIA cerrada entregándose entre dos manos junto a la tarjeta «Cosas buenas dentro»",
+          },
+          {
+            src: kitTresPausasFrente.url,
+            alt: "Caja de regalo AGAIA abierta sobre fondo blanco con las tres brumas de ambiente",
+          },
+        ],
         desc:
           "Tres aromas. Tres intenciones. Tres pausas para volver a ti. Reúne las versiones mini de las tres Aguas de Linos más representativas.",
         benefits: [
