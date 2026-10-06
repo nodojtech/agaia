@@ -19,7 +19,7 @@ export const Route = createFileRoute("/productos")({
 
 function ProductosPage() {
   return (
-    <div className="pt-32 md:pt-40">
+    <div className="pt-28 md:pt-32">
       <Products />
       <BestSellers />
       <RelatedCombos />

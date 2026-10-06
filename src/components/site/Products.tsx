@@ -621,7 +621,7 @@ export function Products() {
   const tabs = [{ id: "todos", label: "Todos" }, ...CATEGORIES.map((c) => ({ id: c.id, label: c.label }))];
 
   return (
-    <section id="productos" className="py-20 md:py-24">
+    <section id="productos" className="pb-20 md:pb-24 pt-0">
       <div className="container-prose">
         <div className="max-w-2xl mb-10">
           <span className="eyebrow">Catálogo</span>
