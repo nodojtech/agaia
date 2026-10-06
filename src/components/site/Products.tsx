@@ -31,6 +31,11 @@ import equilibrioNaturalReverso from "@/assets/equilibrio-natural-reverso.png.as
 import equilibrioNaturalEucalipto from "@/assets/equilibrio-natural-eucalipto.png.asset.json";
 import equilibrioNaturalUso from "@/assets/equilibrio-natural-uso.png.asset.json";
 import equilibrioNaturalTresAromas from "@/assets/equilibrio-natural-tres-aromas.png.asset.json";
+import gratitudFondo from "@/assets/agua-linos-gratitud-fondo.png.asset.json";
+import gratitudFrente from "@/assets/agua-linos-gratitud-frente.png.asset.json";
+import gratitudVainilla from "@/assets/agua-linos-gratitud-vainilla.png.asset.json";
+import gratitudUso from "@/assets/agua-linos-gratitud-uso.png.asset.json";
+import gratitudTresAromas from "@/assets/agua-linos-gratitud-tres-aromas.png.asset.json";
 
 type Presentation = { size: string; price: string };
 type ProductImage = { src: string; alt: string };
