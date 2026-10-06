@@ -11,6 +11,7 @@ export const Route = createFileRoute("/productos")({
       { property: "og:title", content: "Productos — Agaia" },
       { property: "og:description", content: "Cuatro líneas botánicas pensadas como rituales de bienestar." },
       { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: ProductosPage,

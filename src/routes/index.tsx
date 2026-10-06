@@ -15,6 +15,7 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Agaia — Laboratorio de bienestar" },
       { property: "og:description", content: "Bienestar natural para reconectar con tu esencia." },
       { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: Index,

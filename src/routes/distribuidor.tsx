@@ -11,6 +11,7 @@ export const Route = createFileRoute("/distribuidor")({
       { property: "og:title", content: "Distribuidor AGAIA" },
       { property: "og:description", content: "Únete a nuestra comunidad de aliados de bienestar." },
       { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: DistribuidorPage,
