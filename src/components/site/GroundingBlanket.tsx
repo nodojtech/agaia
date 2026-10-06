@@ -1,4 +1,7 @@
-import grounding from "@/assets/grounding-blanket.jpg";
+import mantaOrigenKit from "@/assets/manta-origen-kit.png.asset.json";
+import mantaOrigenUso from "@/assets/manta-origen-uso.png.asset.json";
+import mantaOrigenPiedra from "@/assets/manta-origen-piedra.png.asset.json";
+import mantaOrigenExterior from "@/assets/manta-origen-exterior.png.asset.json";
 import { Sparkles, Moon, HeartPulse, Leaf, Wind, Repeat, ExternalLink, BookOpen, FlaskConical, Unplug } from "lucide-react";
 import { waLink } from "@/lib/site-config";
 import { Reveal } from "@/components/site/Reveal";
@@ -105,7 +108,35 @@ export function GroundingBlanket() {
         </Reveal>
         <Reveal delay={120} className="lg:col-span-6 order-1 lg:order-2">
           <div className="rounded-[2rem] overflow-hidden shadow-[var(--shadow-glow)] aspect-[4/5]">
-            <img src={grounding} alt="Manta Origen AGAIA" className="h-full w-full object-cover" />
+            <img
+              src={mantaOrigenKit.url}
+              alt="Kit Manta Origen completo: bolsa de lino, manta con el parche de conexión, folleto, bruma de ambiente y cable de tierra sobre fondo neutro"
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <div className="mt-3 grid grid-cols-3 gap-3">
+            {[
+              {
+                src: mantaOrigenUso.url,
+                alt: "Mujer durmiendo con la Manta Origen extendida y conectada a la toma de tierra",
+              },
+              {
+                src: mantaOrigenPiedra.url,
+                alt: "Bolsa de lino con la Manta Origen sobre repisas de piedra travertina con hojas verdes",
+              },
+              {
+                src: mantaOrigenExterior.url,
+                alt: "Kit Manta Origen sobre madera y raíces de árbol, acompañado de flores blancas",
+              },
+            ].map((foto) => (
+              <img
+                key={foto.src}
+                src={foto.src}
+                alt={foto.alt}
+                loading="lazy"
+                className="aspect-square w-full rounded-2xl object-cover"
+              />
+            ))}
           </div>
         </Reveal>
       </section>
