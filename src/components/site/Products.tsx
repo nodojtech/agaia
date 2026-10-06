@@ -10,11 +10,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import calmaImg from "@/assets/product-calma.jpg";
-import energiaImg from "@/assets/product-energia.jpg";
 import equilibrioImg from "@/assets/product-equilibrio.jpg";
-import naturalezaImg from "@/assets/product-naturaleza.jpg";
-import grounding from "@/assets/grounding-blanket.jpg";
 import rollOnCalmaFondo1 from "@/assets/roll-on-calma-fondo-1.jpeg.asset.json";
 import rollOnCalmaFondo2 from "@/assets/roll-on-calma-fondo-2.png.asset.json";
 import rollOnCalmaFrente from "@/assets/roll-on-calma-frente.png.asset.json";
@@ -49,6 +45,28 @@ import kitTresPausasRegalo from "@/assets/kit-tres-pausas-regalo.png.asset.json"
 import kitTresPausasFrente from "@/assets/kit-tres-pausas-frente.png.asset.json";
 import kitBienestarGratitudFondo from "@/assets/kit-bienestar-gratitud-fondo.png.asset.json";
 import kitBienestarGratitudFrente from "@/assets/kit-bienestar-gratitud-frente.png.asset.json";
+import kitBienestarEnergiaVitalFondo from "@/assets/kit-bienestar-energia-vital-fondo.png.asset.json";
+import kitBienestarEquilibrioNaturalFondo from "@/assets/kit-bienestar-equilibrio-natural-fondo.png.asset.json";
+import kitsEmpresarialesCajaAbierta from "@/assets/kits-empresariales-caja-abierta.png.asset.json";
+import kitsEmpresarialesRegalo from "@/assets/kits-empresariales-regalo.png.asset.json";
+import kitsEmpresarialesProduccion from "@/assets/kits-empresariales-produccion.png.asset.json";
+import mantaOrigenKit from "@/assets/manta-origen-kit.png.asset.json";
+import mantaOrigenUso from "@/assets/manta-origen-uso.png.asset.json";
+import mantaOrigenFlatlay from "@/assets/manta-origen-flatlay.png.asset.json";
+import mantaOrigenExterior from "@/assets/manta-origen-exterior.png.asset.json";
+import mantaOrigenPiedra from "@/assets/manta-origen-piedra.png.asset.json";
+import bonsaiFilodendro from "@/assets/bonsai-filodendro.png.asset.json";
+import bonsaiPlatano from "@/assets/bonsai-platano.png.asset.json";
+import bonsaiArrayan from "@/assets/bonsai-arrayan.png.asset.json";
+import bonsaiJadeMacho from "@/assets/bonsai-jade-macho.webp.asset.json";
+import bonsaiPinoAzul from "@/assets/bonsai-pino-azul.webp.asset.json";
+import bonsaiJadeHembra from "@/assets/bonsai-jade-hembra.png.asset.json";
+import bonsaiFilodendroFrente from "@/assets/bonsai-filodendro-frente.png.asset.json";
+import kokedamaCalathea from "@/assets/kokedama-calathea.png.asset.json";
+import kokedamaHelecho from "@/assets/kokedama-2.jpg.asset.json";
+import kokedamaSuculenta from "@/assets/kokedama-3.jpg.asset.json";
+import salesCanelaFondo from "@/assets/sales-canela-fondo.png.asset.json";
+import salesCanelaFrente from "@/assets/sales-canela-frente.png.asset.json";
 
 type Presentation = { size: string; price: string };
 type ProductImage = { src: string; alt: string };
@@ -87,23 +105,25 @@ function ProductGallery({ images, name }: { images: ProductImage[]; name: string
           className="h-full w-full object-cover transition-opacity duration-300"
         />
       </div>
-      <div className="grid grid-cols-5 gap-1.5 border-t border-border/60 bg-card p-2">
-        {images.map((image, index) => (
-          <Button
-            key={image.src}
-            type="button"
-            variant="ghost"
-            onClick={() => setActiveImage(index)}
-            aria-label={`Ver foto ${index + 1} de ${name}`}
-            aria-pressed={activeImage === index}
-            className={`h-auto aspect-square overflow-hidden rounded-md border p-0 ${
-              activeImage === index ? "border-primary" : "border-transparent opacity-65 hover:opacity-100"
-            }`}
-          >
-            <img src={image.src} alt="" className="h-full w-full object-cover" />
-          </Button>
-        ))}
-      </div>
+      {images.length > 1 && (
+        <div className="flex gap-1.5 overflow-x-auto border-t border-border/60 bg-card p-2">
+          {images.map((image, index) => (
+            <Button
+              key={image.src}
+              type="button"
+              variant="ghost"
+              onClick={() => setActiveImage(index)}
+              aria-label={`Ver foto ${index + 1} de ${name}`}
+              aria-pressed={activeImage === index}
+              className={`h-auto w-14 shrink-0 aspect-square overflow-hidden rounded-md border p-0 ${
+                activeImage === index ? "border-primary" : "border-transparent opacity-65 hover:opacity-100"
+              }`}
+            >
+              <img src={image.src} alt="" className="h-full w-full object-cover" />
+            </Button>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
@@ -313,7 +333,12 @@ const CATEGORIES: Category[] = [
       {
         name: "Kit Bienestar Energía Vital",
         tag: "🍊 Naranja",
-        image: energiaImg,
+        images: [
+          {
+            src: kitBienestarEnergiaVitalFondo.url,
+            alt: "Kit Bienestar Energía Vital con Agua de Linos y Jabón de Manos y Cuerpo en su bandeja negra sobre una encimera de piedra, junto a una toalla y hojas verdes",
+          },
+        ],
         desc: "Kit ritual con Jabón + Agua de Linos Energía Vital (400 ml) en base kit negra.",
         benefits: ["Frescura y vitalidad para las mañanas."],
         ingredients: ["Naranja", "Aloe Vera", "Vitamina E"],
@@ -323,7 +348,12 @@ const CATEGORIES: Category[] = [
       {
         name: "Kit Bienestar Equilibrio Natural",
         tag: "🌿 Eucalipto",
-        image: equilibrioImg,
+        images: [
+          {
+            src: kitBienestarEquilibrioNaturalFondo.url,
+            alt: "Kit Bienestar Equilibrio Natural con Agua de Linos y Jabón de Manos y Cuerpo en su bandeja negra sobre una encimera de madera, junto a una toalla, una vela encendida y una planta",
+          },
+        ],
         desc: "Kit ritual con Jabón + Agua de Linos Equilibrio Natural (400 ml) en base kit negra.",
         benefits: ["Renovación y equilibrio en tu espacio y en tu piel."],
         ingredients: ["Eucalipto", "Aloe Vera", "Vitamina E"],
@@ -401,7 +431,16 @@ const CATEGORIES: Category[] = [
       {
         name: "Sales Relajantes de Canela",
         tag: "Aroma cálido y especiado",
-        image: calmaImg,
+        images: [
+          {
+            src: salesCanelaFondo.url,
+            alt: "Bolsa de Sales Relajantes de Canela con rodajas de naranja y ramas de canela, junto a un cuenco de cerámica con sales en un ambiente de spa",
+          },
+          {
+            src: salesCanelaFrente.url,
+            alt: "Bolsa transparente de Sales Relajantes de Canela con su etiqueta frontal sobre fondo blanco con sombras de hojas",
+          },
+        ],
         desc:
           "Una invitación a hacer una pausa. Inspiradas en las propiedades aromáticas de la canela, ayudan a transformar pequeños espacios de tu rutina en experiencias cálidas y conscientes.",
         benefits: [
@@ -439,7 +478,36 @@ const CATEGORIES: Category[] = [
       {
         name: "Bonsáis",
         tag: "🌿 Paciencia, equilibrio y crecimiento",
-        image: naturalezaImg,
+        images: [
+          {
+            src: bonsaiFilodendro.url,
+            alt: "Bonsái de filodendro con raíces expuestas sobre una base de madera con gravilla, frente a una pared gris",
+          },
+          {
+            src: bonsaiJadeMacho.url,
+            alt: "Bonsái de jade macho acompañado de una fitonia de nervaduras rojas en la base, en el jardín",
+          },
+          {
+            src: bonsaiPinoAzul.url,
+            alt: "Bonsái de pino azul sobre una base de madera con gravilla blanca, en un vivero con flores rosadas de fondo",
+          },
+          {
+            src: bonsaiPlatano.url,
+            alt: "Bonsái de plátano enano con la etiqueta de AGAIA atada al tronco, frente a una pared de ladrillo",
+          },
+          {
+            src: bonsaiArrayan.url,
+            alt: "Bonsái de arrayán con copa densa y podada sobre una base de madera, frente a una pared de ladrillo",
+          },
+          {
+            src: bonsaiJadeHembra.url,
+            alt: "Bonsái de jade hembra sostenido en la mano, con la etiqueta de AGAIA y un jardín de fondo",
+          },
+          {
+            src: bonsaiFilodendroFrente.url,
+            alt: "Bonsái de filodendro con raíces expuestas sobre su base de madera, sobre fondo blanco",
+          },
+        ],
         desc:
           "Cada bonsái cuenta una historia. Seleccionamos especies cuidadosamente cultivadas para que puedas disfrutar de una experiencia única de conexión con la naturaleza.",
         benefits: ["Incluye guía digital de cuidado.", "Tarjeta de regalo (si deseas)."],
@@ -450,7 +518,20 @@ const CATEGORIES: Category[] = [
       {
         name: "Kokedamas",
         tag: "🌿 Técnica japonesa · Musgo natural",
-        image: equilibrioImg,
+        images: [
+          {
+            src: kokedamaCalathea.url,
+            alt: "Kokedama de calathea variegada sobre su bola de fibra vegetal, con la etiqueta de AGAIA, frente a una pared de ladrillo",
+          },
+          {
+            src: kokedamaHelecho.url,
+            alt: "Kokedama de helecho nido de ave sobre una mesa de madera, frente a una pared de ladrillo",
+          },
+          {
+            src: kokedamaSuculenta.url,
+            alt: "Mini kokedama con una suculenta sostenida en la palma de la mano",
+          },
+        ],
         desc:
           "Las kokedamas reemplazan la maceta por una esfera de musgo natural, creando una forma diferente y elegante de disfrutar las plantas. Ideales para espacios minimalistas.",
         benefits: ["Incluye guía digital de cuidado.", "Tarjeta de regalo (si deseas)."],
@@ -473,7 +554,20 @@ const CATEGORIES: Category[] = [
       {
         name: "Manta Origen Sencilla",
         tag: "🏷️ 132 × 69 cm (52 × 27 in)",
-        image: grounding,
+        images: [
+          {
+            src: mantaOrigenKit.url,
+            alt: "Kit Manta Origen completo: bolsa de lino, manta con el parche de conexión, folleto, bruma de ambiente y cable de tierra sobre fondo neutro",
+          },
+          {
+            src: mantaOrigenFlatlay.url,
+            alt: "Manta Origen doblada sobre tela de lino junto a su bolsa y un cojín terracota",
+          },
+          {
+            src: mantaOrigenPiedra.url,
+            alt: "Bolsa de lino con la Manta Origen sobre repisas de piedra travertina con hojas verdes",
+          },
+        ],
         desc: "Ideal para uso individual mientras trabajas, lees, meditas o descansas.",
         benefits: [
           "95% algodón + 5% hilos de plata conductores.",
@@ -486,7 +580,20 @@ const CATEGORIES: Category[] = [
       {
         name: "Manta Origen Doble",
         tag: "🏷️ 203 × 152 cm (80 × 60 in)",
-        image: grounding,
+        images: [
+          {
+            src: mantaOrigenUso.url,
+            alt: "Mujer durmiendo con la Manta Origen extendida y conectada a la toma de tierra",
+          },
+          {
+            src: mantaOrigenKit.url,
+            alt: "Kit Manta Origen completo: bolsa de lino, manta con el parche de conexión, folleto, bruma de ambiente y cable de tierra sobre fondo neutro",
+          },
+          {
+            src: mantaOrigenExterior.url,
+            alt: "Kit Manta Origen sobre madera y raíces de árbol, acompañado de flores blancas",
+          },
+        ],
         desc: "Perfecta para usar en la cama durante el descanso o compartida en espacios amplios.",
         benefits: [
           "95% algodón + 5% hilos de plata conductores.",
@@ -680,10 +787,34 @@ export function Products() {
                   según las necesidades, presupuesto y objetivo de cada empresa. Porque creemos
                   que un buen regalo también puede convertirse en una experiencia de bienestar.
                 </p>
-                <p className="mt-4 italic text-primary-foreground/90">
-                  Hablemos y creemos juntos el detalle perfecto para tu equipo.
-                </p>
-                <a
+                 <p className="mt-4 italic text-primary-foreground/90">
+                   Hablemos y creemos juntos el detalle perfecto para tu equipo.
+                 </p>
+                 <div className="mt-8 grid grid-cols-3 gap-3">
+                   {[
+                     {
+                       src: kitsEmpresarialesRegalo.url,
+                       alt: "Caja de regalo kraft cerrada con lazo verde oliva, junto al Agua de Linos y el Jabón de Manos y Cuerpo Energía Vital en su bandeja negra y una tarjeta personalizada",
+                     },
+                     {
+                       src: kitsEmpresarialesCajaAbierta.url,
+                       alt: "Caja de regalo abierta con sales relajantes de canela, las tres brumas de ambiente en miniatura, un saquito de tela y una tarjeta de agradecimiento",
+                     },
+                     {
+                       src: kitsEmpresarialesProduccion.url,
+                       alt: "Cajas kraft abiertas con saquitos de tela y la guía de beneficios, usos y sugerencias del roll-on, preparadas para una entrega corporativa",
+                     },
+                   ].map((foto) => (
+                     <img
+                       key={foto.src}
+                       src={foto.src}
+                       alt={foto.alt}
+                       loading="lazy"
+                       className="aspect-[4/5] w-full rounded-2xl object-cover"
+                     />
+                   ))}
+                 </div>
+                 <a
                   href={waLink("Hola, quiero cotizar detalles o experiencias personalizadas para mi empresa.")}
                   target="_blank"
                   rel="noopener noreferrer"
