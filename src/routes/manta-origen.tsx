@@ -9,6 +9,7 @@ export const Route = createFileRoute("/manta-origen")({
       { property: "og:title", content: "Manta Origen — Agaia" },
       { property: "og:description", content: "Conecta con la naturaleza, incluso desde casa." },
       { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: GroundingBlanket,

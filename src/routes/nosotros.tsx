@@ -24,6 +24,7 @@ export const Route = createFileRoute("/nosotros")({
       { property: "og:title", content: "Nosotros — Agaia" },
       { property: "og:description", content: "Historia, Laboratorio Botánico y Herbario AGAIA." },
       { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: NosotrosPage,

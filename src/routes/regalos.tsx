@@ -10,6 +10,7 @@ export const Route = createFileRoute("/regalos")({
       { property: "og:title", content: "Bienestar Corporativo — Agaia" },
       { property: "og:description", content: "Regalos con intención y experiencias de bienestar para empresas." },
       { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: RegalosPage,

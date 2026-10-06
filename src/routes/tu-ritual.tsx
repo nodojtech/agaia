@@ -11,6 +11,7 @@ export const Route = createFileRoute("/tu-ritual")({
       { property: "og:title", content: "Tu Ritual — Agaia" },
       { property: "og:description", content: "Descubre el ritual botánico ideal para ti." },
       { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: TuRitualPage,
