@@ -106,22 +106,22 @@ function ProductGallery({ images, name }: { images: ProductImage[]; name: string
         />
       </div>
       {images.length > 1 && (
-        <div className="grid grid-cols-5 gap-1.5 border-t border-border/60 bg-card p-2">
-        {images.map((image, index) => (
-          <Button
-            key={image.src}
-            type="button"
-            variant="ghost"
-            onClick={() => setActiveImage(index)}
-            aria-label={`Ver foto ${index + 1} de ${name}`}
-            aria-pressed={activeImage === index}
-            className={`h-auto aspect-square overflow-hidden rounded-md border p-0 ${
-              activeImage === index ? "border-primary" : "border-transparent opacity-65 hover:opacity-100"
-            }`}
-          >
-            <img src={image.src} alt="" className="h-full w-full object-cover" />
-          </Button>
-        ))}
+        <div className="flex gap-1.5 overflow-x-auto border-t border-border/60 bg-card p-2">
+          {images.map((image, index) => (
+            <Button
+              key={image.src}
+              type="button"
+              variant="ghost"
+              onClick={() => setActiveImage(index)}
+              aria-label={`Ver foto ${index + 1} de ${name}`}
+              aria-pressed={activeImage === index}
+              className={`h-auto w-14 shrink-0 aspect-square overflow-hidden rounded-md border p-0 ${
+                activeImage === index ? "border-primary" : "border-transparent opacity-65 hover:opacity-100"
+              }`}
+            >
+              <img src={image.src} alt="" className="h-full w-full object-cover" />
+            </Button>
+          ))}
         </div>
       )}
     </div>
