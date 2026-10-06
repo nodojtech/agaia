@@ -36,6 +36,8 @@ import gratitudFrente from "@/assets/agua-linos-gratitud-frente.png.asset.json";
 import gratitudVainilla from "@/assets/agua-linos-gratitud-vainilla.png.asset.json";
 import gratitudUso from "@/assets/agua-linos-gratitud-uso.png.asset.json";
 import gratitudTresAromas from "@/assets/agua-linos-gratitud-tres-aromas.png.asset.json";
+import jabonEnergiaNaranjas from "@/assets/jabon-energia-naranjas.png.asset.json";
+import jabonEnergiaFrente from "@/assets/jabon-energia-frente.png.asset.json";
 
 type Presentation = { size: string; price: string };
 type ProductImage = { src: string; alt: string };
@@ -207,7 +209,10 @@ const CATEGORIES: Category[] = [
       {
         name: "Jabón Energía Vital",
         tag: "🍊 Naranja",
-        image: energiaImg,
+        images: [
+          { src: jabonEnergiaNaranjas.url, alt: "Jabón Energía Vital junto al lavamanos con naranjas frescas" },
+          { src: jabonEnergiaFrente.url, alt: "Frasco de Jabón Energía Vital 400 ml" },
+        ],
         desc:
           "El inicio perfecto para tus mañanas. Inspirado en la frescura de la naranja, acompaña esos momentos en los que quieres comenzar el día renovad@.",
         benefits: [
