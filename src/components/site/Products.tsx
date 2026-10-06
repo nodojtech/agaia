@@ -11,7 +11,6 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import calmaImg from "@/assets/product-calma.jpg";
-import energiaImg from "@/assets/product-energia.jpg";
 import equilibrioImg from "@/assets/product-equilibrio.jpg";
 import naturalezaImg from "@/assets/product-naturaleza.jpg";
 import grounding from "@/assets/grounding-blanket.jpg";
@@ -49,6 +48,7 @@ import kitTresPausasRegalo from "@/assets/kit-tres-pausas-regalo.png.asset.json"
 import kitTresPausasFrente from "@/assets/kit-tres-pausas-frente.png.asset.json";
 import kitBienestarGratitudFondo from "@/assets/kit-bienestar-gratitud-fondo.png.asset.json";
 import kitBienestarGratitudFrente from "@/assets/kit-bienestar-gratitud-frente.png.asset.json";
+import kitBienestarEnergiaVitalFondo from "@/assets/kit-bienestar-energia-vital-fondo.png.asset.json";
 
 type Presentation = { size: string; price: string };
 type ProductImage = { src: string; alt: string };
@@ -87,7 +87,8 @@ function ProductGallery({ images, name }: { images: ProductImage[]; name: string
           className="h-full w-full object-cover transition-opacity duration-300"
         />
       </div>
-      <div className="grid grid-cols-5 gap-1.5 border-t border-border/60 bg-card p-2">
+      {images.length > 1 && (
+        <div className="grid grid-cols-5 gap-1.5 border-t border-border/60 bg-card p-2">
         {images.map((image, index) => (
           <Button
             key={image.src}
@@ -103,7 +104,8 @@ function ProductGallery({ images, name }: { images: ProductImage[]; name: string
             <img src={image.src} alt="" className="h-full w-full object-cover" />
           </Button>
         ))}
-      </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -313,7 +315,12 @@ const CATEGORIES: Category[] = [
       {
         name: "Kit Bienestar Energía Vital",
         tag: "🍊 Naranja",
-        image: energiaImg,
+        images: [
+          {
+            src: kitBienestarEnergiaVitalFondo.url,
+            alt: "Kit Bienestar Energía Vital con Agua de Linos y Jabón de Manos y Cuerpo en su bandeja negra sobre una encimera de piedra, junto a una toalla y hojas verdes",
+          },
+        ],
         desc: "Kit ritual con Jabón + Agua de Linos Energía Vital (400 ml) en base kit negra.",
         benefits: ["Frescura y vitalidad para las mañanas."],
         ingredients: ["Naranja", "Aloe Vera", "Vitamina E"],
