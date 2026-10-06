@@ -38,6 +38,9 @@ import gratitudUso from "@/assets/agua-linos-gratitud-uso.png.asset.json";
 import gratitudTresAromas from "@/assets/agua-linos-gratitud-tres-aromas.png.asset.json";
 import jabonEnergiaNaranjas from "@/assets/jabon-energia-naranjas.png.asset.json";
 import jabonEnergiaFrente from "@/assets/jabon-energia-frente.png.asset.json";
+import jabonEquilibrioFondo from "@/assets/jabon-equilibrio-fondo.png.asset.json";
+import jabonEquilibrioEucalipto from "@/assets/jabon-equilibrio-eucalipto.png.asset.json";
+import jabonEquilibrioFrente from "@/assets/jabon-equilibrio-frente.png.asset.json";
 
 type Presentation = { size: string; price: string };
 type ProductImage = { src: string; alt: string };
@@ -228,7 +231,20 @@ const CATEGORIES: Category[] = [
       {
         name: "Jabón Equilibrio Natural",
         tag: "🌿 Eucalipto",
-        image: equilibrioImg,
+        images: [
+          {
+            src: jabonEquilibrioFondo.url,
+            alt: "Jabón Equilibrio Natural junto a lavabo, vela encendida y eucalipto",
+          },
+          {
+            src: jabonEquilibrioEucalipto.url,
+            alt: "Manos enjabonándose junto al frasco de Jabón Equilibrio Natural",
+          },
+          {
+            src: jabonEquilibrioFrente.url,
+            alt: "Frasco de Jabón Equilibrio Natural 400 ml sobre fondo claro",
+          },
+        ],
         desc:
           "Inspirado en el eucalipto. Transforma el momento del baño en una experiencia que invita a respirar profundo y conectar con la naturaleza.",
         benefits: [
