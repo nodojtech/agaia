@@ -13,3 +13,5 @@
 - [x] Integrar la foto oficial del Kit Bienestar Equilibrio Natural en su tarjeta.
 - [ ] Integrar las tres fotos oficiales de Kits Empresariales (Bienestar Corporativo) en /regalos.
 - [ ] Integrar las seis fotos oficiales de Manta Origen en /manta-origen.
+- [ ] Integrar las siete fotos oficiales de los Bonsáis (Refugio de Bienestar) en sus tarjetas.
+- [ ] Integrar las tres fotos oficiales de los Kokedamas (Refugio de Bienestar) en sus tarjetas.
