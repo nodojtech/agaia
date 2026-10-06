@@ -49,6 +49,7 @@ import kitTresPausasFrente from "@/assets/kit-tres-pausas-frente.png.asset.json"
 import kitBienestarGratitudFondo from "@/assets/kit-bienestar-gratitud-fondo.png.asset.json";
 import kitBienestarGratitudFrente from "@/assets/kit-bienestar-gratitud-frente.png.asset.json";
 import kitBienestarEnergiaVitalFondo from "@/assets/kit-bienestar-energia-vital-fondo.png.asset.json";
+import kitBienestarEquilibrioNaturalFondo from "@/assets/kit-bienestar-equilibrio-natural-fondo.png.asset.json";
 
 type Presentation = { size: string; price: string };
 type ProductImage = { src: string; alt: string };
@@ -330,7 +331,12 @@ const CATEGORIES: Category[] = [
       {
         name: "Kit Bienestar Equilibrio Natural",
         tag: "🌿 Eucalipto",
-        image: equilibrioImg,
+        images: [
+          {
+            src: kitBienestarEquilibrioNaturalFondo.url,
+            alt: "Kit Bienestar Equilibrio Natural con Agua de Linos y Jabón de Manos y Cuerpo en su bandeja negra sobre una encimera de madera, junto a una toalla, una vela encendida y una planta",
+          },
+        ],
         desc: "Kit ritual con Jabón + Agua de Linos Equilibrio Natural (400 ml) en base kit negra.",
         benefits: ["Renovación y equilibrio en tu espacio y en tu piel."],
         ingredients: ["Eucalipto", "Aloe Vera", "Vitamina E"],
