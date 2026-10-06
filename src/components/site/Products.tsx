@@ -25,6 +25,12 @@ import energiaVitalFondo from "@/assets/agua-linos-energia-fondo.png.asset.json"
 import energiaVitalFrente from "@/assets/agua-linos-energia-frente.png.asset.json";
 import energiaVitalNaranja from "@/assets/agua-linos-energia-naranja.png.asset.json";
 import energiaVitalUso from "@/assets/agua-linos-energia-uso.png.asset.json";
+import equilibrioNaturalFondo from "@/assets/equilibrio-natural-fondo.png.asset.json";
+import equilibrioNaturalFrente from "@/assets/equilibrio-natural-frente.png.asset.json";
+import equilibrioNaturalReverso from "@/assets/equilibrio-natural-reverso.png.asset.json";
+import equilibrioNaturalEucalipto from "@/assets/equilibrio-natural-eucalipto.png.asset.json";
+import equilibrioNaturalUso from "@/assets/equilibrio-natural-uso.png.asset.json";
+import equilibrioNaturalTresAromas from "@/assets/equilibrio-natural-tres-aromas.png.asset.json";
 
 type Presentation = { size: string; price: string };
 type ProductImage = { src: string; alt: string };
@@ -139,7 +145,14 @@ const CATEGORIES: Category[] = [
       {
         name: "Agua de Linos Equilibrio Natural",
         tag: "🌿 Eucalipto · Renovación y equilibrio",
-        image: equilibrioImg,
+        images: [
+          { src: equilibrioNaturalFondo.url, alt: "Agua de Linos Equilibrio Natural AGAIA en ambiente natural" },
+          { src: equilibrioNaturalFrente.url, alt: "Vista frontal del Agua de Linos Equilibrio Natural AGAIA" },
+          { src: equilibrioNaturalReverso.url, alt: "Etiqueta trasera del Agua de Linos Equilibrio Natural AGAIA" },
+          { src: equilibrioNaturalEucalipto.url, alt: "Agua de Linos Equilibrio Natural AGAIA con ramas de eucalipto" },
+          { src: equilibrioNaturalUso.url, alt: "Aplicación del Agua de Linos Equilibrio Natural sobre las sábanas" },
+          { src: equilibrioNaturalTresAromas.url, alt: "Presentaciones de 400 ml, 250 ml y 30 ml del Agua de Linos Equilibrio Natural AGAIA" },
+        ],
         desc:
           "Inspirada en el eucalipto, una planta reconocida por su frescura y carácter renovador. Ideal para quienes buscan incorporar la naturaleza a sus espacios.",
         benefits: [
