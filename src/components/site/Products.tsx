@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { waLink } from "@/lib/site-config";
 import { Reveal } from "@/components/site/Reveal";
+import { Button } from "@/components/ui/button";
 import {
   Carousel,
   CarouselContent,
@@ -14,8 +15,14 @@ import energiaImg from "@/assets/product-energia.jpg";
 import equilibrioImg from "@/assets/product-equilibrio.jpg";
 import naturalezaImg from "@/assets/product-naturaleza.jpg";
 import grounding from "@/assets/grounding-blanket.jpg";
+import rollOnCalmaFondo1 from "@/assets/roll-on-calma-fondo-1.jpeg.asset.json";
+import rollOnCalmaFondo2 from "@/assets/roll-on-calma-fondo-2.png.asset.json";
+import rollOnCalmaFrente from "@/assets/roll-on-calma-frente.png.asset.json";
+import rollOnCalmaIncluye from "@/assets/roll-on-calma-incluye.png.asset.json";
+import rollOnCalmaManos from "@/assets/roll-on-calma-manos.png.asset.json";
 
 type Presentation = { size: string; price: string };
+type ProductImage = { src: string; alt: string };
 type Product = {
   name: string;
   tag?: string;
@@ -25,6 +32,7 @@ type Product = {
   use: string;
   presentations: Presentation[];
   image?: string;
+  images?: ProductImage[];
 };
 
 type Category = {
@@ -33,6 +41,43 @@ type Category = {
   intro?: string;
   products: Product[];
 };
+
+function ProductGallery({ images, name }: { images: ProductImage[]; name: string }) {
+  const [activeImage, setActiveImage] = useState(0);
+  const selectedImage = images[activeImage] ?? images[0];
+
+  if (!selectedImage) return null;
+
+  return (
+    <div className="bg-secondary/40">
+      <div className="aspect-[4/5] overflow-hidden">
+        <img
+          src={selectedImage.src}
+          alt={selectedImage.alt}
+          loading="lazy"
+          className="h-full w-full object-cover transition-opacity duration-300"
+        />
+      </div>
+      <div className="grid grid-cols-5 gap-1.5 border-t border-border/60 bg-card p-2">
+        {images.map((image, index) => (
+          <Button
+            key={image.src}
+            type="button"
+            variant="ghost"
+            onClick={() => setActiveImage(index)}
+            aria-label={`Ver foto ${index + 1} de ${name}`}
+            aria-pressed={activeImage === index}
+            className={`h-auto aspect-square overflow-hidden rounded-md border p-0 ${
+              activeImage === index ? "border-primary" : "border-transparent opacity-65 hover:opacity-100"
+            }`}
+          >
+            <img src={image.src} alt="" className="h-full w-full object-cover" />
+          </Button>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 const CATEGORIES: Category[] = [
   {
@@ -225,7 +270,13 @@ const CATEGORIES: Category[] = [
       {
         name: "Roll-On Calma",
         tag: "🌿 Aceite esencial de menta",
-        image: naturalezaImg,
+        images: [
+          { src: rollOnCalmaFondo2.url, alt: "Roll-on Calma AGAIA con hojas de menta" },
+          { src: rollOnCalmaFrente.url, alt: "Vista frontal del Roll-on Calma AGAIA" },
+          { src: rollOnCalmaManos.url, alt: "Aplicación del Roll-on Calma sobre la muñeca" },
+          { src: rollOnCalmaIncluye.url, alt: "Contenido incluido con el Roll-on Calma AGAIA" },
+          { src: rollOnCalmaFondo1.url, alt: "Roll-on Calma AGAIA sobre fondo azul" },
+        ],
         desc:
           "Creado para acompañarte durante días de estrés, ansiedad, sobrecarga mental o agotamiento. Su formato portátil te permite llevarlo contigo y utilizarlo siempre que necesites un instante de bienestar.",
         benefits: [
@@ -407,7 +458,9 @@ export function Products() {
           const cards = category.products.map((p, i) => (
             <Reveal key={p.name} delay={i * 80} className="h-full">
               <article className="group h-full rounded-3xl bg-card border border-border/60 overflow-hidden shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-glow)] transition-all flex flex-col justify-between">
-                {p.image && (
+                {p.images ? (
+                  <ProductGallery images={p.images} name={p.name} />
+                ) : p.image ? (
                   <div className="aspect-[16/10] overflow-hidden bg-secondary/40">
                     <img
                       src={p.image}
@@ -416,7 +469,7 @@ export function Products() {
                       className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>
-                )}
+                ) : null}
                 <div className="p-6 md:p-8 flex flex-col flex-1">
                   {p.tag && <p className="eyebrow">{p.tag}</p>}
                   <h3 className="mt-3 font-display text-2xl text-primary">{p.name}</h3>
