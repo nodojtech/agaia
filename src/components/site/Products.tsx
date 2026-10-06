@@ -41,6 +41,9 @@ import jabonEnergiaFrente from "@/assets/jabon-energia-frente.png.asset.json";
 import jabonEquilibrioFondo from "@/assets/jabon-equilibrio-fondo.png.asset.json";
 import jabonEquilibrioEucalipto from "@/assets/jabon-equilibrio-eucalipto.png.asset.json";
 import jabonEquilibrioFrente from "@/assets/jabon-equilibrio-frente.png.asset.json";
+import jabonGratitudFondo from "@/assets/jabon-gratitud-fondo.png.asset.json";
+import jabonGratitudVainilla from "@/assets/jabon-gratitud-vainilla.png.asset.json";
+import jabonGratitudFrente from "@/assets/jabon-gratitud-frente.png.asset.json";
 
 type Presentation = { size: string; price: string };
 type ProductImage = { src: string; alt: string };
@@ -196,7 +199,20 @@ const CATEGORIES: Category[] = [
       {
         name: "Jabón Gratitud",
         tag: "🤍 Vainilla Bourbon",
-        image: calmaImg,
+        images: [
+          {
+            src: jabonGratitudFondo.url,
+            alt: "Jabón Gratitud junto a una vela encendida, eucalipto y una pastilla de jabón",
+          },
+          {
+            src: jabonGratitudVainilla.url,
+            alt: "Manos enjabonándose junto al frasco de Jabón Gratitud y vainas de vainilla",
+          },
+          {
+            src: jabonGratitudFrente.url,
+            alt: "Frasco de Jabón Gratitud 400 ml sobre fondo claro",
+          },
+        ],
         desc:
           "Perfecto para antes de dormir. Transforma el momento del baño en una experiencia cálida y reconfortante que envuelve los sentidos.",
         benefits: [
