@@ -11,8 +11,10 @@
 - [x] Integrar las dos fotos oficiales del Kit Bienestar Gratitud en su tarjeta.
 - [x] Integrar la foto oficial del Kit Bienestar Energía Vital en su tarjeta.
 - [x] Integrar la foto oficial del Kit Bienestar Equilibrio Natural en su tarjeta.
-- [ ] Integrar las tres fotos oficiales de Kits Empresariales (Bienestar Corporativo) en /regalos.
-- [ ] Integrar las seis fotos oficiales de Manta Origen en /manta-origen.
-- [ ] Integrar las siete fotos oficiales de los Bonsáis (Refugio de Bienestar) en sus tarjetas.
-- [ ] Integrar las tres fotos oficiales de los Kokedamas (Refugio de Bienestar) en sus tarjetas.
-- [ ] Integrar las tres fotos oficiales de las Sales Relajantes de Canela en su tarjeta.
+- [x] Integrar las tres fotos oficiales de Kits Empresariales en el panel de Bienestar Corporativo.
+- [x] Integrar las cinco fotos oficiales de Manta Origen en sus tarjetas y en /manta-origen.
+- [x] Integrar las siete fotos oficiales de los Bonsáis (Refugio de Bienestar) en sus tarjetas.
+- [x] Integrar las tres fotos oficiales de los Kokedamas (Refugio de Bienestar) en sus tarjetas.
+- [x] Integrar las dos fotos oficiales de las Sales Relajantes de Canela en su tarjeta.
+- [ ] Integrar las fotos oficiales de las Sales Relajantes de Lavanda (sigue con imagen provisional).
+- [ ] Decidir dónde mostrar la infografía «Sin / Con Manta Origen` en /manta-origen.
