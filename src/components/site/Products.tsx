@@ -47,6 +47,8 @@ import jabonGratitudFrente from "@/assets/jabon-gratitud-frente.png.asset.json";
 import kitTresPausasFondo from "@/assets/kit-tres-pausas-fondo.png.asset.json";
 import kitTresPausasRegalo from "@/assets/kit-tres-pausas-regalo.png.asset.json";
 import kitTresPausasFrente from "@/assets/kit-tres-pausas-frente.png.asset.json";
+import kitBienestarGratitudFondo from "@/assets/kit-bienestar-gratitud-fondo.png.asset.json";
+import kitBienestarGratitudFrente from "@/assets/kit-bienestar-gratitud-frente.png.asset.json";
 
 type Presentation = { size: string; price: string };
 type ProductImage = { src: string; alt: string };
@@ -287,7 +289,16 @@ const CATEGORIES: Category[] = [
       {
         name: "Kit Bienestar Gratitud",
         tag: "🤍 Vainilla Bourbon",
-        image: calmaImg,
+        images: [
+          {
+            src: kitBienestarGratitudFondo.url,
+            alt: "Kit Bienestar Gratitud con Agua de Linos y Jabón de Manos y Cuerpo sobre una bandeja negra en un baño cálido con vela, toalla y eucalipto",
+          },
+          {
+            src: kitBienestarGratitudFrente.url,
+            alt: "Kit Bienestar Gratitud: Agua de Linos y Jabón de Manos y Cuerpo Gratitud sobre fondo blanco en su bandeja negra",
+          },
+        ],
         desc: "Kit ritual con Jabón + Agua de Linos Gratitud (400 ml) en caja de madera AGAIA.",
         benefits: [
           "Calmante y relajante.",
