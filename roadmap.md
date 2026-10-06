@@ -15,3 +15,4 @@
 - [ ] Integrar las seis fotos oficiales de Manta Origen en /manta-origen.
 - [ ] Integrar las siete fotos oficiales de los Bonsáis (Refugio de Bienestar) en sus tarjetas.
 - [ ] Integrar las tres fotos oficiales de los Kokedamas (Refugio de Bienestar) en sus tarjetas.
+- [ ] Integrar las tres fotos oficiales de las Sales Relajantes de Canela en su tarjeta.
