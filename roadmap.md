@@ -10,5 +10,6 @@
 - [x] Integrar las tres fotos oficiales del Kit Tres Pausas de Bienestar en su tarjeta.
 - [x] Integrar las dos fotos oficiales del Kit Bienestar Gratitud en su tarjeta.
 - [x] Integrar la foto oficial del Kit Bienestar Energía Vital en su tarjeta.
-- [ ] Integrar la foto oficial del Kit Bienestar Equilibrio Natural en su tarjeta.
+- [x] Integrar la foto oficial del Kit Bienestar Equilibrio Natural en su tarjeta.
 - [ ] Integrar las tres fotos oficiales de Kits Empresariales (Bienestar Corporativo) en /regalos.
+- [ ] Integrar las seis fotos oficiales de Manta Origen en /manta-origen.
