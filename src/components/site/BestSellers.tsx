@@ -1,18 +1,26 @@
-import calma from "@/assets/product-calma.jpg";
-import energia from "@/assets/product-energia.jpg";
-import equilibrio from "@/assets/product-equilibrio.jpg";
-import naturaleza from "@/assets/product-naturaleza.jpg";
+import { Link } from "@tanstack/react-router";
+import { CATEGORIES } from "@/components/site/Products";
+import { Button } from "@/components/ui/button";
 import { ShoppingBag, MessageCircle } from "lucide-react";
 import { waLink } from "@/lib/site-config";
 
-const items = [
-  { img: calma, name: "Vela ritual Calma", desc: "Cera vegetal con lavanda y vetiver.", price: "$78.000", tag: "Más vendido" },
-  { img: energia, name: "Bruma Energía Cítrica", desc: "Mandarina, jengibre y romero.", price: "$62.000", tag: "Favorito" },
-  { img: equilibrio, name: "Sal mineral Equilibrio", desc: "Sal marina con eucalipto y cedro.", price: "$54.000", tag: "Nuevo" },
-  { img: naturaleza, name: "Sahumerio Bosque", desc: "Palo santo, musgo y resinas.", price: "$48.000", tag: "Ritual recomendado" },
-  { img: calma, name: "Aceite corporal Calma", desc: "Hidrata y suaviza con manzanilla.", price: "$96.000", tag: "Más vendido" },
-  { img: equilibrio, name: "Roll-on Equilibrio", desc: "Aroma portátil para el día a día.", price: "$38.000", tag: "Favorito" },
+const selection = [
+  { name: "Roll-On Calma", desc: "Aceite esencial de menta para una pausa de bienestar, estés donde estés.", tag: "Más vendido" },
+  { name: "Agua de Linos Gratitud", desc: "Vainilla Bourbon para acompañar tus momentos de calma y descanso.", tag: "Favorito" },
+  { name: "Agua de Linos Energía Vital", desc: "La frescura de la naranja para renovar los espacios de tu hogar.", tag: "Frescura y vitalidad" },
+  { name: "Jabón Energía Vital", desc: "Aloe Vera, Vitamina E y aroma a naranja para tu ritual diario.", tag: "Ritual diario" },
+  { name: "Kit Tres Pausas de Bienestar", desc: "Gratitud, Energía Vital y Equilibrio Natural en una caja de regalo.", tag: "Para regalar" },
+  { name: "Sales Relajantes de Canela", desc: "Un aroma cálido y especiado para baños de pies y pausas de autocuidado.", tag: "Pausa de bienestar" },
 ];
+
+const catalog = CATEGORIES.flatMap((category) => category.products);
+const items = selection.flatMap((featured) => {
+  const product = catalog.find((entry) => entry.name === featured.name);
+  const image = product?.images?.[0];
+  const presentation = product?.presentations[0];
+  if (!product || !image || !presentation) return [];
+  return [{ ...featured, name: product.name, img: image.src, alt: image.alt, ...presentation }];
+});
 
 export function BestSellers() {
   return (
@@ -37,7 +45,7 @@ export function BestSellers() {
               <article key={p.name}
                 className="snap-start shrink-0 w-[78%] sm:w-[55%] md:w-auto group rounded-3xl bg-card border border-border/60 overflow-hidden shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-glow)] hover:-translate-y-1 transition-all flex flex-col h-full">
                 <div className="relative aspect-[4/5] overflow-hidden bg-secondary/40">
-                  <img src={p.img} alt={p.name} loading="lazy"
+                  <img src={p.img} alt={p.alt} loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
                   <span className="absolute top-3 left-3 px-3 py-1 rounded-full bg-background/90 backdrop-blur text-[0.62rem] uppercase tracking-[0.2em] text-primary">
                     {p.tag}
@@ -46,18 +54,22 @@ export function BestSellers() {
                 <div className="p-5 flex flex-col flex-1">
                   <h3 className="font-display text-xl text-primary leading-tight">{p.name}</h3>
                   <p className="mt-1.5 text-xs text-foreground/65 leading-relaxed">{p.desc}</p>
-                  <div className="mt-4 flex items-center justify-between">
+                  <div className="mt-4 flex items-center justify-between gap-3">
+                    <span className="text-xs text-foreground/65">{p.size}</span>
                     <span className="font-display text-lg text-primary">{p.price}</span>
                   </div>
                   <div className="mt-auto pt-4 flex items-center gap-2">
-                    <button className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-full bg-primary text-primary-foreground text-[0.7rem] uppercase tracking-[0.18em] hover:bg-primary/90 transition-colors">
-                      <ShoppingBag size={13} /> Ver producto
-                    </button>
-                    <a href={waLink(`Hola, quiero consultar por ${p.name}.`)} target="_blank" rel="noopener noreferrer"
-                      aria-label="Consultar por WhatsApp"
-                      className="inline-flex items-center justify-center h-9 w-9 rounded-full border border-primary/30 text-primary hover:bg-primary/5 transition-colors">
+                    <Button asChild className="flex-1 h-auto px-3 py-2.5 rounded-full text-[0.7rem] uppercase tracking-[0.18em]">
+                      <Link to="/productos" hash={p.name} hashScrollIntoView={{ behavior: "smooth", block: "start" }} aria-label={`Ver producto: ${p.name}`}>
+                        <ShoppingBag size={13} /> Ver producto
+                      </Link>
+                    </Button>
+                    <Button asChild variant="outline" size="icon" className="shrink-0 rounded-full border-primary/30 text-primary" >
+                      <a href={waLink(`Hola, quiero consultar por ${p.name}.`)} target="_blank" rel="noopener noreferrer"
+                        aria-label={`Consultar por WhatsApp: ${p.name}`}>
                       <MessageCircle size={14} />
-                    </a>
+                      </a>
+                    </Button>
                   </div>
                 </div>
               </article>

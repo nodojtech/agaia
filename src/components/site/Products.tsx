@@ -128,7 +128,7 @@ function ProductGallery({ images, name }: { images: ProductImage[]; name: string
   );
 }
 
-const CATEGORIES: Category[] = [
+export const CATEGORIES: Category[] = [
   {
     id: "aguas-de-linos",
     label: "Aguas de Linos",
@@ -663,7 +663,7 @@ export function Products() {
         {(() => {
           const cards = category.products.map((p, i) => (
             <Reveal key={p.name} delay={i * 80} className="h-full">
-              <article className="group h-full rounded-3xl bg-card border border-border/60 overflow-hidden shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-glow)] transition-all flex flex-col justify-between">
+              <article id={p.name} className="group h-full scroll-mt-36 rounded-3xl bg-card border border-border/60 overflow-hidden shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-glow)] transition-all flex flex-col justify-between">
                 {p.images ? (
                   <ProductGallery images={p.images} name={p.name} />
                 ) : p.image ? (

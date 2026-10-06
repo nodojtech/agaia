@@ -1,19 +1,19 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/Reveal";
-import ingredients from "@/assets/ingredients.jpg";
-import ritual from "@/assets/ritual.jpg";
-import waterTexture from "@/assets/water-texture.jpg";
-import productCalma from "@/assets/product-calma.jpg";
-import productEnergia from "@/assets/product-energia.jpg";
-import productNaturaleza from "@/assets/product-naturaleza.jpg";
+import rollOn from "@/assets/roll-on-calma-manos.png.asset.json";
+import aguaLinos from "@/assets/agua-linos-energia-naranja.png.asset.json";
+import kit from "@/assets/kit-tres-pausas-regalo.png.asset.json";
+import bonsai from "@/assets/bonsai-filodendro.png.asset.json";
+import kokedama from "@/assets/kokedama-calathea.png.asset.json";
+import manta from "@/assets/manta-origen-exterior.png.asset.json";
 
 const galeria = [
-  { src: ingredients, alt: "Ingredientes botánicos AGAIA" },
-  { src: ritual, alt: "Ritual de bienestar AGAIA" },
-  { src: waterTexture, alt: "Textura de agua de linos AGAIA" },
-  { src: productCalma, alt: "Producto AGAIA Calma" },
-  { src: productEnergia, alt: "Producto AGAIA Energía" },
-  { src: productNaturaleza, alt: "Producto AGAIA Naturaleza" },
+  { src: rollOn.url, alt: "Aplicación del Roll-On Calma AGAIA en la muñeca" },
+  { src: aguaLinos.url, alt: "Agua de Linos Energía Vital AGAIA con naranjas" },
+  { src: kit.url, alt: "Kit Tres Pausas de Bienestar AGAIA entregado como regalo" },
+  { src: bonsai.url, alt: "Bonsái de filodendro AGAIA con raíces expuestas sobre una base de madera" },
+  { src: kokedama.url, alt: "Kokedama de calathea AGAIA con hojas variegadas" },
+  { src: manta.url, alt: "Kit Manta Origen AGAIA sobre madera y raíces de árbol con flores blancas" },
 ];
 
 export const Route = createFileRoute("/nosotros")({
