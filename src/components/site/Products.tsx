@@ -20,6 +20,11 @@ import rollOnCalmaFondo2 from "@/assets/roll-on-calma-fondo-2.png.asset.json";
 import rollOnCalmaFrente from "@/assets/roll-on-calma-frente.png.asset.json";
 import rollOnCalmaIncluye from "@/assets/roll-on-calma-incluye.png.asset.json";
 import rollOnCalmaManos from "@/assets/roll-on-calma-manos.png.asset.json";
+import energiaVitalTresAromas from "@/assets/agua-linos-energia-3-aromas.png.asset.json";
+import energiaVitalFondo from "@/assets/agua-linos-energia-fondo.png.asset.json";
+import energiaVitalFrente from "@/assets/agua-linos-energia-frente.png.asset.json";
+import energiaVitalNaranja from "@/assets/agua-linos-energia-naranja.png.asset.json";
+import energiaVitalUso from "@/assets/agua-linos-energia-uso.png.asset.json";
 
 type Presentation = { size: string; price: string };
 type ProductImage = { src: string; alt: string };
@@ -109,7 +114,13 @@ const CATEGORIES: Category[] = [
       {
         name: "Agua de Linos Energía Vital",
         tag: "🍊 Naranja · Frescura y vitalidad",
-        image: energiaImg,
+        images: [
+          { src: energiaVitalFondo.url, alt: "Agua de Linos Energía Vital AGAIA en ambiente natural" },
+          { src: energiaVitalFrente.url, alt: "Vista frontal del Agua de Linos Energía Vital AGAIA" },
+          { src: energiaVitalNaranja.url, alt: "Agua de Linos Energía Vital AGAIA con naranjas" },
+          { src: energiaVitalUso.url, alt: "Aplicación del Agua de Linos Energía Vital en el hogar" },
+          { src: energiaVitalTresAromas.url, alt: "Presentaciones del Agua de Linos Energía Vital AGAIA" },
+        ],
         desc:
           "Inspirada en la frescura y vitalidad de la naranja. Su aroma cítrico aporta una sensación de frescura, optimismo y bienestar, ideal para mañanas y momentos donde buscas renovar el ambiente.",
         benefits: [
