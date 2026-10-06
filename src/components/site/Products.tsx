@@ -10,10 +10,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import calmaImg from "@/assets/product-calma.jpg";
 import equilibrioImg from "@/assets/product-equilibrio.jpg";
-import naturalezaImg from "@/assets/product-naturaleza.jpg";
-import grounding from "@/assets/grounding-blanket.jpg";
 import rollOnCalmaFondo1 from "@/assets/roll-on-calma-fondo-1.jpeg.asset.json";
 import rollOnCalmaFondo2 from "@/assets/roll-on-calma-fondo-2.png.asset.json";
 import rollOnCalmaFrente from "@/assets/roll-on-calma-frente.png.asset.json";
