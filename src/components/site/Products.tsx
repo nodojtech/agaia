@@ -105,7 +105,13 @@ const CATEGORIES: Category[] = [
       {
         name: "Agua de Linos Gratitud",
         tag: "🤍 Vainilla Bourbon · Calma y descanso",
-        image: calmaImg,
+        images: [
+          { src: gratitudFondo.url, alt: "Agua de Linos Gratitud AGAIA en ambiente cálido" },
+          { src: gratitudFrente.url, alt: "Vista frontal del Agua de Linos Gratitud AGAIA" },
+          { src: gratitudVainilla.url, alt: "Agua de Linos Gratitud AGAIA con vainas de vainilla" },
+          { src: gratitudUso.url, alt: "Aplicación del Agua de Linos Gratitud en la habitación" },
+          { src: gratitudTresAromas.url, alt: "Presentaciones del Agua de Linos Gratitud AGAIA" },
+        ],
         desc:
           "Una invitación a bajar el ritmo y disfrutar los pequeños momentos. Su aroma cálido y envolvente de Vainilla Bourbon crea ambientes acogedores, ideales para acompañar momentos de descanso, lectura o desconexión al final del día.",
         benefits: [
