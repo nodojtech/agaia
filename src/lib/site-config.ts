@@ -12,6 +12,6 @@ export const waLink = (msg: string = WHATSAPP_DEFAULT_MSG) =>
 export const ANNOUNCEMENTS: string[] = [
   "Envío gratis desde $180.000",
   "Asesoría personalizada por WhatsApp",
-  "Nuevos rituales botánicos disponibles",
+  "Bienestar botánico para tus rituales diarios",
   "Regalos personalizados con intención",
 ];
