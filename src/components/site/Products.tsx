@@ -31,6 +31,11 @@ import equilibrioNaturalReverso from "@/assets/equilibrio-natural-reverso.png.as
 import equilibrioNaturalEucalipto from "@/assets/equilibrio-natural-eucalipto.png.asset.json";
 import equilibrioNaturalUso from "@/assets/equilibrio-natural-uso.png.asset.json";
 import equilibrioNaturalTresAromas from "@/assets/equilibrio-natural-tres-aromas.png.asset.json";
+import gratitudFondo from "@/assets/agua-linos-gratitud-fondo.png.asset.json";
+import gratitudFrente from "@/assets/agua-linos-gratitud-frente.png.asset.json";
+import gratitudVainilla from "@/assets/agua-linos-gratitud-vainilla.png.asset.json";
+import gratitudUso from "@/assets/agua-linos-gratitud-uso.png.asset.json";
+import gratitudTresAromas from "@/assets/agua-linos-gratitud-tres-aromas.png.asset.json";
 
 type Presentation = { size: string; price: string };
 type ProductImage = { src: string; alt: string };
@@ -100,7 +105,13 @@ const CATEGORIES: Category[] = [
       {
         name: "Agua de Linos Gratitud",
         tag: "🤍 Vainilla Bourbon · Calma y descanso",
-        image: calmaImg,
+        images: [
+          { src: gratitudFondo.url, alt: "Agua de Linos Gratitud AGAIA en ambiente cálido" },
+          { src: gratitudFrente.url, alt: "Vista frontal del Agua de Linos Gratitud AGAIA" },
+          { src: gratitudVainilla.url, alt: "Agua de Linos Gratitud AGAIA con vainas de vainilla" },
+          { src: gratitudUso.url, alt: "Aplicación del Agua de Linos Gratitud en la habitación" },
+          { src: gratitudTresAromas.url, alt: "Presentaciones del Agua de Linos Gratitud AGAIA" },
+        ],
         desc:
           "Una invitación a bajar el ritmo y disfrutar los pequeños momentos. Su aroma cálido y envolvente de Vainilla Bourbon crea ambientes acogedores, ideales para acompañar momentos de descanso, lectura o desconexión al final del día.",
         benefits: [
