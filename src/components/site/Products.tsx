@@ -97,7 +97,7 @@ function ProductGallery({ images, name }: { images: ProductImage[]; name: string
 
   return (
     <div className="bg-secondary/40">
-      <div className="aspect-[4/5] overflow-hidden">
+      <div className="aspect-square sm:aspect-[4/5] overflow-hidden">
         <img
           src={selectedImage.src}
           alt={selectedImage.alt}
@@ -662,8 +662,8 @@ export function Products() {
 
         {(() => {
           const cards = category.products.map((p, i) => (
-            <Reveal key={p.name} delay={i * 80} className="h-full">
-              <article id={p.name} className="group h-full scroll-mt-36 rounded-3xl bg-card border border-border/60 overflow-hidden shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-glow)] transition-all flex flex-col justify-between">
+            <Reveal key={p.name} delay={i * 80} className="h-full min-w-0">
+              <article id={p.name} className="group h-full w-full min-w-0 max-w-full scroll-mt-36 rounded-3xl bg-card border border-border/60 overflow-hidden shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-glow)] transition-all flex flex-col justify-between">
                 {p.images ? (
                   <ProductGallery images={p.images} name={p.name} />
                 ) : p.image ? (
@@ -676,9 +676,9 @@ export function Products() {
                     />
                   </div>
                 ) : null}
-                <div className="p-6 md:p-8 flex flex-col flex-1">
+                <div className="p-4 sm:p-6 md:p-8 flex flex-col flex-1 min-w-0">
                   {p.tag && <p className="eyebrow">{p.tag}</p>}
-                  <h3 className="mt-3 font-display text-2xl text-primary">{p.name}</h3>
+                  <h3 className="mt-2 font-display text-xl sm:text-2xl text-primary break-words">{p.name}</h3>
                   <p className="mt-3 text-sm text-foreground/75 leading-relaxed">{p.desc}</p>
 
                   <details className="mt-5 group/details">
@@ -722,14 +722,14 @@ export function Products() {
                       href={waLink(`Hola, me interesa: ${p.name}.`)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center px-4 py-2.5 rounded-full bg-primary text-primary-foreground text-xs uppercase tracking-[0.22em] hover:bg-primary/90 transition-colors"
+                      className="inline-flex items-center text-center px-4 py-2.5 rounded-full bg-primary text-primary-foreground text-xs uppercase tracking-[0.22em] hover:bg-primary/90 transition-colors"
                     >
                       Consultar por WhatsApp
                     </a>
                     {category.id === "manta-origen" && (
                       <Link
                         to="/manta-origen"
-                        className="inline-flex items-center px-4 py-2.5 rounded-full border border-primary/30 text-primary text-xs uppercase tracking-[0.22em] hover:bg-primary/5 transition-colors"
+                        className="inline-flex items-center text-center px-4 py-2.5 rounded-full border border-primary/30 text-primary text-xs uppercase tracking-[0.22em] hover:bg-primary/5 transition-colors"
                       >
                         Conoce Manta Origen
                       </Link>
@@ -739,7 +739,7 @@ export function Products() {
                         href={waLink("Hola, quiero conocer las plantas disponibles.")}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center px-4 py-2.5 rounded-full border border-primary/30 text-primary text-xs uppercase tracking-[0.22em] hover:bg-primary/5 transition-colors"
+                        className="inline-flex items-center text-center px-4 py-2.5 rounded-full border border-primary/30 text-primary text-xs uppercase tracking-[0.22em] hover:bg-primary/5 transition-colors"
                       >
                         Quiero conocer plantas disponibles
                       </a>
@@ -755,7 +755,7 @@ export function Products() {
               <Carousel opts={{ align: "start", loop: true }} className="w-full">
                 <CarouselContent className="-ml-4">
                   {cards.map((card, i) => (
-                    <CarouselItem key={i} className="pl-4 md:basis-1/2 lg:basis-1/2 h-full">
+                    <CarouselItem key={i} className="pl-4 min-w-0 md:basis-1/2 lg:basis-1/2 h-full">
                       {card}
                     </CarouselItem>
                   ))}
@@ -767,7 +767,7 @@ export function Products() {
               </Carousel>
             );
           }
-          return <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">{cards}</div>;
+          return <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8 items-stretch">{cards}</div>;
         })()}
 
         {/* Kits Empresariales — texto tal cual del brief */}
