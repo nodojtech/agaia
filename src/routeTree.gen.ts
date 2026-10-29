@@ -9,37 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TuRitualRouteImport } from './routes/tu-ritual'
-import { Route as RegalosRouteImport } from './routes/regalos'
-import { Route as ProductosRouteImport } from './routes/productos'
-import { Route as NosotrosRouteImport } from './routes/nosotros'
-import { Route as MantaOrigenRouteImport } from './routes/manta-origen'
-import { Route as DistribuidorRouteImport } from './routes/distribuidor'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DistribuidorRouteImport } from './routes/distribuidor'
+import { Route as MantaOrigenRouteImport } from './routes/manta-origen'
+import { Route as NosotrosRouteImport } from './routes/nosotros'
+import { Route as ProductosRouteImport } from './routes/productos'
+import { Route as RegalosRouteImport } from './routes/regalos'
+import { Route as TuRitualRouteImport } from './routes/tu-ritual'
 
-const TuRitualRoute = TuRitualRouteImport.update({
-  id: '/tu-ritual',
-  path: '/tu-ritual',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RegalosRoute = RegalosRouteImport.update({
-  id: '/regalos',
-  path: '/regalos',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProductosRoute = ProductosRouteImport.update({
-  id: '/productos',
-  path: '/productos',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NosotrosRoute = NosotrosRouteImport.update({
-  id: '/nosotros',
-  path: '/nosotros',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MantaOrigenRoute = MantaOrigenRouteImport.update({
-  id: '/manta-origen',
-  path: '/manta-origen',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DistribuidorRoute = DistribuidorRouteImport.update({
@@ -47,9 +27,29 @@ const DistribuidorRoute = DistribuidorRouteImport.update({
   path: '/distribuidor',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const MantaOrigenRoute = MantaOrigenRouteImport.update({
+  id: '/manta-origen',
+  path: '/manta-origen',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NosotrosRoute = NosotrosRouteImport.update({
+  id: '/nosotros',
+  path: '/nosotros',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductosRoute = ProductosRouteImport.update({
+  id: '/productos',
+  path: '/productos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegalosRoute = RegalosRouteImport.update({
+  id: '/regalos',
+  path: '/regalos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TuRitualRoute = TuRitualRouteImport.update({
+  id: '/tu-ritual',
+  path: '/tu-ritual',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -123,39 +123,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/tu-ritual': {
-      id: '/tu-ritual'
-      path: '/tu-ritual'
-      fullPath: '/tu-ritual'
-      preLoaderRoute: typeof TuRitualRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/regalos': {
-      id: '/regalos'
-      path: '/regalos'
-      fullPath: '/regalos'
-      preLoaderRoute: typeof RegalosRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/productos': {
-      id: '/productos'
-      path: '/productos'
-      fullPath: '/productos'
-      preLoaderRoute: typeof ProductosRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/nosotros': {
-      id: '/nosotros'
-      path: '/nosotros'
-      fullPath: '/nosotros'
-      preLoaderRoute: typeof NosotrosRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/manta-origen': {
-      id: '/manta-origen'
-      path: '/manta-origen'
-      fullPath: '/manta-origen'
-      preLoaderRoute: typeof MantaOrigenRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/distribuidor': {
@@ -165,11 +137,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DistribuidorRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/manta-origen': {
+      id: '/manta-origen'
+      path: '/manta-origen'
+      fullPath: '/manta-origen'
+      preLoaderRoute: typeof MantaOrigenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nosotros': {
+      id: '/nosotros'
+      path: '/nosotros'
+      fullPath: '/nosotros'
+      preLoaderRoute: typeof NosotrosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/productos': {
+      id: '/productos'
+      path: '/productos'
+      fullPath: '/productos'
+      preLoaderRoute: typeof ProductosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/regalos': {
+      id: '/regalos'
+      path: '/regalos'
+      fullPath: '/regalos'
+      preLoaderRoute: typeof RegalosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tu-ritual': {
+      id: '/tu-ritual'
+      path: '/tu-ritual'
+      fullPath: '/tu-ritual'
+      preLoaderRoute: typeof TuRitualRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
