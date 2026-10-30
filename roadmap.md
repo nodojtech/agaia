@@ -31,4 +31,7 @@
 - [x] Integrar las tres fotos oficiales de los Kokedamas (Refugio de Bienestar) en sus tarjetas.
 - [x] Integrar las dos fotos oficiales de las Sales Relajantes de Canela en su tarjeta.
 - [ ] Integrar las fotos oficiales de las Sales Relajantes de Lavanda (sigue con imagen provisional).
+- [x] Integrar las tres fotos nuevas de Kits Empresariales en su panel.
+- [x] Cambiar el banner de Tu Ritual por una imagen botánica sin productos.
+- [x] Cambiar la imagen del banner de Nosotros.
 - [x] Mostrar la infografía «Sin / Con Manta Origen» en /manta-origen.

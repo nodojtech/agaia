@@ -5,7 +5,7 @@ import plantEucalipto from "@/assets/plant-eucalipto.jpg";
 import plantMenta from "@/assets/plant-menta.jpg";
 import plantLavanda from "@/assets/plant-lavanda.jpg";
 import { PageBanner } from "@/components/site/PageBanner";
-import bannerPhoto from "@/assets/bonsai-filodendro.png.asset.json";
+import bannerPhoto from "@/assets/plant-eucalipto.jpg";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/Reveal";
 import rollOn from "@/assets/roll-on-calma-manos.png.asset.json";
@@ -54,7 +54,7 @@ function NosotrosPage() {
     <div className="">
       {/* Historia */}
       <PageBanner eyebrow="Nuestra historia" title={<>Un laboratorio botánico<br />
-            <em className="font-light italic">nacido del bienestar.</em></>} image={bannerPhoto.url} imageAlt="Fotografía oficial de productos AGAIA"><p>AGAIA nació a finales del año 2024 como una búsqueda personal de bienestar y hoy se ha
+            <em className="font-light italic">nacido del bienestar.</em></>} image={bannerPhoto} imageAlt="Rama de eucalipto fresco, parte del universo botánico AGAIA"><p>AGAIA nació a finales del año 2024 como una búsqueda personal de bienestar y hoy se ha
             convertido en un laboratorio botánico que acompaña los rituales de cientos de personas.</p></PageBanner>
 
       {/* Laboratorio Botánico */}

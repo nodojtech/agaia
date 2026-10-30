@@ -51,9 +51,9 @@ import kitBienestarGratitudFondo from "@/assets/kit-bienestar-gratitud-fondo.png
 import kitBienestarGratitudFrente from "@/assets/kit-bienestar-gratitud-frente.png.asset.json";
 import kitBienestarEnergiaVitalFondo from "@/assets/kit-bienestar-energia-vital-fondo.png.asset.json";
 import kitBienestarEquilibrioNaturalFondo from "@/assets/kit-bienestar-equilibrio-natural-fondo.png.asset.json";
-import kitsEmpresarialesCajaAbierta from "@/assets/kits-empresariales-caja-abierta.png.asset.json";
-import kitsEmpresarialesRegalo from "@/assets/kits-empresariales-regalo.png.asset.json";
-import kitsEmpresarialesProduccion from "@/assets/kits-empresariales-produccion.png.asset.json";
+import kitsEmpresarialesCajaAbierta from "@/assets/kits-empresariales-caja-abierta-2.png.asset.json";
+import kitsEmpresarialesRegalo from "@/assets/kits-empresariales-regalo-2.png.asset.json";
+import kitsEmpresarialesProduccion from "@/assets/kits-empresariales-produccion-2.png.asset.json";
 import mantaOrigenKit from "@/assets/manta-origen-kit.png.asset.json";
 import mantaOrigenUso from "@/assets/manta-origen-uso.png.asset.json";
 import mantaOrigenFlatlay from "@/assets/manta-origen-flatlay.png.asset.json";
@@ -819,7 +819,7 @@ export function Products() {
                      },
                      {
                        src: kitsEmpresarialesCajaAbierta.url,
-                       alt: "Caja de regalo abierta con sales relajantes de canela, las tres brumas de ambiente en miniatura, un saquito de tela y una tarjeta de agradecimiento",
+                       alt: "Caja de regalo abierta con las sales relajantes de canela, un saquito de tela, una caja kraft, una tarjeta de agradecimiento y flores secas",
                      },
                      {
                        src: kitsEmpresarialesProduccion.url,
