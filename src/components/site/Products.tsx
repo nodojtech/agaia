@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useLocation } from "@tanstack/react-router";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { waLink } from "@/lib/site-config";
 import { Reveal } from "@/components/site/Reveal";
@@ -621,6 +622,7 @@ export function findProductName(query: string): string | undefined {
 }
 
 export function Products() {
+  const locationHash = useLocation({ select: location => location.hash });
   const [active, setActive] = useState<string>("todos");
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [carouselApi, setCarouselApi] = useState<CarouselApi>();
@@ -633,18 +635,16 @@ export function Products() {
   useEffect(() => {
     function readHash() {
       let query: string;
-      try { query = decodeURIComponent(window.location.hash.slice(1)); } catch { return; }
+      try { query = decodeURIComponent(locationHash.replace(/^#/, "")); } catch { return; }
       const name = findProductName(query);
-      if (!name) return;
+      if (!name) { setPendingProduct(null); return; }
       const targetCategory = CATEGORIES.find(item => item.products.some(product => product.name === name));
       if (!targetCategory) return;
       setActive(targetCategory.id);
       setPendingProduct(name);
     }
     readHash();
-    window.addEventListener("hashchange", readHash);
-    return () => window.removeEventListener("hashchange", readHash);
-  }, []);
+  }, [locationHash]);
   useEffect(() => {
     if (!pendingProduct) return;
     const targetCategory = CATEGORIES.find(item => item.id === active);
