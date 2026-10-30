@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Autoplay from "embla-carousel-autoplay";
 import { Pause, Play } from "lucide-react";
-import { useLocation } from "@tanstack/react-router";
+import { useLocation, useRouter } from "@tanstack/react-router";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { waLink } from "@/lib/site-config";
 import { Reveal } from "@/components/site/Reveal";
@@ -101,7 +101,7 @@ function ProductGallery({ images, name, detail = false }: { images: ProductImage
 
   return (
     <div className={`flex min-w-0 flex-col bg-secondary/40 ${detail ? "" : "h-full"}`}>
-      <div className={detail ? "h-64 sm:h-80 overflow-hidden" : "min-h-0 flex-1 overflow-hidden"}>
+      <div className={detail ? "h-72 sm:h-96 overflow-hidden" : "min-h-0 flex-1 overflow-hidden"}>
         <img
           src={selectedImage.src}
           alt={selectedImage.alt}
@@ -625,6 +625,8 @@ export function findProductName(query: string): string | undefined {
 
 export function Products() {
   const locationHash = useLocation({ select: location => location.hash });
+  const originPath = useLocation({ select: location => (location.state as { from?: string } | undefined)?.from });
+  const router = useRouter();
   const [active, setActive] = useState<string>("todos");
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [carouselApi, setCarouselApi] = useState<CarouselApi>();
@@ -751,8 +753,8 @@ export function Products() {
               <article id={p.name} role="button" tabIndex={0} aria-label={`Ver ${p.name}`} aria-haspopup="dialog"
                 onClick={(event) => openProduct(p, event.currentTarget)}
                 onKeyDown={(event) => { if (event.target === event.currentTarget && (event.key === "Enter" || event.key === " ")) { event.preventDefault(); openProduct(p, event.currentTarget); } }}
-                className="group flex h-[410px] sm:h-[430px] w-full min-w-0 max-w-full cursor-pointer scroll-mt-36 flex-col overflow-hidden rounded-lg border border-border/60 bg-card shadow-[var(--shadow-soft)] transition-shadow hover:shadow-[var(--shadow-glow)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-                <div className="h-[226px] sm:h-[246px] shrink-0 overflow-hidden bg-secondary/40">
+                className="group flex h-[452px] sm:h-[472px] w-full min-w-0 max-w-full cursor-pointer scroll-mt-36 flex-col overflow-hidden rounded-lg border border-border/60 bg-card shadow-[var(--shadow-soft)] transition-shadow hover:shadow-[var(--shadow-glow)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                <div className="h-[268px] sm:h-[288px] shrink-0 overflow-hidden bg-secondary/40">
                   {p.images?.length ? <ProductGallery images={p.images} name={p.name} /> : p.image ? <img src={p.image} alt={p.name} loading="lazy" className="h-full w-full object-contain" /> : null}
                 </div>
                 <div className="flex min-h-0 min-w-0 flex-1 flex-col p-4">
@@ -846,7 +848,7 @@ export function Products() {
           </Reveal>
         )}
       </div>
-      <Dialog open={selectedProduct !== null} onOpenChange={(open) => { if (!open) setSelectedProduct(null); }}>
+      <Dialog open={selectedProduct !== null} onOpenChange={(open) => { if (!open) { setSelectedProduct(null); if (originPath) router.history.back(); } }}>
         {selectedProduct && <DialogContent className="max-h-[90dvh] w-[calc(100%-2rem)] min-w-0 max-w-2xl overflow-y-auto rounded-lg p-5 sm:p-7" onCloseAutoFocus={(event) => { event.preventDefault(); lastCard.current?.focus({ preventScroll: true }); }}>
           <DialogTitle className="pr-6 font-display text-2xl text-primary">{selectedProduct.name}</DialogTitle>
           {selectedProduct.tag && <p className="text-sm text-muted-foreground">{selectedProduct.tag}</p>}
