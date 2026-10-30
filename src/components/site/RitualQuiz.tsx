@@ -168,7 +168,7 @@ export function RitualQuiz() {
                     key={p}
                     className="text-sm text-primary/85"
                   >
-                    <Link to="/productos" hash={p} className="inline-flex px-3 py-2 underline decoration-primary/30 underline-offset-4 hover:decoration-primary">🌿 {p}</Link>
+                    <Link to="/productos" hash={p} state={{ from: "/tu-ritual#test" }} className="inline-flex px-3 py-2 underline decoration-primary/30 underline-offset-4 hover:decoration-primary">🌿 {p}</Link>
                   </li>
                 ))}
               </ul>

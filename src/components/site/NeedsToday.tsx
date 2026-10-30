@@ -132,7 +132,7 @@ export function NeedsToday() {
               <ul className="mt-7 space-y-4">
                 {active.products.map((p) => (
                   <li key={p.name} className="pl-4 border-l-2 border-primary/30">
-                    <Link to="/productos" hash={p.name} className="font-display text-lg text-primary underline decoration-primary/30 underline-offset-4 hover:decoration-primary">🌿 {p.name}</Link>
+                    <Link to="/productos" hash={p.name} state={{ from: "/tu-ritual#necesitas" }} className="font-display text-lg text-primary underline decoration-primary/30 underline-offset-4 hover:decoration-primary">🌿 {p.name}</Link>
                     <p className="mt-1 text-xs text-foreground/65 leading-relaxed">{p.note}</p>
                   </li>
                 ))}
