@@ -107,7 +107,7 @@ export function NeedsToday() {
                     onClick={() => setActive(n)}
                     className={`h-auto whitespace-normal justify-start text-left p-4 md:p-5 rounded-2xl border transition-all flex items-center gap-4 ${
                       isActive
-                        ? "bg-primary text-primary-foreground border-primary shadow-[var(--shadow-glow)]"
+                        ? "bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground border-primary shadow-[var(--shadow-glow)]"
                         : "bg-card border-border/60 hover:border-primary/40 hover:-translate-y-0.5"
                     }`}
                   >
