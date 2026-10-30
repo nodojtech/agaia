@@ -1,5 +1,5 @@
 import { PageBanner } from "@/components/site/PageBanner";
-import bannerPhoto from "@/assets/sales-canela-fondo.png.asset.json";
+import bannerPhoto from "@/assets/plant-lavanda.jpg";
 import { createFileRoute } from "@tanstack/react-router";
 import { NeedsToday } from "@/components/site/NeedsToday";
 import { RitualQuiz } from "@/components/site/RitualQuiz";
@@ -22,7 +22,7 @@ export const Route = createFileRoute("/tu-ritual")({
 function TuRitualPage() {
   return (
     <div className="">
-      <PageBanner eyebrow="Tu Ritual" title={<>Un ritual para cada momento</>} image={bannerPhoto.url} imageAlt="Fotografía oficial de productos AGAIA"><p>Elige tu intención de hoy o haz el test sensorial para descubrir el ritual botánico
+      <PageBanner eyebrow="Tu Ritual" title={<>Un ritual para cada momento</>} image={bannerPhoto} imageAlt="Campo de lavanda en flor, inspiración del universo botánico AGAIA"><p>Elige tu intención de hoy o haz el test sensorial para descubrir el ritual botánico
           que mejor te acompaña.</p></PageBanner>
       <NeedsToday />
       <RitualQuiz />
