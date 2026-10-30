@@ -1,3 +1,8 @@
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import mantaOrigenFlatlay from "@/assets/manta-origen-flatlay.png.asset.json";
+import mantaOrigenComparativa from "@/assets/manta-origen-comparativa.png.asset.json";
 import mantaOrigenKit from "@/assets/manta-origen-kit.png.asset.json";
 import mantaOrigenUso from "@/assets/manta-origen-uso.png.asset.json";
 import mantaOrigenPiedra from "@/assets/manta-origen-piedra.png.asset.json";
@@ -49,6 +54,8 @@ const research = [
 ];
 
 export function GroundingBlanket() {
+  const [photo, setPhoto] = useState<{src: string; alt: string} | null>(null);
+  const [activeStep, setActiveStep] = useState(0);
   return (
     <div className="pt-32 md:pt-40">
       {/* 1 · HERO */}
@@ -107,7 +114,7 @@ export function GroundingBlanket() {
           </div>
         </Reveal>
         <Reveal delay={120} className="lg:col-span-6 order-1 lg:order-2">
-          <div className="rounded-[2rem] overflow-hidden shadow-[var(--shadow-glow)] aspect-[4/5]">
+          <div className="rounded-[2rem] overflow-hidden shadow-[var(--shadow-glow)] aspect-[4/3]">
             <img
               src={mantaOrigenKit.url}
               alt="Kit Manta Origen completo: bolsa de lino, manta con el parche de conexión, folleto, bruma de ambiente y cable de tierra sobre fondo neutro"
@@ -129,13 +136,12 @@ export function GroundingBlanket() {
                 alt: "Kit Manta Origen sobre madera y raíces de árbol, acompañado de flores blancas",
               },
             ].map((foto) => (
-              <img
-                key={foto.src}
+              <Button key={foto.src} variant="ghost" onClick={() => setPhoto(foto)} aria-label={`Ampliar: ${foto.alt}`} className="h-auto w-full aspect-square overflow-hidden p-0 rounded-lg"><img
                 src={foto.src}
                 alt={foto.alt}
                 loading="lazy"
-                className="aspect-square w-full rounded-2xl object-cover"
-              />
+                className="h-full w-full object-cover"
+              /></Button>
             ))}
           </div>
         </Reveal>
@@ -187,6 +193,12 @@ export function GroundingBlanket() {
         </div>
       </section>
 
+      <section className="py-14 bg-secondary/40">
+        <div className="container-prose grid md:grid-cols-2 items-center gap-8">
+          <Reveal><span className="eyebrow">Sin / Con Manta Origen</span><h2 className="mt-3 font-display text-3xl md:text-4xl text-primary">Visualiza la conexión</h2><p className="mt-4 text-sm text-foreground/75">Una mirada ilustrativa a la práctica del grounding. Los resultados pueden variar entre personas.</p></Reveal>
+          <Button variant="ghost" onClick={() => setPhoto({src: mantaOrigenComparativa.url, alt: "Comparativa Sin / Con Manta Origen"})} aria-label="Ampliar comparación Sin / Con Manta Origen" className="h-auto p-0 overflow-hidden rounded-lg"><img src={mantaOrigenComparativa.url} alt="Infografía Sin / Con Manta Origen" loading="lazy" className="h-auto w-full" /></Button>
+        </div>
+      </section>
       {/* 3 · BENEFICIOS */}
       <section className="py-20 md:py-24">
         <div className="container-prose">
@@ -229,6 +241,7 @@ export function GroundingBlanket() {
           {/* Composición + Kit */}
           <Reveal>
             <div className="h-full p-8 md:p-10 rounded-3xl bg-card border border-border/60">
+              <img src={mantaOrigenFlatlay.url} alt="Kit completo Manta Origen" loading="lazy" className="mb-6 aspect-[4/3] w-full rounded-lg object-cover" />
               <span className="eyebrow">¿Qué incluye?</span>
               <h3 className="mt-3 font-display text-2xl md:text-3xl text-primary">Kit completo Manta Origen</h3>
               <div className="mt-6 grid grid-cols-2 gap-4 text-sm text-foreground/80">
@@ -249,14 +262,11 @@ export function GroundingBlanket() {
             <div className="h-full p-8 md:p-10 rounded-3xl bg-card border border-border/60">
               <span className="eyebrow">¿Cómo usarla?</span>
               <h3 className="mt-3 font-display text-2xl md:text-3xl text-primary">Instálala en minutos</h3>
-              <ol className="mt-6 space-y-4">
-                {steps.map((s) => (
-                  <li key={s.n} className="flex gap-4">
-                    <span className="font-display text-2xl text-primary/60 shrink-0 leading-none">{s.n}</span>
-                    <p className="text-sm text-foreground/80 leading-relaxed">{s.t}</p>
-                  </li>
-                ))}
-              </ol>
+              <div className="mt-6 grid grid-cols-4 gap-2" role="tablist" aria-label="Pasos de instalación">
+                {steps.map((s, i) => <Button key={s.n} role="tab" aria-selected={activeStep === i} variant={activeStep === i ? "default" : "outline"} onClick={() => setActiveStep(i)} className="h-12 font-display text-xl">{s.n}</Button>)}
+              </div>
+              <div className="mt-5 min-h-28 bg-secondary/50 p-5 rounded-lg" role="tabpanel"><p className="eyebrow">Paso {steps[activeStep]?.n}</p><p className="mt-3 font-display text-xl text-primary">{steps[activeStep]?.t}</p></div>
+
               <div className="mt-8 pt-6 border-t border-border/60">
                 <p className="text-[0.65rem] uppercase tracking-[0.22em] text-foreground/55 mb-3">
                   Puedes usarla mientras
@@ -343,7 +353,7 @@ export function GroundingBlanket() {
                     </div>
                     <p className="eyebrow text-secondary mt-4">{c.eyebrow}</p>
                     <h3 className="mt-2 font-display text-xl">{c.title}</h3>
-                    <p className="mt-3 text-sm text-primary-foreground/80 leading-relaxed">{c.body}</p>
+                    <details className="mt-4"><summary className="cursor-pointer text-sm text-secondary">Leer más</summary><p className="mt-3 text-sm text-primary-foreground/80 leading-relaxed">{c.body}</p></details>
                   </div>
                 </Reveal>
               );
@@ -403,6 +413,7 @@ export function GroundingBlanket() {
           </Reveal>
         </div>
       </section>
+      <Dialog open={photo !== null} onOpenChange={open => { if (!open) setPhoto(null); }}><DialogContent className="max-w-3xl max-h-[90dvh] overflow-y-auto w-[calc(100%-2rem)]"><DialogTitle className="font-display text-primary">{photo?.alt}</DialogTitle>{photo && <img src={photo.src} alt={photo.alt} className="max-h-[70dvh] w-full object-contain" />}</DialogContent></Dialog>
     </div>
   );
 }
