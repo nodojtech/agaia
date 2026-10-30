@@ -1,3 +1,5 @@
+import { PageBanner } from "@/components/site/PageBanner";
+import bannerPhoto from "@/assets/kit-tres-pausas-fondo.png.asset.json";
 import { createFileRoute } from "@tanstack/react-router";
 import { waLink } from "@/lib/site-config";
 import { Reveal } from "@/components/site/Reveal";
@@ -26,19 +28,9 @@ const experiencias = [
 
 function RegalosPage() {
   return (
-    <div className="pt-32 md:pt-40 pb-20">
+    <div className="pb-20">
       {/* Hero */}
-      <section className="container-prose text-center pb-16">
-        <Reveal>
-          <span className="eyebrow">Bienestar Corporativo</span>
-          <h1 className="mt-3 font-display text-4xl md:text-6xl text-primary leading-tight">
-            Regalos que dejan huella
-          </h1>
-          <p className="mt-5 max-w-2xl mx-auto text-foreground/70">
-            Cada empresa tiene una historia, un propósito y una forma única de agradecer.
-          </p>
-        </Reveal>
-      </section>
+      <PageBanner eyebrow="Bienestar Corporativo" title={<>Regalos que dejan huella</>} image={bannerPhoto.url} imageAlt="Fotografía oficial de productos AGAIA"><p>Cada empresa tiene una historia, un propósito y una forma única de agradecer.</p></PageBanner>
 
       {/* 1. Regalos que dejan huella — texto tal cual */}
       <section className="py-14 bg-secondary/40">

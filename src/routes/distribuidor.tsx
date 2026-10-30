@@ -1,3 +1,5 @@
+import { PageBanner } from "@/components/site/PageBanner";
+import bannerPhoto from "@/assets/kits-empresariales-regalo.png.asset.json";
 import { createFileRoute } from "@tanstack/react-router";
 import { Store, Gift, TreePine, Coffee, Sparkles, Home, Heart, PersonStanding, Check } from "lucide-react";
 import { waLink } from "@/lib/site-config";
@@ -47,25 +49,14 @@ const pasos = [
 function DistribuidorPage() {
   const cta = waLink("Hola, quiero ser distribuidor AGAIA.");
   return (
-    <div className="pt-32 md:pt-40">
-      <section className="container-prose text-center pb-16">
-        <Reveal>
-          <span className="eyebrow">Conviértete en Distribuidor AGAIA</span>
-          <h1 className="mt-3 font-display text-4xl md:text-6xl text-primary leading-tight">
-            Lleva el bienestar de AGAIA<br />
-            <em className="font-light italic">a más personas.</em>
-          </h1>
-          <p className="mt-5 max-w-2xl mx-auto text-foreground/70">
-            Si compartes nuestra pasión por el bienestar, las plantas y las experiencias con
+    <div className="">
+      <PageBanner eyebrow="Conviértete en Distribuidor AGAIA" title={<>Lleva el bienestar de AGAIA<br />
+            <em className="font-light italic">a más personas.</em></>} image={bannerPhoto.url} imageAlt="Fotografía oficial de productos AGAIA"><p>Si compartes nuestra pasión por el bienestar, las plantas y las experiencias con
             propósito, nos encantará conocerte. Buscamos aliados que quieran hacer parte de
-            nuestra comunidad y llevar nuestros productos a nuevos espacios, ciudades y personas.
-          </p>
-          <a href={cta} target="_blank" rel="noopener noreferrer"
-            className="mt-8 inline-flex items-center px-7 py-3.5 rounded-full bg-primary text-primary-foreground text-xs uppercase tracking-[0.22em] hover:bg-primary/90 transition-colors">
+            nuestra comunidad y llevar nuestros productos a nuevos espacios, ciudades y personas.</p><a href={cta} target="_blank" rel="noopener noreferrer"
+            className="mt-8 inline-flex items-center px-7 py-3.5 rounded-full bg-secondary text-primary text-xs uppercase tracking-[0.22em] hover:bg-primary/90 transition-colors">
             ✨ Quiero ser distribuidor
-          </a>
-        </Reveal>
-      </section>
+          </a></PageBanner>
 
       <section className="py-20 bg-secondary/40">
         <div className="container-prose">
