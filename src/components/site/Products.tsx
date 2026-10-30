@@ -819,7 +819,7 @@ export function Products() {
                      },
                      {
                        src: kitsEmpresarialesCajaAbierta.url,
-                       alt: "Caja de regalo abierta con sales relajantes de canela, las tres brumas de ambiente en miniatura, un saquito de tela y una tarjeta de agradecimiento",
+                       alt: "Caja de regalo abierta con las sales relajantes de canela, un saquito de tela, una caja kraft, una tarjeta de agradecimiento y flores secas",
                      },
                      {
                        src: kitsEmpresarialesProduccion.url,
