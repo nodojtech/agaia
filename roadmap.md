@@ -1,5 +1,12 @@
 # Roadmap
 
+- [ ] Compactar y uniformar tarjetas; abrir detalles de productos en una ventana emergente.
+- [ ] Renovar banners de las páginas y superponer el texto de Inicio sobre la fotografía.
+- [ ] Enlazar recomendaciones de intención y test al producto correspondiente.
+- [ ] Hacer Manta Origen más visual e interactiva.
+- [ ] Añadir fondos fotográficos de los seis ingredientes en Nosotros.
+- [ ] Verificar navegación, ventanas emergentes y ajuste en móvil y computador.
+
 - [x] Sustituir productos ajenos al catálogo en Más vendidos y otras selecciones por productos actuales, sin novedades.
 - [x] Seleccionar fotos oficiales de productos para la Galería AGAIA provisional en Nosotros.
 - [x] Verificar selección de productos, navegación y carga de fotografías.
