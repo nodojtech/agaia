@@ -25,7 +25,7 @@ const items = selection.flatMap((featured) => {
 export function BestSellers() {
   const navigate = useNavigate();
   return (
-    <section id="mas-vendidos" className="py-20 md:py-28">
+    <section id="mas-vendidos" className="pt-6 pb-12 md:pt-8 md:pb-16">
       <div className="container-prose">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
           <div>
@@ -49,7 +49,7 @@ export function BestSellers() {
                 className="snap-start cursor-pointer min-w-0 shrink-0 w-full md:w-auto group rounded-lg bg-card border border-border/60 overflow-hidden shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-glow)] transition-all flex flex-col h-full focus-visible:ring-2 focus-visible:ring-ring">
                 <div className="relative h-48 sm:h-52 overflow-hidden bg-secondary/40">
                   <img src={p.img} alt={p.alt} loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    className="h-full w-full object-contain" />
                   <span className="absolute top-3 left-3 px-3 py-1 rounded-full bg-background/90 backdrop-blur text-[0.62rem] uppercase tracking-[0.2em] text-primary">
                     {p.tag}
                   </span>
