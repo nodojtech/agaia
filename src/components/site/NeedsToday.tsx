@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Moon, Wind, Sun, TreePine, Gift } from "lucide-react";
 import { Link } from "@tanstack/react-router";
+import { Button } from "@/components/ui/button";
 
 type Need = {
   id: string;
@@ -57,7 +58,8 @@ const NEEDS: Need[] = [
     intro:
       "Si disfrutas rodearte de plantas, crear espacios más conscientes o incorporar momentos de conexión con la naturaleza.",
     products: [
-      { name: "Bonsáis y kokedamas", note: "Un recordatorio vivo de que el bienestar también se cultiva." },
+      { name: "Bonsáis", note: "Un recordatorio vivo de que el bienestar también se cultiva." },
+      { name: "Kokedamas", note: "Naturaleza viva para acompañar tus espacios." },
       { name: "Manta Origen", note: "Una invitación a reconectar con la tierra desde casa." },
       { name: "Agua de Linos Equilibrio Natural", note: "Inspirada en el eucalipto, para ambientes de renovación." },
     ],
@@ -100,10 +102,10 @@ export function NeedsToday() {
                 const Icon = n.icon;
                 const isActive = active.id === n.id;
                 return (
-                  <button
+                  <Button variant="ghost"
                     key={n.id}
                     onClick={() => setActive(n)}
-                    className={`text-left p-4 md:p-5 rounded-2xl border transition-all flex items-center gap-4 ${
+                    className={`h-auto whitespace-normal justify-start text-left p-4 md:p-5 rounded-2xl border transition-all flex items-center gap-4 ${
                       isActive
                         ? "bg-primary text-primary-foreground border-primary shadow-[var(--shadow-glow)]"
                         : "bg-card border-border/60 hover:border-primary/40 hover:-translate-y-0.5"
@@ -115,7 +117,7 @@ export function NeedsToday() {
                     <p className={`text-sm font-medium leading-snug ${isActive ? "text-primary-foreground" : "text-foreground/85"}`}>
                       {n.label}
                     </p>
-                  </button>
+                  </Button>
                 );
               })}
             </div>
@@ -130,7 +132,7 @@ export function NeedsToday() {
               <ul className="mt-7 space-y-4">
                 {active.products.map((p) => (
                   <li key={p.name} className="pl-4 border-l-2 border-primary/30">
-                    <p className="font-display text-lg text-primary">🌿 {p.name}</p>
+                    <Link to="/productos" hash={p.name} className="font-display text-lg text-primary underline decoration-primary/30 underline-offset-4 hover:decoration-primary">🌿 {p.name}</Link>
                     <p className="mt-1 text-xs text-foreground/65 leading-relaxed">{p.note}</p>
                   </li>
                 ))}

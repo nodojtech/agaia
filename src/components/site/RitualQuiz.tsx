@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ArrowRight, RotateCcw } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { waLink } from "@/lib/site-config";
+import { Button } from "@/components/ui/button";
 
 type Letter = "A" | "B" | "C" | "D";
 type Option = { label: string; value: Letter; emoji: string };
@@ -74,7 +75,7 @@ const RESULTS: Record<Letter, { emoji: string; title: string; desc: string; prod
     emoji: "🍃",
     title: "Tu ritual ideal está enfocado en la conexión con la naturaleza",
     desc: "Las plantas y los rituales inspirados en ellas pueden ayudarte a crear espacios más armoniosos, presentes y significativos.",
-    products: ["Bonsáis y kokedamas", "Manta Origen", "Agua de Linos Equilibrio Natural"],
+    products: ["Bonsáis", "Kokedamas", "Manta Origen", "Agua de Linos Equilibrio Natural"],
   },
 };
 
@@ -135,10 +136,10 @@ export function RitualQuiz() {
               </h3>
               <div className="mt-6 grid sm:grid-cols-2 gap-3">
                 {QUESTIONS[step].options.map((o) => (
-                  <button
+                  <Button variant="ghost"
                     key={o.label}
                     onClick={() => pick(o.value)}
-                    className="text-left px-5 py-4 rounded-2xl border border-border/70 bg-background hover:border-primary/50 hover:bg-secondary/40 transition-all flex items-center justify-between gap-3 group"
+                    className="h-auto whitespace-normal text-left px-5 py-4 rounded-2xl border border-border/70 bg-background hover:border-primary/50 hover:bg-secondary/40 transition-all flex items-center justify-between gap-3 group"
                   >
                     <span className="text-sm text-foreground/85 flex items-center gap-2">
                       <span className="text-lg">{o.emoji}</span>
@@ -148,7 +149,7 @@ export function RitualQuiz() {
                       size={15}
                       className="text-primary/40 group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0"
                     />
-                  </button>
+                  </Button>
                 ))}
               </div>
             </>
@@ -165,9 +166,9 @@ export function RitualQuiz() {
                 {result.products.map((p) => (
                   <li
                     key={p}
-                    className="px-4 py-2 rounded-full bg-secondary/60 text-xs text-primary/85"
+                    className="text-sm text-primary/85"
                   >
-                    🌿 {p}
+                    <Link to="/productos" hash={p} className="inline-flex px-3 py-2 underline decoration-primary/30 underline-offset-4 hover:decoration-primary">🌿 {p}</Link>
                   </li>
                 ))}
               </ul>
@@ -186,12 +187,12 @@ export function RitualQuiz() {
                 >
                   Asesoría por WhatsApp
                 </a>
-                <button
+                <Button variant="ghost"
                   onClick={reset}
                   className="inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.22em] text-foreground/55 hover:text-primary transition-colors"
                 >
                   <RotateCcw size={12} /> Repetir
-                </button>
+                </Button>
               </div>
             </div>
           )}
