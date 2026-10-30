@@ -638,7 +638,7 @@ export function Products() {
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
     let visible = false;
     const sync = () => {
-      if (visible && !document.hidden && !motion.matches && !autoPaused && !selectedProduct && !region.matches(":hover") && !region.contains(document.activeElement)) autoplay.play();
+      if (carouselApi.scrollSnapList().length > 1 && visible && !document.hidden && !motion.matches && !autoPaused && !selectedProduct && !region.matches(":hover") && !region.contains(document.activeElement)) autoplay.play();
       else autoplay.stop();
     };
     const observer = new IntersectionObserver(([entry]) => { visible = entry?.isIntersecting ?? false; sync(); }, { threshold: 0.35 });

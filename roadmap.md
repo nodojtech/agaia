@@ -1,7 +1,7 @@
 # Roadmap
 
-- [ ] Mostrar fotos completas en tarjetas compactas y reducir separación bajo el catálogo.
-- [ ] Añadir avance automático suave y flechas más visibles; verificar móvil y computador.
+- [x] Mostrar fotos completas en tarjetas compactas y reducir separación bajo el catálogo.
+- [x] Añadir avance automático suave y flechas más visibles; verificar móvil y computador.
 
 - [x] Compactar y uniformar tarjetas; abrir detalles de productos en una ventana emergente.
 - [x] Renovar banners de las páginas y superponer el texto de Inicio sobre la fotografía.
