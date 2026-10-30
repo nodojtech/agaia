@@ -196,7 +196,7 @@ export function GroundingBlanket() {
       <section className="py-14 bg-secondary/40">
         <div className="container-prose grid md:grid-cols-2 items-center gap-8">
           <Reveal><span className="eyebrow">Sin / Con Manta Origen</span><h2 className="mt-3 font-display text-3xl md:text-4xl text-primary">Visualiza la conexión</h2><p className="mt-4 text-sm text-foreground/75">Una mirada ilustrativa a la práctica del grounding. Los resultados pueden variar entre personas.</p></Reveal>
-          <Button variant="ghost" onClick={() => setPhoto({src: mantaOrigenComparativa.url, alt: "Comparativa Sin / Con Manta Origen"})} aria-label="Ampliar comparación Sin / Con Manta Origen" className="h-auto p-0 overflow-hidden rounded-lg"><img src={mantaOrigenComparativa.url} alt="Infografía Sin / Con Manta Origen" loading="lazy" className="h-auto w-full" /></Button>
+          <Button variant="ghost" onClick={() => setPhoto({src: mantaOrigenComparativa.url, alt: "Comparativa Sin / Con Manta Origen"})} aria-label="Ampliar comparación Sin / Con Manta Origen" className="h-auto min-h-52 p-0 overflow-hidden rounded-lg"><img src={mantaOrigenComparativa.url} alt="Infografía Sin / Con Manta Origen" loading="lazy" width={1024} height={1024} className="h-auto w-full" /></Button>
         </div>
       </section>
       {/* 3 · BENEFICIOS */}
