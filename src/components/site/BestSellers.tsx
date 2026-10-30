@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import { CATEGORIES } from "@/components/site/Products";
 import { Button } from "@/components/ui/button";
 import { ShoppingBag, MessageCircle } from "lucide-react";
@@ -23,6 +23,7 @@ const items = selection.flatMap((featured) => {
 });
 
 export function BestSellers() {
+  const navigate = useNavigate();
   return (
     <section id="mas-vendidos" className="py-20 md:py-28">
       <div className="container-prose">
@@ -42,9 +43,11 @@ export function BestSellers() {
         <div className="-mx-5 lg:-mx-8 md:mx-0 overflow-hidden md:overflow-visible">
           <div className="flex md:grid md:grid-cols-3 lg:grid-cols-3 gap-5 md:gap-7 overflow-x-auto md:overflow-visible snap-x snap-mandatory px-5 md:px-0 pb-4 md:pb-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {items.map((p) => (
-              <article key={p.name}
-                className="snap-start shrink-0 w-[78%] sm:w-[55%] md:w-auto group rounded-3xl bg-card border border-border/60 overflow-hidden shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-glow)] hover:-translate-y-1 transition-all flex flex-col h-full">
-                <div className="relative aspect-[4/5] overflow-hidden bg-secondary/40">
+              <article key={p.name} role="button" tabIndex={0} aria-label={`Ver detalles de ${p.name}`}
+                onClick={(event) => { if (!(event.target instanceof Element) || !event.target.closest("a,button")) void navigate({ to: "/productos", hash: p.name }); }}
+                onKeyDown={(event) => { if (event.target === event.currentTarget && (event.key === "Enter" || event.key === " ")) { event.preventDefault(); void navigate({ to: "/productos", hash: p.name }); } }}
+                className="snap-start cursor-pointer min-w-0 shrink-0 w-full md:w-auto group rounded-lg bg-card border border-border/60 overflow-hidden shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-glow)] transition-all flex flex-col h-full focus-visible:ring-2 focus-visible:ring-ring">
+                <div className="relative h-48 sm:h-52 overflow-hidden bg-secondary/40">
                   <img src={p.img} alt={p.alt} loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
                   <span className="absolute top-3 left-3 px-3 py-1 rounded-full bg-background/90 backdrop-blur text-[0.62rem] uppercase tracking-[0.2em] text-primary">
@@ -55,7 +58,7 @@ export function BestSellers() {
                   <h3 className="font-display text-xl text-primary leading-tight">{p.name}</h3>
                   <p className="mt-1.5 text-xs text-foreground/65 leading-relaxed">{p.desc}</p>
                   <div className="mt-4 flex items-center justify-between gap-3">
-                    <span className="text-xs text-foreground/65">{p.size}</span>
+                    <span className="text-xs min-w-0 truncate text-foreground/65">{p.size}</span>
                     <span className="font-display text-lg text-primary">{p.price}</span>
                   </div>
                   <div className="mt-auto pt-4 flex items-center gap-2">

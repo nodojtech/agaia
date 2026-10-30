@@ -1,5 +1,12 @@
 # Roadmap
 
+- [x] Compactar y uniformar tarjetas; abrir detalles de productos en una ventana emergente.
+- [x] Renovar banners de las páginas y superponer el texto de Inicio sobre la fotografía.
+- [x] Enlazar recomendaciones de intención y test al producto correspondiente.
+- [x] Hacer Manta Origen más visual e interactiva.
+- [x] Añadir fondos fotográficos de los seis ingredientes en Nosotros.
+- [x] Verificar navegación, ventanas emergentes y ajuste en móvil y computador.
+
 - [x] Sustituir productos ajenos al catálogo en Más vendidos y otras selecciones por productos actuales, sin novedades.
 - [x] Seleccionar fotos oficiales de productos para la Galería AGAIA provisional en Nosotros.
 - [x] Verificar selección de productos, navegación y carga de fotografías.
@@ -21,4 +28,4 @@
 - [x] Integrar las tres fotos oficiales de los Kokedamas (Refugio de Bienestar) en sus tarjetas.
 - [x] Integrar las dos fotos oficiales de las Sales Relajantes de Canela en su tarjeta.
 - [ ] Integrar las fotos oficiales de las Sales Relajantes de Lavanda (sigue con imagen provisional).
-- [ ] Decidir dónde mostrar la infografía «Sin / Con Manta Origen` en /manta-origen.
+- [x] Mostrar la infografía «Sin / Con Manta Origen» en /manta-origen.

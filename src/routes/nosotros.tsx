@@ -1,3 +1,11 @@
+import plantNaranja from "@/assets/plant-naranja.jpg";
+import plantCanela from "@/assets/plant-canela.jpg";
+import plantVainilla from "@/assets/plant-vainilla.jpg";
+import plantEucalipto from "@/assets/plant-eucalipto.jpg";
+import plantMenta from "@/assets/plant-menta.jpg";
+import plantLavanda from "@/assets/plant-lavanda.jpg";
+import { PageBanner } from "@/components/site/PageBanner";
+import bannerPhoto from "@/assets/bonsai-filodendro.png.asset.json";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/Reveal";
 import rollOn from "@/assets/roll-on-calma-manos.png.asset.json";
@@ -30,6 +38,8 @@ export const Route = createFileRoute("/nosotros")({
   component: NosotrosPage,
 });
 
+const plantImages = [plantLavanda, plantMenta, plantEucalipto, plantVainilla, plantCanela, plantNaranja];
+
 const herbario = [
   { name: "Lavanda", desc: "Reconocida en aromaterapia por sus propiedades calmantes.", benefits: ["Favorece la relajación y el descanso.", "Ayuda a crear una sensación de calma y bienestar.", "Ideal para acompañar rituales de noche."] },
   { name: "Menta", desc: "Una de las plantas más utilizadas en aromaterapia por su frescura.", benefits: ["Favorece la claridad mental y la concentración.", "Proporciona una agradable sensación refrescante.", "Ideal para momentos de estrés o sobrecarga mental."] },
@@ -41,21 +51,11 @@ const herbario = [
 
 function NosotrosPage() {
   return (
-    <div className="pt-32 md:pt-40">
+    <div className="">
       {/* Historia */}
-      <section className="container-prose max-w-4xl text-center pb-16">
-        <Reveal>
-          <span className="eyebrow">Nuestra historia</span>
-          <h1 className="mt-4 font-display text-4xl md:text-6xl text-primary leading-tight">
-            Un laboratorio botánico<br />
-            <em className="font-light italic">nacido del bienestar.</em>
-          </h1>
-          <p className="mt-6 text-foreground/70 leading-relaxed max-w-2xl mx-auto">
-            AGAIA nació a finales del año 2024 como una búsqueda personal de bienestar y hoy se ha
-            convertido en un laboratorio botánico que acompaña los rituales de cientos de personas.
-          </p>
-        </Reveal>
-      </section>
+      <PageBanner eyebrow="Nuestra historia" title={<>Un laboratorio botánico<br />
+            <em className="font-light italic">nacido del bienestar.</em></>} image={bannerPhoto.url} imageAlt="Fotografía oficial de productos AGAIA"><p>AGAIA nació a finales del año 2024 como una búsqueda personal de bienestar y hoy se ha
+            convertido en un laboratorio botánico que acompaña los rituales de cientos de personas.</p></PageBanner>
 
       {/* Laboratorio Botánico */}
       <section className="py-20 bg-secondary/40">
@@ -88,18 +88,19 @@ function NosotrosPage() {
           <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {herbario.map((h, i) => (
               <Reveal as="li" key={h.name} delay={i * 70}>
-                <div className="h-full p-7 rounded-3xl bg-card border border-border/60 shadow-[var(--shadow-soft)] flex flex-col">
-                  <p className="text-3xl">🌿</p>
-                  <h3 className="mt-3 font-display text-2xl text-primary">{h.name}</h3>
-                  <p className="mt-2 text-sm text-foreground/70 leading-relaxed">{h.desc}</p>
-                  <ul className="mt-4 space-y-1.5 text-xs text-foreground/70">
+                <div className="relative isolate min-h-[340px] h-full p-7 rounded-lg overflow-hidden border border-border/60 shadow-[var(--shadow-soft)] flex flex-col text-primary-foreground">
+                  <img src={plantImages[i]} alt={h.name} width={816} height={816} loading="lazy" className="absolute inset-0 -z-20 h-full w-full object-cover" />
+                  <div aria-hidden className="plant-scrim absolute inset-0 -z-10" />
+                  <h3 className="mt-3 font-display text-2xl text-primary-foreground">{h.name}</h3>
+                  <p className="mt-2 text-sm text-primary-foreground/90 leading-relaxed">{h.desc}</p>
+                  <ul className="mt-4 space-y-1.5 text-xs text-primary-foreground/90">
                     {h.benefits.map((b) => (
                       <li key={b}>✨ {b}</li>
                     ))}
                   </ul>
                   <Link
                     to="/productos"
-                    className="mt-6 inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.22em] text-primary border-b border-primary/30 pb-1 hover:border-primary transition-colors self-start"
+                    className="mt-6 inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.22em] text-primary-foreground border-b border-primary-foreground/50 pb-1 hover:border-primary-foreground transition-colors self-start"
                   >
                     ➔ Ver productos con {h.name}
                   </Link>

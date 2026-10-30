@@ -1,3 +1,5 @@
+import { PageBanner } from "@/components/site/PageBanner";
+import bannerPhoto from "@/assets/agua-linos-gratitud-fondo.png.asset.json";
 import { createFileRoute } from "@tanstack/react-router";
 import { Products } from "@/components/site/Products";
 import { BestSellers } from "@/components/site/BestSellers";
@@ -18,8 +20,9 @@ export const Route = createFileRoute("/productos")({
 
 function ProductosPage() {
   return (
-    <div className="pt-28 md:pt-32">
-      <Products />
+    <div className="">
+      <PageBanner eyebrow="Colección botánica" title="Productos AGAIA" image={bannerPhoto.url} imageAlt="Agua de Linos Gratitud AGAIA en un ambiente botánico" />
+      <div className="pt-10"><Products /></div>
       <BestSellers />
     </div>
   );

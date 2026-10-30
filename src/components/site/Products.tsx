@@ -1,10 +1,12 @@
-import { useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { useEffect, useRef, useState } from "react";
+import { useLocation } from "@tanstack/react-router";
+import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { waLink } from "@/lib/site-config";
 import { Reveal } from "@/components/site/Reveal";
 import { Button } from "@/components/ui/button";
 import {
   Carousel,
+  type CarouselApi,
   CarouselContent,
   CarouselItem,
   CarouselNext,
@@ -89,15 +91,15 @@ type Category = {
   products: Product[];
 };
 
-function ProductGallery({ images, name }: { images: ProductImage[]; name: string }) {
+function ProductGallery({ images, name, detail = false }: { images: ProductImage[]; name: string; detail?: boolean }) {
   const [activeImage, setActiveImage] = useState(0);
   const selectedImage = images[activeImage] ?? images[0];
 
   if (!selectedImage) return null;
 
   return (
-    <div className="bg-secondary/40">
-      <div className="aspect-square sm:aspect-[4/5] overflow-hidden">
+    <div className="min-w-0 bg-secondary/40">
+      <div className={detail ? "h-64 sm:h-80 overflow-hidden" : "h-48 sm:h-52 overflow-hidden"}>
         <img
           src={selectedImage.src}
           alt={selectedImage.alt}
@@ -112,10 +114,11 @@ function ProductGallery({ images, name }: { images: ProductImage[]; name: string
               key={image.src}
               type="button"
               variant="ghost"
-              onClick={() => setActiveImage(index)}
+              onClick={(event) => { event.stopPropagation(); setActiveImage(index); }}
+              onKeyDown={(event) => event.stopPropagation()}
               aria-label={`Ver foto ${index + 1} de ${name}`}
               aria-pressed={activeImage === index}
-              className={`h-auto w-14 shrink-0 aspect-square overflow-hidden rounded-md border p-0 ${
+              className={`h-10 w-10 shrink-0 overflow-hidden rounded-md border p-0 ${
                 activeImage === index ? "border-primary" : "border-transparent opacity-65 hover:opacity-100"
               }`}
             >
@@ -607,8 +610,60 @@ export const CATEGORIES: Category[] = [
   },
 ];
 
+function normalizeProductQuery(value: string) {
+  return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^\p{L}\p{N}\s]/gu, " ").split(/\s+/).filter(word => word && word !== "de").join(" ");
+}
+
+export function findProductName(query: string): string | undefined {
+  const normalized = normalizeProductQuery(query);
+  if (!normalized) return undefined;
+  const products = CATEGORIES.flatMap(category => category.products);
+  return (products.find(product => normalizeProductQuery(product.name) === normalized) ?? products.find(product => normalizeProductQuery(product.name).startsWith(normalized)))?.name;
+}
+
 export function Products() {
+  const locationHash = useLocation({ select: location => location.hash });
   const [active, setActive] = useState<string>("todos");
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [carouselApi, setCarouselApi] = useState<CarouselApi>();
+  const [pendingProduct, setPendingProduct] = useState<string | null>(null);
+  const lastCard = useRef<HTMLElement | null>(null);
+  function openProduct(product: Product, card: HTMLElement) {
+    lastCard.current = card;
+    setSelectedProduct(product);
+  }
+  useEffect(() => {
+    function readHash() {
+      let query: string;
+      try { query = decodeURIComponent(locationHash.replace(/^#/, "")); } catch { return; }
+      const name = findProductName(query);
+      if (!name) { setPendingProduct(null); return; }
+      const targetCategory = CATEGORIES.find(item => item.products.some(product => product.name === name));
+      if (!targetCategory) return;
+      setActive(targetCategory.id);
+      setPendingProduct(name);
+    }
+    readHash();
+  }, [locationHash]);
+  useEffect(() => {
+    if (!pendingProduct) return;
+    const targetCategory = CATEGORIES.find(item => item.id === active);
+    if (!targetCategory) return;
+    const index = targetCategory.products.findIndex(product => product.name === pendingProduct);
+    const product = targetCategory.products[index];
+    if (!product) return;
+    if (targetCategory.products.length > 2 && !carouselApi) return;
+    const frame = requestAnimationFrame(() => {
+      const card = document.getElementById(pendingProduct);
+      if (!card) return;
+      if (targetCategory.products.length > 2) carouselApi?.scrollTo(index, true);
+      window.scrollTo({ top: Math.max(0, card.getBoundingClientRect().top + window.scrollY - 120), behavior: "instant" });
+      lastCard.current = card;
+      setSelectedProduct(product);
+      setPendingProduct(null);
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [active, carouselApi, pendingProduct]);
   const category =
     active === "todos"
       ? {
@@ -639,17 +694,18 @@ export function Products() {
           {tabs.map((c) => {
             const isActive = c.id === active;
             return (
-              <button
+              <Button variant="ghost"
+                role="tab" aria-selected={isActive}
                 key={c.id}
                 onClick={() => setActive(c.id)}
-                className={`w-full px-4 py-2.5 rounded-full text-center text-xs uppercase tracking-[0.2em] transition-colors ${
+                className={`h-auto whitespace-normal w-full px-4 py-2.5 rounded-full text-center text-xs uppercase tracking-[0.2em] transition-colors ${
                   isActive
                     ? "bg-primary text-primary-foreground"
                     : "text-foreground/60 hover:text-primary hover:bg-secondary/40"
                 }`}
               >
                 {c.label}
-              </button>
+              </Button>
             );
           })}
         </div>
@@ -662,89 +718,22 @@ export function Products() {
 
         {(() => {
           const cards = category.products.map((p, i) => (
-            <Reveal key={p.name} delay={i * 80} className="h-full min-w-0">
-              <article id={p.name} className="group h-full w-full min-w-0 max-w-full scroll-mt-36 rounded-3xl bg-card border border-border/60 overflow-hidden shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-glow)] transition-all flex flex-col justify-between">
-                {p.images ? (
-                  <ProductGallery images={p.images} name={p.name} />
-                ) : p.image ? (
-                  <div className="aspect-[16/10] overflow-hidden bg-secondary/40">
-                    <img
-                      src={p.image}
-                      alt={p.name}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                  </div>
-                ) : null}
-                <div className="p-4 sm:p-6 md:p-8 flex flex-col flex-1 min-w-0">
-                  {p.tag && <p className="eyebrow">{p.tag}</p>}
-                  <h3 className="mt-2 font-display text-xl sm:text-2xl text-primary break-words">{p.name}</h3>
-                  <p className="mt-3 text-sm text-foreground/75 leading-relaxed">{p.desc}</p>
-
-                  <details className="mt-5 group/details">
-                    <summary className="cursor-pointer text-xs uppercase tracking-[0.22em] text-primary/80 hover:text-primary select-none">
-                      Ver detalle
-                    </summary>
-                    <div className="mt-4 space-y-4 animate-fade-in">
-                      <div>
-                        <p className="text-[0.65rem] uppercase tracking-[0.22em] text-foreground/55 mb-2">Beneficios</p>
-                        <ul className="space-y-1.5 text-sm text-foreground/75">
-                          {p.benefits.map((b) => (
-                            <li key={b}>✨ {b}</li>
-                          ))}
-                        </ul>
-                      </div>
-                      <div>
-                        <p className="text-[0.65rem] uppercase tracking-[0.22em] text-foreground/55 mb-2">Ingredientes destacados</p>
-                        <p className="text-sm text-foreground/75">🌿 {p.ingredients.join(" · ")}</p>
-                      </div>
-                      <div>
-                        <p className="text-[0.65rem] uppercase tracking-[0.22em] text-foreground/55 mb-2">Modo de uso</p>
-                        <p className="text-sm text-foreground/75">{p.use}</p>
-                      </div>
-                    </div>
-                  </details>
-
-                  <div className="mt-5 pt-5 border-t border-border/60">
-                    <p className="text-[0.65rem] uppercase tracking-[0.22em] text-foreground/55 mb-2">Presentaciones</p>
-                    <ul className="space-y-1.5">
-                      {p.presentations.map((pr) => (
-                        <li key={pr.size} className="flex items-start justify-between gap-3 text-sm">
-                          <span className="text-foreground/75">{pr.size}</span>
-                          <span className="text-primary font-medium whitespace-nowrap">{pr.price}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="mt-auto pt-6 flex flex-wrap gap-2">
-                    <a
-                      href={waLink(`Hola, me interesa: ${p.name}.`)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center text-center px-4 py-2.5 rounded-full bg-primary text-primary-foreground text-xs uppercase tracking-[0.22em] hover:bg-primary/90 transition-colors"
-                    >
-                      Consultar por WhatsApp
-                    </a>
-                    {category.id === "manta-origen" && (
-                      <Link
-                        to="/manta-origen"
-                        className="inline-flex items-center text-center px-4 py-2.5 rounded-full border border-primary/30 text-primary text-xs uppercase tracking-[0.22em] hover:bg-primary/5 transition-colors"
-                      >
-                        Conoce Manta Origen
-                      </Link>
-                    )}
-                    {category.id === "plantas" && (
-                      <a
-                        href={waLink("Hola, quiero conocer las plantas disponibles.")}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center text-center px-4 py-2.5 rounded-full border border-primary/30 text-primary text-xs uppercase tracking-[0.22em] hover:bg-primary/5 transition-colors"
-                      >
-                        Quiero conocer plantas disponibles
-                      </a>
-                    )}
-                  </div>
+            <Reveal key={p.name} delay={i * 40} className="h-full min-w-0">
+              <article id={p.name} role="button" tabIndex={0} aria-label={`Ver ${p.name}`} aria-haspopup="dialog"
+                onClick={(event) => openProduct(p, event.currentTarget)}
+                onKeyDown={(event) => { if (event.target === event.currentTarget && (event.key === "Enter" || event.key === " ")) { event.preventDefault(); openProduct(p, event.currentTarget); } }}
+                className="group flex h-[450px] sm:h-[466px] w-full min-w-0 max-w-full cursor-pointer scroll-mt-36 flex-col overflow-hidden rounded-lg border border-border/60 bg-card shadow-[var(--shadow-soft)] transition-shadow hover:shadow-[var(--shadow-glow)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                <div className="h-[250px] sm:h-[266px] shrink-0 overflow-hidden bg-secondary/40">
+                  {p.images?.length ? <ProductGallery images={p.images} name={p.name} /> : p.image ? <img src={p.image} alt={p.name} loading="lazy" className="h-48 sm:h-52 w-full object-cover" /> : null}
+                </div>
+                <div className="flex min-h-0 min-w-0 flex-1 flex-col p-4">
+                  <p className="min-h-4 truncate text-xs text-muted-foreground">{p.tag ?? "Bienestar AGAIA"}</p>
+                  <h3 className="mt-2 line-clamp-2 min-h-12 break-words font-display text-xl leading-6 text-primary">{p.name}</h3>
+                  <p className="mt-2 line-clamp-2 text-sm leading-5 text-foreground/75">{p.desc}</p>
+                  <p className="mt-auto flex items-center justify-between gap-2 border-t border-border/60 pt-3 text-sm">
+                    <span className="truncate text-muted-foreground">{p.presentations[0]?.size}</span>
+                    <span className="shrink-0 font-medium text-primary">{p.presentations[0]?.price}</span>
+                  </p>
                 </div>
               </article>
             </Reveal>
@@ -752,10 +741,10 @@ export function Products() {
 
           if (active !== "todos" && category.products.length > 2) {
             return (
-              <Carousel opts={{ align: "start", loop: true }} className="w-full">
+              <Carousel key={active} setApi={setCarouselApi} opts={{ align: "start", loop: false }} className="w-full min-w-0">
                 <CarouselContent className="-ml-4">
                   {cards.map((card, i) => (
-                    <CarouselItem key={i} className="pl-4 min-w-0 md:basis-1/2 lg:basis-1/2 h-full">
+                    <CarouselItem key={i} className="pl-4 min-w-0 md:basis-1/2 lg:basis-1/3 h-full">
                       {card}
                     </CarouselItem>
                   ))}
@@ -827,6 +816,19 @@ export function Products() {
           </Reveal>
         )}
       </div>
+      <Dialog open={selectedProduct !== null} onOpenChange={(open) => { if (!open) setSelectedProduct(null); }}>
+        {selectedProduct && <DialogContent className="max-h-[90dvh] w-[calc(100%-2rem)] min-w-0 max-w-2xl overflow-y-auto rounded-lg p-5 sm:p-7" onCloseAutoFocus={(event) => { event.preventDefault(); lastCard.current?.focus({ preventScroll: true }); }}>
+          <DialogTitle className="pr-6 font-display text-2xl text-primary">{selectedProduct.name}</DialogTitle>
+          {selectedProduct.tag && <p className="text-sm text-muted-foreground">{selectedProduct.tag}</p>}
+          {selectedProduct.images?.length ? <ProductGallery key={selectedProduct.name} images={selectedProduct.images} name={selectedProduct.name} detail /> : selectedProduct.image ? <img src={selectedProduct.image} alt={selectedProduct.name} className="h-64 w-full object-cover rounded-lg" /> : null}
+          <DialogDescription className="text-sm leading-relaxed text-foreground/75">{selectedProduct.desc}</DialogDescription>
+          <div><h4 className="font-medium text-primary">Beneficios y detalles</h4><ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-foreground/75">{selectedProduct.benefits.map(b => <li key={b}>{b}</li>)}</ul></div>
+          <div><h4 className="font-medium text-primary">Ingredientes y materiales</h4><p className="mt-2 text-sm text-foreground/75">{selectedProduct.ingredients.join(" · ")}</p></div>
+          <div><h4 className="font-medium text-primary">Modo de uso</h4><p className="mt-2 text-sm text-foreground/75">{selectedProduct.use}</p></div>
+          <div><h4 className="font-medium text-primary">Presentaciones y precios</h4><ul className="mt-2 divide-y divide-border/60">{selectedProduct.presentations.map(pr => <li key={pr.size} className="flex justify-between gap-4 py-2 text-sm"><span className="min-w-0 break-words text-foreground/75">{pr.size}</span><span className="shrink-0 font-medium text-primary">{pr.price}</span></li>)}</ul></div>
+          <Button asChild className="h-auto whitespace-normal py-3 text-center"><a href={waLink(`Hola, me interesa: ${selectedProduct.name}.`)} target="_blank" rel="noopener noreferrer">Consultar por WhatsApp</a></Button>
+        </DialogContent>}
+      </Dialog>
     </section>
   );
 }
