@@ -1,4 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import Autoplay from "embla-carousel-autoplay";
+import { Pause, Play } from "lucide-react";
 import { useLocation } from "@tanstack/react-router";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { waLink } from "@/lib/site-config";
@@ -98,17 +100,17 @@ function ProductGallery({ images, name, detail = false }: { images: ProductImage
   if (!selectedImage) return null;
 
   return (
-    <div className="min-w-0 bg-secondary/40">
-      <div className={detail ? "h-64 sm:h-80 overflow-hidden" : "h-48 sm:h-52 overflow-hidden"}>
+    <div className={`flex min-w-0 flex-col bg-secondary/40 ${detail ? "" : "h-full"}`}>
+      <div className={detail ? "h-64 sm:h-80 overflow-hidden" : "min-h-0 flex-1 overflow-hidden"}>
         <img
           src={selectedImage.src}
           alt={selectedImage.alt}
           loading="lazy"
-          className="h-full w-full object-cover transition-opacity duration-300"
+          className="h-full w-full object-contain transition-opacity duration-300"
         />
       </div>
       {images.length > 1 && (
-        <div className="flex gap-1.5 overflow-x-auto border-t border-border/60 bg-card p-2">
+        <div className="flex shrink-0 gap-1.5 overflow-x-auto border-t border-border/60 bg-card p-1.5">
           {images.map((image, index) => (
             <Button
               key={image.src}
@@ -122,7 +124,7 @@ function ProductGallery({ images, name, detail = false }: { images: ProductImage
                 activeImage === index ? "border-primary" : "border-transparent opacity-65 hover:opacity-100"
               }`}
             >
-              <img src={image.src} alt="" className="h-full w-full object-cover" />
+              <img src={image.src} alt="" className="h-full w-full object-contain" />
             </Button>
           ))}
         </div>
@@ -627,6 +629,33 @@ export function Products() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [carouselApi, setCarouselApi] = useState<CarouselApi>();
   const [pendingProduct, setPendingProduct] = useState<string | null>(null);
+  const [autoPaused, setAutoPaused] = useState(false);
+  const carouselRegion = useRef<HTMLDivElement | null>(null);
+  const autoplay = useMemo(() => Autoplay({ delay: 6000, playOnInit: false, stopOnInteraction: false, stopOnMouseEnter: true, stopOnFocusIn: true }), [active]);
+  useEffect(() => {
+    const region = carouselRegion.current;
+    if (!region || !carouselApi) return;
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let visible = false;
+    const sync = () => {
+      if (carouselApi.scrollSnapList().length > 1 && visible && !document.hidden && !motion.matches && !autoPaused && !selectedProduct && !region.matches(":hover") && !region.contains(document.activeElement)) autoplay.play();
+      else autoplay.stop();
+    };
+    const observer = new IntersectionObserver(([entry]) => { visible = entry?.isIntersecting ?? false; sync(); }, { threshold: 0.35 });
+    observer.observe(region);
+    document.addEventListener("visibilitychange", sync);
+    motion.addEventListener("change", sync);
+    region.addEventListener("mouseleave", sync);
+    region.addEventListener("focusout", sync);
+    return () => {
+      observer.disconnect();
+      autoplay.stop();
+      document.removeEventListener("visibilitychange", sync);
+      motion.removeEventListener("change", sync);
+      region.removeEventListener("mouseleave", sync);
+      region.removeEventListener("focusout", sync);
+    };
+  }, [active, autoplay, carouselApi, autoPaused, selectedProduct]);
   const lastCard = useRef<HTMLElement | null>(null);
   function openProduct(product: Product, card: HTMLElement) {
     lastCard.current = card;
@@ -676,9 +705,9 @@ export function Products() {
   const tabs = [{ id: "todos", label: "Todos" }, ...CATEGORIES.map((c) => ({ id: c.id, label: c.label }))];
 
   return (
-    <section id="productos" className="pb-20 md:pb-24 pt-0">
+    <section id="productos" className="pb-6 md:pb-8 pt-0">
       <div className="container-prose">
-        <div className="max-w-2xl mb-10">
+        <div className="max-w-2xl mb-6">
           <span className="eyebrow">Catálogo</span>
           <h2 className="mt-3 font-display text-4xl md:text-5xl text-primary leading-tight">
             Productos AGAIA
@@ -690,7 +719,7 @@ export function Products() {
         </div>
 
         {/* Tabs */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-12 border-b border-border/60 pb-4">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-5 border-b border-border/60 pb-3">
           {tabs.map((c) => {
             const isActive = c.id === active;
             return (
@@ -711,7 +740,7 @@ export function Products() {
         </div>
 
         {category.intro && (
-          <p className="max-w-3xl text-sm md:text-base text-foreground/70 mb-10 italic">
+          <p className="max-w-3xl text-sm md:text-base text-foreground/70 mb-4 italic">
             {category.intro}
           </p>
         )}
@@ -722,9 +751,9 @@ export function Products() {
               <article id={p.name} role="button" tabIndex={0} aria-label={`Ver ${p.name}`} aria-haspopup="dialog"
                 onClick={(event) => openProduct(p, event.currentTarget)}
                 onKeyDown={(event) => { if (event.target === event.currentTarget && (event.key === "Enter" || event.key === " ")) { event.preventDefault(); openProduct(p, event.currentTarget); } }}
-                className="group flex h-[450px] sm:h-[466px] w-full min-w-0 max-w-full cursor-pointer scroll-mt-36 flex-col overflow-hidden rounded-lg border border-border/60 bg-card shadow-[var(--shadow-soft)] transition-shadow hover:shadow-[var(--shadow-glow)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-                <div className="h-[250px] sm:h-[266px] shrink-0 overflow-hidden bg-secondary/40">
-                  {p.images?.length ? <ProductGallery images={p.images} name={p.name} /> : p.image ? <img src={p.image} alt={p.name} loading="lazy" className="h-48 sm:h-52 w-full object-cover" /> : null}
+                className="group flex h-[410px] sm:h-[430px] w-full min-w-0 max-w-full cursor-pointer scroll-mt-36 flex-col overflow-hidden rounded-lg border border-border/60 bg-card shadow-[var(--shadow-soft)] transition-shadow hover:shadow-[var(--shadow-glow)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                <div className="h-[226px] sm:h-[246px] shrink-0 overflow-hidden bg-secondary/40">
+                  {p.images?.length ? <ProductGallery images={p.images} name={p.name} /> : p.image ? <img src={p.image} alt={p.name} loading="lazy" className="h-full w-full object-contain" /> : null}
                 </div>
                 <div className="flex min-h-0 min-w-0 flex-1 flex-col p-4">
                   <p className="min-h-4 truncate text-xs text-muted-foreground">{p.tag ?? "Bienestar AGAIA"}</p>
@@ -741,7 +770,12 @@ export function Products() {
 
           if (active !== "todos" && category.products.length > 2) {
             return (
-              <Carousel key={active} setApi={setCarouselApi} opts={{ align: "start", loop: false }} className="w-full min-w-0">
+              <Carousel key={active} ref={carouselRegion} setApi={setCarouselApi} plugins={[autoplay]} opts={{ align: "start", loop: true, duration: 45 }} aria-label={`Productos de ${category.label}`} className="w-full min-w-0">
+                <div className="mb-3 flex items-center justify-end gap-2">
+                  <Button variant="outline" size="icon" className="h-11 w-11 rounded-full border-primary/40 text-primary" aria-label={autoPaused ? "Activar avance automático" : "Pausar avance automático"} title={autoPaused ? "Activar avance automático" : "Pausar avance automático"} onClick={() => setAutoPaused(value => !value)}>{autoPaused ? <Play size={18} /> : <Pause size={18} />}</Button>
+                  <CarouselPrevious variant="default" aria-label="Producto anterior" title="Producto anterior" className="static h-11 w-11 translate-y-0 shadow-[var(--shadow-soft)] [&_svg]:h-5 [&_svg]:w-5" />
+                  <CarouselNext variant="default" aria-label="Producto siguiente" title="Producto siguiente" className="static h-11 w-11 translate-y-0 shadow-[var(--shadow-soft)] [&_svg]:h-5 [&_svg]:w-5" />
+                </div>
                 <CarouselContent className="-ml-4">
                   {cards.map((card, i) => (
                     <CarouselItem key={i} className="pl-4 min-w-0 md:basis-1/2 lg:basis-1/3 h-full">
@@ -749,10 +783,6 @@ export function Products() {
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <div className="mt-6 flex justify-end gap-2">
-                  <CarouselPrevious className="static translate-y-0" />
-                  <CarouselNext className="static translate-y-0" />
-                </div>
               </Carousel>
             );
           }
@@ -820,7 +850,7 @@ export function Products() {
         {selectedProduct && <DialogContent className="max-h-[90dvh] w-[calc(100%-2rem)] min-w-0 max-w-2xl overflow-y-auto rounded-lg p-5 sm:p-7" onCloseAutoFocus={(event) => { event.preventDefault(); lastCard.current?.focus({ preventScroll: true }); }}>
           <DialogTitle className="pr-6 font-display text-2xl text-primary">{selectedProduct.name}</DialogTitle>
           {selectedProduct.tag && <p className="text-sm text-muted-foreground">{selectedProduct.tag}</p>}
-          {selectedProduct.images?.length ? <ProductGallery key={selectedProduct.name} images={selectedProduct.images} name={selectedProduct.name} detail /> : selectedProduct.image ? <img src={selectedProduct.image} alt={selectedProduct.name} className="h-64 w-full object-cover rounded-lg" /> : null}
+          {selectedProduct.images?.length ? <ProductGallery key={selectedProduct.name} images={selectedProduct.images} name={selectedProduct.name} detail /> : selectedProduct.image ? <img src={selectedProduct.image} alt={selectedProduct.name} className="h-64 w-full object-contain rounded-lg" /> : null}
           <DialogDescription className="text-sm leading-relaxed text-foreground/75">{selectedProduct.desc}</DialogDescription>
           <div><h4 className="font-medium text-primary">Beneficios y detalles</h4><ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-foreground/75">{selectedProduct.benefits.map(b => <li key={b}>{b}</li>)}</ul></div>
           <div><h4 className="font-medium text-primary">Ingredientes y materiales</h4><p className="mt-2 text-sm text-foreground/75">{selectedProduct.ingredients.join(" · ")}</p></div>
