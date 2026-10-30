@@ -1,5 +1,5 @@
 declare module "@tanstack/react-router" {
-  interface HistoryState {
+  interface ParsedHistoryState {
     /** Ruta de origen a la que volver al cerrar el modal de producto. */
     from?: string;
   }
