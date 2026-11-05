@@ -1,5 +1,5 @@
 import { PageBanner } from "@/components/site/PageBanner";
-import bannerPhoto from "@/assets/productos-banner-kit.jpg";
+import bannerPhoto from "@/assets/productos-banner-kit-v2.jpg";
 import { createFileRoute } from "@tanstack/react-router";
 import { Products } from "@/components/site/Products";
 import { BestSellers } from "@/components/site/BestSellers";
