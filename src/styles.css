@@ -205,3 +205,50 @@
   50% { box-shadow: 0 0 0 14px rgb(37 211 102 / 0); }
 }
 .animate-wa-pulse { animation: wa-pulse 2.4s ease-out infinite; }
+
+/* Section themes — AGAIA palette. Each page tints the whole site softly. */
+[data-theme] {
+  --banner-scrim: linear-gradient(90deg, color-mix(in oklab, var(--deep) 92%, black 20%), color-mix(in oklab, var(--deep) 65%, transparent) 48%, color-mix(in oklab, var(--deep) 12%, transparent));
+}
+[data-theme="terracota"] {
+  --deep: #673028; --primary: #673028; --ring: #673028;
+  --primary-foreground: #F2EBCE;
+  --mist: color-mix(in oklab, #DC7F70 30%, #F2EBCE);
+  --secondary: var(--mist); --accent: var(--mist);
+  --secondary-foreground: #673028; --accent-foreground: #673028;
+  --background: color-mix(in oklab, #F2EBCE 25%, white);
+  --foreground: #4a2620; --card-foreground: #4a2620; --popover-foreground: #4a2620;
+  --muted: color-mix(in oklab, #DC7F70 10%, #F2EBCE 40%);
+  --muted-foreground: color-mix(in oklab, #673028 75%, white);
+  --border: color-mix(in oklab, #DC7F70 25%, white);
+  --input: var(--border);
+}
+[data-theme="verde"] {
+  --deep: #23331A; --primary: #3d5229; --ring: #3d5229;
+  --primary-foreground: #F2EBCE;
+  --mist: color-mix(in oklab, #A4BB5F 35%, #F2EBCE);
+  --secondary: var(--mist); --accent: var(--mist);
+  --secondary-foreground: #23331A; --accent-foreground: #23331A;
+  --background: color-mix(in oklab, #F2EBCE 20%, white);
+  --foreground: #23331A; --card-foreground: #23331A; --popover-foreground: #23331A;
+  --muted: color-mix(in oklab, #A4BB5F 10%, #F2EBCE 40%);
+  --muted-foreground: color-mix(in oklab, #23331A 70%, white);
+  --border: color-mix(in oklab, #A4BB5F 28%, white);
+  --input: var(--border);
+}
+[data-theme="tierra"] {
+  --deep: #463220; --primary: #463220; --ring: #463220;
+  --primary-foreground: #F2EBCE;
+  --mist: color-mix(in oklab, #F2EBCE 85%, #463220);
+  --secondary: var(--mist); --accent: var(--mist);
+  --secondary-foreground: #463220; --accent-foreground: #463220;
+  --background: color-mix(in oklab, #F2EBCE 35%, white);
+  --foreground: #3a2a1b; --card-foreground: #3a2a1b; --popover-foreground: #3a2a1b;
+  --muted: color-mix(in oklab, #F2EBCE 60%, white);
+  --muted-foreground: color-mix(in oklab, #463220 72%, white);
+  --border: color-mix(in oklab, #463220 14%, white);
+  --input: var(--border);
+}
+.theme-shell, .theme-shell header, .theme-shell .page-banner, .theme-shell footer {
+  transition: background-color 0.9s ease, color 0.9s ease, border-color 0.9s ease;
+}
