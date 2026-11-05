@@ -9,14 +9,19 @@ import mantaOrigenExterior from "@/assets/manta-origen-exterior.png.asset.json";
 import { Sparkles, Moon, HeartPulse, Leaf, Wind, Repeat, ExternalLink, BookOpen, FlaskConical, Unplug } from "lucide-react";
 import { waLink } from "@/lib/site-config";
 import { Reveal } from "@/components/site/Reveal";
+import imgCalma from "@/assets/beneficio-calma.jpg";
+import imgTension from "@/assets/beneficio-tension.jpg";
+import imgRecuperacion from "@/assets/beneficio-recuperacion.jpg";
+import imgMeditacion from "@/assets/beneficio-meditacion.jpg";
+import imgHabito from "@/assets/beneficio-habito.jpg";
 
 const benefits = [
-  { icon: Moon, title: "Calma y relajación", desc: "Favorece una sensación de calma y descanso profundo." },
-  { icon: HeartPulse, title: "Mejor descanso", desc: "Contribuye a mejorar la calidad del sueño." },
-  { icon: Wind, title: "Menos tensión", desc: "Ayuda a disminuir la sensación de estrés acumulado." },
-  { icon: Repeat, title: "Recuperación", desc: "Acompaña la recuperación después de la actividad física." },
-  { icon: Sparkles, title: "Meditación", desc: "Acompaña prácticas de meditación, respiración y bienestar." },
-  { icon: Leaf, title: "Hábito consciente", desc: "Incorpora la conexión con la naturaleza en tu rutina diaria." },
+  { icon: Moon, title: "Calma y relajación", img: imgCalma, desc: "Favorece una sensación de calma y descanso profundo." },
+  { icon: HeartPulse, title: "Mejor descanso", img: mantaOrigenUso.url, desc: "Contribuye a mejorar la calidad del sueño." },
+  { icon: Wind, title: "Menos tensión", img: imgTension, desc: "Ayuda a disminuir la sensación de estrés acumulado." },
+  { icon: Repeat, title: "Recuperación", img: imgRecuperacion, desc: "Acompaña la recuperación después de la actividad física." },
+  { icon: Sparkles, title: "Meditación", img: imgMeditacion, desc: "Acompaña prácticas de meditación, respiración y bienestar." },
+  { icon: Leaf, title: "Hábito consciente", img: imgHabito, desc: "Incorpora la conexión con la naturaleza en tu rutina diaria." },
 ];
 
 const usos = [
@@ -209,7 +214,7 @@ export function GroundingBlanket() {
           </Reveal>
           <div className="grid lg:grid-cols-2 gap-6 items-stretch">
             <Reveal className="relative min-h-80 overflow-hidden rounded-3xl">
-              <img src={mantaOrigenUso.url} alt="Persona descansando sobre Manta Origen" loading="lazy" className="absolute inset-0 h-full w-full object-cover banner-image" />
+              {benefits.map((b, i) => (<img key={b.title} src={b.img} alt={i === activeBenefit ? b.title : ""} aria-hidden={i !== activeBenefit} loading="lazy" width={1024} height={768} className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ease-out ${i === activeBenefit ? "opacity-100" : "opacity-0"}`} />))}
               <div className="absolute inset-0 plant-scrim" />
               {(() => { const B = benefits[activeBenefit]; const Icon = B.icon; return (
                 <div key={B.title} className="absolute inset-x-0 bottom-0 p-6 md:p-8 text-primary-foreground animate-rise">
