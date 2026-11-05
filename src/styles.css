@@ -212,7 +212,7 @@
 }
 [data-theme="azul"] {
   --deep: #295275; --primary: #295275; --ring: #295275; --primary-foreground: oklch(0.98 0.01 230);
-  --mist: color-mix(in srgb, #BBE0EF 35%, white); --secondary: var(--mist); --accent: var(--mist);
+  --mist: #BBE0EF; --secondary: #BBE0EF; --accent: #BBE0EF;
   --secondary-foreground: #295275; --accent-foreground: #295275;
   --background: color-mix(in srgb, #BBE0EF 12%, white); --foreground: #295275; --card-foreground: #295275; --popover-foreground: #295275;
   --muted: color-mix(in srgb, #BBE0EF 14%, white); --muted-foreground: color-mix(in srgb, #295275 80%, white);
