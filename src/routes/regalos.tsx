@@ -39,7 +39,7 @@ function RegalosPage() {
   return (
     <div className="pb-20">
       {/* Hero */}
-      <PageBanner eyebrow="Bienestar Corporativo" title={<>Regalos que dejan huella</>} image={bannerPhoto.url} imagePosition="center 25%" imageAlt="Fotografía oficial de productos AGAIA"><p>Cada empresa tiene una historia, un propósito y una forma única de agradecer.</p></PageBanner>
+      <PageBanner eyebrow="Bienestar Corporativo" title={<>Regalos que dejan huella</>} image={bannerPhoto.url} imagePosition="center 75%" tall imageAlt="Fotografía oficial de productos AGAIA"><p>Cada empresa tiene una historia, un propósito y una forma única de agradecer.</p></PageBanner>
 
       {/* 1. Regalos que dejan huella — texto tal cual */}
       <section className="py-14 bg-secondary/40">
