@@ -19,7 +19,7 @@ export function Header() {
     <header className="fixed top-8 inset-x-0 z-50 backdrop-blur-xl bg-background/70 border-b border-border/60">
       <div className="w-full max-w-[1500px] mx-auto pl-4 pr-4 lg:pl-6 lg:pr-6 flex items-center justify-between h-16 md:h-20 gap-4">
         <Link to="/" aria-label="AGAIA — Inicio" className="flex items-center shrink-0">
-          <img src={logoAsset.url} alt="AGAIA — Laboratorio de Bienestar" className="h-10 md:h-12 w-auto" />
+          <span role="img" aria-label="AGAIA — Laboratorio de Bienestar" className="brand-logo h-10 md:h-12 text-primary" style={{ ["--logo-url" as string]: `url(${logoAsset.url})` }} />
         </Link>
         <nav className="hidden lg:flex items-center gap-4 xl:gap-6 whitespace-nowrap">
           {nav.map((n) => (

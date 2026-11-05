@@ -100,7 +100,7 @@ function ProductGallery({ images, name, detail = false }: { images: ProductImage
   if (!selectedImage) return null;
 
   return (
-    <div className={`flex min-w-0 flex-col bg-secondary/40 ${detail ? "" : "h-full"}`}>
+    <div className={`flex min-w-0 flex-col bg-muted ${detail ? "" : "h-full"}`}>
       <div className={detail ? "h-72 sm:h-96 overflow-hidden" : "min-h-0 flex-1 overflow-hidden"}>
         <img
           src={selectedImage.src}
@@ -754,7 +754,7 @@ export function Products() {
                 onClick={(event) => openProduct(p, event.currentTarget)}
                 onKeyDown={(event) => { if (event.target === event.currentTarget && (event.key === "Enter" || event.key === " ")) { event.preventDefault(); openProduct(p, event.currentTarget); } }}
                 className="group flex h-[452px] sm:h-[472px] w-full min-w-0 max-w-full cursor-pointer scroll-mt-36 flex-col overflow-hidden rounded-lg border border-border/60 bg-card shadow-[var(--shadow-soft)] transition-shadow hover:shadow-[var(--shadow-glow)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-                <div className="h-[268px] sm:h-[288px] shrink-0 overflow-hidden bg-secondary/40">
+                <div className="h-[268px] sm:h-[288px] shrink-0 overflow-hidden bg-muted">
                   {p.images?.length ? <ProductGallery images={p.images} name={p.name} /> : p.image ? <img src={p.image} alt={p.name} loading="lazy" className="h-full w-full object-contain" /> : null}
                 </div>
                 <div className="flex min-h-0 min-w-0 flex-1 flex-col p-4">
