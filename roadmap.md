@@ -35,3 +35,4 @@
 - [x] Cambiar el banner de Tu Ritual por una imagen botánica sin productos.
 - [x] Cambiar la imagen del banner de Nosotros.
 - [x] Mostrar la infografía «Sin / Con Manta Origen» en /manta-origen.
+- [x] Galería pequeña de fotos de kits corporativos en Bienestar Corporativo (/regalos).
