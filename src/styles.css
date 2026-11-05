@@ -215,7 +215,7 @@
   --mist: #BBE0EF; --secondary: #BBE0EF; --accent: #BBE0EF;
   --secondary-foreground: #295275; --accent-foreground: #295275;
   --background: color-mix(in srgb, #BBE0EF 12%, white); --foreground: #295275; --card-foreground: #295275; --popover-foreground: #295275;
-  --muted: color-mix(in srgb, #BBE0EF 30%, white); --muted-foreground: color-mix(in srgb, #295275 80%, white);
+  --muted: color-mix(in srgb, #BBE0EF 14%, white); --muted-foreground: color-mix(in srgb, #295275 80%, white);
   --border: color-mix(in srgb, #BBE0EF 60%, white); --input: var(--border);
 }
 [data-theme="verde"] {
@@ -223,7 +223,7 @@
   --mist: #A4BB5F; --secondary: #A4BB5F; --accent: #A4BB5F;
   --secondary-foreground: #23331A; --accent-foreground: #23331A;
   --background: color-mix(in srgb, #A4BB5F 10%, white); --foreground: #23331A; --card-foreground: #23331A; --popover-foreground: #23331A;
-  --muted: color-mix(in srgb, #A4BB5F 30%, white); --muted-foreground: color-mix(in srgb, #23331A 80%, white);
+  --muted: color-mix(in srgb, #A4BB5F 14%, white); --muted-foreground: color-mix(in srgb, #23331A 80%, white);
   --border: color-mix(in srgb, #A4BB5F 60%, white); --input: var(--border);
 }
 [data-theme="tierra"] {
@@ -231,7 +231,7 @@
   --mist: #F2EBCE; --secondary: #F2EBCE; --accent: #F2EBCE;
   --secondary-foreground: #463220; --accent-foreground: #463220;
   --background: color-mix(in srgb, #F2EBCE 45%, white); --foreground: #463220; --card-foreground: #463220; --popover-foreground: #463220;
-  --muted: color-mix(in srgb, #F2EBCE 30%, white); --muted-foreground: color-mix(in srgb, #463220 80%, white);
+  --muted: color-mix(in srgb, #F2EBCE 14%, white); --muted-foreground: color-mix(in srgb, #463220 80%, white);
   --border: color-mix(in srgb, #F2EBCE 60%, white); --input: var(--border);
 }
 [data-theme="terracota"] {
@@ -239,7 +239,7 @@
   --mist: #DC7F70; --secondary: #DC7F70; --accent: #DC7F70;
   --secondary-foreground: #673028; --accent-foreground: #673028;
   --background: color-mix(in srgb, #DC7F70 8%, white); --foreground: #673028; --card-foreground: #673028; --popover-foreground: #673028;
-  --muted: color-mix(in srgb, #DC7F70 30%, white); --muted-foreground: color-mix(in srgb, #673028 80%, white);
+  --muted: color-mix(in srgb, #DC7F70 14%, white); --muted-foreground: color-mix(in srgb, #673028 80%, white);
   --border: color-mix(in srgb, #DC7F70 60%, white); --input: var(--border);
 }
 .theme-shell, .theme-shell header, .theme-shell .page-banner, .theme-shell footer {
