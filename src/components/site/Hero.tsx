@@ -5,7 +5,8 @@ import { Link } from "@tanstack/react-router";
 export function Hero() {
   return (
     <section id="inicio" className="relative isolate pt-40 md:pt-44 pb-14 md:pb-20 overflow-hidden bg-primary text-primary-foreground">
-      <img src={hero} alt="Composición botánica Agaia con productos y plantas" fetchPriority="high" className="banner-image absolute inset-0 -z-20 h-full w-full object-cover" />
+      <img src={hero} alt="" aria-hidden="true" className="banner-image absolute inset-0 -z-30 h-full w-full object-cover" />
+      <img src={hero} alt="Composición botánica Agaia con productos y plantas" fetchPriority="high" className="banner-image absolute top-0 bottom-[4px] left-[5px] right-[5px] md:bottom-[6px] md:left-[8px] md:right-[8px] -z-20 h-[calc(100%-4px)] md:h-[calc(100%-6px)] w-[calc(100%-10px)] md:w-[calc(100%-16px)] object-cover" />
       <div aria-hidden className="banner-scrim absolute inset-0 -z-10" />
       <div className="container-prose">
         <div className="max-w-2xl animate-rise">
