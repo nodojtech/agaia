@@ -206,49 +206,48 @@
 }
 .animate-wa-pulse { animation: wa-pulse 2.4s ease-out infinite; }
 
-/* Section themes — AGAIA palette. Each page tints the whole site softly. */
+/* Section themes — exact AGAIA brand pairs (dark + its light complement). */
 [data-theme] {
-  --banner-scrim: linear-gradient(90deg, color-mix(in oklab, var(--deep) 92%, black 20%), color-mix(in oklab, var(--deep) 65%, transparent) 48%, color-mix(in oklab, var(--deep) 12%, transparent));
+  --banner-scrim: linear-gradient(90deg, color-mix(in srgb, var(--deep) 90%, transparent), color-mix(in srgb, var(--deep) 60%, transparent) 48%, color-mix(in srgb, var(--deep) 10%, transparent));
 }
-[data-theme="terracota"] {
-  --deep: #673028; --primary: #673028; --ring: #673028;
-  --primary-foreground: #F2EBCE;
-  --mist: color-mix(in oklab, #DC7F70 30%, #F2EBCE);
-  --secondary: var(--mist); --accent: var(--mist);
-  --secondary-foreground: #673028; --accent-foreground: #673028;
-  --background: color-mix(in oklab, #F2EBCE 25%, white);
-  --foreground: #4a2620; --card-foreground: #4a2620; --popover-foreground: #4a2620;
-  --muted: color-mix(in oklab, #DC7F70 10%, #F2EBCE 40%);
-  --muted-foreground: color-mix(in oklab, #673028 75%, white);
-  --border: color-mix(in oklab, #DC7F70 25%, white);
-  --input: var(--border);
+[data-theme="azul"] {
+  --deep: #295275; --primary: #295275; --ring: #295275; --primary-foreground: #BBE0EF;
+  --mist: #BBE0EF; --secondary: #BBE0EF; --accent: #BBE0EF;
+  --secondary-foreground: #295275; --accent-foreground: #295275;
+  --background: color-mix(in srgb, #BBE0EF 12%, white); --foreground: #295275; --card-foreground: #295275; --popover-foreground: #295275;
+  --muted: color-mix(in srgb, #BBE0EF 30%, white); --muted-foreground: color-mix(in srgb, #295275 80%, white);
+  --border: color-mix(in srgb, #BBE0EF 60%, white); --input: var(--border);
 }
 [data-theme="verde"] {
-  --deep: #23331A; --primary: #3d5229; --ring: #3d5229;
-  --primary-foreground: #F2EBCE;
-  --mist: color-mix(in oklab, #A4BB5F 35%, #F2EBCE);
-  --secondary: var(--mist); --accent: var(--mist);
+  --deep: #23331A; --primary: #23331A; --ring: #23331A; --primary-foreground: #A4BB5F;
+  --mist: #A4BB5F; --secondary: #A4BB5F; --accent: #A4BB5F;
   --secondary-foreground: #23331A; --accent-foreground: #23331A;
-  --background: color-mix(in oklab, #F2EBCE 20%, white);
-  --foreground: #23331A; --card-foreground: #23331A; --popover-foreground: #23331A;
-  --muted: color-mix(in oklab, #A4BB5F 10%, #F2EBCE 40%);
-  --muted-foreground: color-mix(in oklab, #23331A 70%, white);
-  --border: color-mix(in oklab, #A4BB5F 28%, white);
-  --input: var(--border);
+  --background: color-mix(in srgb, #A4BB5F 10%, white); --foreground: #23331A; --card-foreground: #23331A; --popover-foreground: #23331A;
+  --muted: color-mix(in srgb, #A4BB5F 30%, white); --muted-foreground: color-mix(in srgb, #23331A 80%, white);
+  --border: color-mix(in srgb, #A4BB5F 60%, white); --input: var(--border);
 }
 [data-theme="tierra"] {
-  --deep: #463220; --primary: #463220; --ring: #463220;
-  --primary-foreground: #F2EBCE;
-  --mist: color-mix(in oklab, #F2EBCE 85%, #463220);
-  --secondary: var(--mist); --accent: var(--mist);
+  --deep: #463220; --primary: #463220; --ring: #463220; --primary-foreground: #F2EBCE;
+  --mist: #F2EBCE; --secondary: #F2EBCE; --accent: #F2EBCE;
   --secondary-foreground: #463220; --accent-foreground: #463220;
-  --background: color-mix(in oklab, #F2EBCE 35%, white);
-  --foreground: #3a2a1b; --card-foreground: #3a2a1b; --popover-foreground: #3a2a1b;
-  --muted: color-mix(in oklab, #F2EBCE 60%, white);
-  --muted-foreground: color-mix(in oklab, #463220 72%, white);
-  --border: color-mix(in oklab, #463220 14%, white);
-  --input: var(--border);
+  --background: color-mix(in srgb, #F2EBCE 45%, white); --foreground: #463220; --card-foreground: #463220; --popover-foreground: #463220;
+  --muted: color-mix(in srgb, #F2EBCE 30%, white); --muted-foreground: color-mix(in srgb, #463220 80%, white);
+  --border: color-mix(in srgb, #F2EBCE 60%, white); --input: var(--border);
+}
+[data-theme="terracota"] {
+  --deep: #673028; --primary: #673028; --ring: #673028; --primary-foreground: #DC7F70;
+  --mist: #DC7F70; --secondary: #DC7F70; --accent: #DC7F70;
+  --secondary-foreground: #673028; --accent-foreground: #673028;
+  --background: color-mix(in srgb, #DC7F70 8%, white); --foreground: #673028; --card-foreground: #673028; --popover-foreground: #673028;
+  --muted: color-mix(in srgb, #DC7F70 30%, white); --muted-foreground: color-mix(in srgb, #673028 80%, white);
+  --border: color-mix(in srgb, #DC7F70 60%, white); --input: var(--border);
 }
 .theme-shell, .theme-shell header, .theme-shell .page-banner, .theme-shell footer {
   transition: background-color 0.9s ease, color 0.9s ease, border-color 0.9s ease;
+}
+/* Brand logo painted in the section color via its transparent shape. */
+.brand-logo {
+  display: block; aspect-ratio: 866 / 288; background-color: currentColor;
+  -webkit-mask: var(--logo-url) center / contain no-repeat; mask: var(--logo-url) center / contain no-repeat;
+  transition: background-color 0.9s ease;
 }
