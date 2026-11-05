@@ -3,6 +3,15 @@ import bannerPhoto from "@/assets/kit-tres-pausas-fondo.png.asset.json";
 import { createFileRoute } from "@tanstack/react-router";
 import { waLink } from "@/lib/site-config";
 import { Reveal } from "@/components/site/Reveal";
+import kitRegalo from "@/assets/kits-empresariales-regalo-2.png.asset.json";
+import kitCaja from "@/assets/kits-empresariales-caja-abierta-2.png.asset.json";
+import kitProduccion from "@/assets/kits-empresariales-produccion-2.png.asset.json";
+
+const kitPhotos = [
+  { src: kitRegalo.url, alt: "Kit corporativo AGAIA con caja de regalo, Agua de Linos, jabón y tarjeta personalizada" },
+  { src: kitCaja.url, alt: "Caja kraft AGAIA abierta con sales relajantes, saquito de lino y tarjeta de agradecimiento" },
+  { src: kitProduccion.url, alt: "Kits de roll-on AGAIA preparados para una empresa" },
+];
 
 export const Route = createFileRoute("/regalos")({
   head: () => ({
@@ -54,6 +63,23 @@ function RegalosPage() {
               </a>
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* Galería de kits corporativos */}
+      <section className="py-12 md:py-16">
+        <div className="container-prose">
+          <Reveal className="text-center mb-8">
+            <span className="eyebrow">Kits corporativos</span>
+            <h2 className="mt-3 font-display text-3xl md:text-4xl text-primary">Así lucen nuestros kits</h2>
+          </Reveal>
+          <ul className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {kitPhotos.map((p, i) => (
+              <Reveal as="li" key={p.src} delay={i * 100} className="group overflow-hidden rounded-2xl bg-muted">
+                <img src={p.src} alt={p.alt} loading="lazy" className="aspect-[4/5] w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105" />
+              </Reveal>
+            ))}
+          </ul>
         </div>
       </section>
 
