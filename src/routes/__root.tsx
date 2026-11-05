@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
   type ErrorComponentProps,
@@ -86,6 +87,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "author", content: "AGAIA" },
     ],
     links: [
+      { rel: "icon", type: "image/png", href: "/favicon.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
@@ -128,9 +130,25 @@ function RootComponent() {
   );
 }
 
+const SECTION_THEMES: Record<string, string> = {
+  "/": "azul",
+  "/distribuidor": "azul",
+  "/productos": "terracota",
+  "/regalos": "verde",
+  "/nosotros": "verde",
+  "/tu-ritual": "tierra",
+  "/manta-origen": "tierra",
+};
+
 function SiteShell() {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const theme = SECTION_THEMES[pathname.replace(/\/$/, "") || "/"] ?? "azul";
+  // Mirror on <html> so dialogs rendered outside the shell share the section colors.
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+  }, [theme]);
   return (
-    <div className="bg-background text-foreground min-h-screen flex flex-col">
+    <div data-theme={theme} className="theme-shell bg-background text-foreground min-h-screen flex flex-col">
       <AnnouncementBar />
       <Header />
       <div className="flex-1">
