@@ -137,7 +137,7 @@ const SECTION_THEMES: Record<string, string> = {
   "/regalos": "verde",
   "/nosotros": "verde",
   "/tu-ritual": "tierra",
-  "/manta-origen": "tierra",
+  "/manta-origen": "terracota",
 };
 
 function SiteShell() {
