@@ -21,7 +21,7 @@ export const Route = createFileRoute("/productos")({
 function ProductosPage() {
   return (
     <div className="">
-      <PageBanner eyebrow="Colección botánica" title="Productos AGAIA" image={bannerPhoto} imagePosition="center right" imageAlt="Agua de Linos Gratitud AGAIA en un ambiente botánico" />
+      <PageBanner eyebrow="Colección botánica" title="Productos AGAIA" image={bannerPhoto} imagePosition="80% 60%" imageAlt="Agua de Linos Gratitud AGAIA en un ambiente botánico" />
       <div className="pt-10"><Products /></div>
       <BestSellers />
     </div>
