@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import mantaOrigenFlatlay from "@/assets/manta-origen-flatlay.png.asset.json";
-import mantaOrigenComparativa from "@/assets/manta-origen-comparativa.png.asset.json";
 import mantaOrigenKit from "@/assets/manta-origen-kit.png.asset.json";
 import mantaOrigenUso from "@/assets/manta-origen-uso.png.asset.json";
 import mantaOrigenPiedra from "@/assets/manta-origen-piedra.png.asset.json";
@@ -56,6 +55,8 @@ const research = [
 export function GroundingBlanket() {
   const [photo, setPhoto] = useState<{src: string; alt: string} | null>(null);
   const [activeStep, setActiveStep] = useState(0);
+  const [activeBenefit, setActiveBenefit] = useState(0);
+  const [activeLab, setActiveLab] = useState(0);
   return (
     <div className="pt-32 md:pt-40">
       {/* 1 · HERO */}
@@ -193,12 +194,6 @@ export function GroundingBlanket() {
         </div>
       </section>
 
-      <section className="py-14 bg-secondary/40">
-        <div className="container-prose grid md:grid-cols-2 items-center gap-8">
-          <Reveal><span className="eyebrow">Sin / Con Manta Origen</span><h2 className="mt-3 font-display text-3xl md:text-4xl text-primary">Visualiza la conexión</h2><p className="mt-4 text-sm text-foreground/75">Una mirada ilustrativa a la práctica del grounding. Los resultados pueden variar entre personas.</p></Reveal>
-          <Button variant="ghost" onClick={() => setPhoto({src: mantaOrigenComparativa.url, alt: "Comparativa Sin / Con Manta Origen"})} aria-label="Ampliar comparación Sin / Con Manta Origen" className="h-auto min-h-52 p-0 overflow-hidden rounded-lg"><img src={mantaOrigenComparativa.url} alt="Infografía Sin / Con Manta Origen" loading="lazy" width={1024} height={1024} className="h-auto w-full" /></Button>
-        </div>
-      </section>
       {/* 3 · BENEFICIOS */}
       <section className="py-20 md:py-24">
         <div className="container-prose">
@@ -212,22 +207,32 @@ export function GroundingBlanket() {
               Cada persona puede experimentar resultados diferentes; esta práctica se ha asociado con:
             </p>
           </Reveal>
-          <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {benefits.map((b, i) => {
-              const Icon = b.icon;
-              return (
-                <Reveal as="li" key={b.title} delay={i * 60}>
-                  <div className="h-full p-6 rounded-2xl bg-card border border-border/60">
-                    <div className="h-11 w-11 rounded-full bg-primary/10 text-primary inline-flex items-center justify-center">
-                      <Icon size={18} strokeWidth={1.4} />
-                    </div>
-                    <p className="mt-4 font-display text-lg text-primary leading-tight">{b.title}</p>
-                    <p className="mt-2 text-xs text-foreground/65 leading-relaxed">{b.desc}</p>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </ul>
+          <div className="grid lg:grid-cols-2 gap-6 items-stretch">
+            <Reveal className="relative min-h-80 overflow-hidden rounded-3xl">
+              <img src={mantaOrigenUso.url} alt="Persona descansando sobre Manta Origen" loading="lazy" className="absolute inset-0 h-full w-full object-cover banner-image" />
+              <div className="absolute inset-0 plant-scrim" />
+              {(() => { const B = benefits[activeBenefit]; const Icon = B.icon; return (
+                <div key={B.title} className="absolute inset-x-0 bottom-0 p-6 md:p-8 text-primary-foreground animate-rise">
+                  <div className="h-12 w-12 rounded-full bg-primary-foreground/15 backdrop-blur inline-flex items-center justify-center"><Icon size={20} strokeWidth={1.4} /></div>
+                  <p className="mt-4 font-display text-2xl md:text-3xl">{B.title}</p>
+                  <p className="mt-2 text-sm text-primary-foreground/85 max-w-md">{B.desc}</p>
+                </div>); })()}
+            </Reveal>
+            <ul className="grid grid-cols-2 gap-3">
+              {benefits.map((b, i) => {
+                const Icon = b.icon; const on = i === activeBenefit;
+                return (
+                  <li key={b.title}>
+                    <button type="button" onClick={() => setActiveBenefit(i)} onMouseEnter={() => setActiveBenefit(i)} aria-pressed={on}
+                      className={`h-full w-full text-left p-5 rounded-2xl border transition-all duration-500 ${on ? "bg-primary text-primary-foreground border-primary shadow-[var(--shadow-glow)]" : "bg-card border-border/60 hover:border-primary/40"}`}>
+                      <span className={`h-10 w-10 rounded-full inline-flex items-center justify-center transition-colors duration-500 ${on ? "bg-primary-foreground/15" : "bg-primary/10 text-primary"}`}><Icon size={18} strokeWidth={1.4} /></span>
+                      <span className={`mt-3 block font-display text-base md:text-lg leading-tight ${on ? "" : "text-primary"}`}>{b.title}</span>
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
           <p className="mt-8 text-xs text-foreground/60 italic max-w-3xl">
             <strong>Importante:</strong> Manta Origen es un producto de bienestar y no sustituye
             tratamientos médicos, medicamentos ni el diagnóstico de profesionales de la salud.
@@ -310,8 +315,9 @@ export function GroundingBlanket() {
       </section>
 
       {/* 6 · LABORATORIO DE GROUNDING — simétrico */}
-      <section id="laboratorio" className="scroll-mt-24 py-20 md:py-28 bg-primary text-primary-foreground">
-        <div className="container-prose">
+      <section id="laboratorio" className="relative overflow-hidden scroll-mt-24 py-20 md:py-28 bg-primary text-primary-foreground">
+        <img src={mantaOrigenExterior.url} alt="" aria-hidden="true" loading="lazy" className="absolute inset-0 h-full w-full object-cover opacity-15 banner-image" />
+        <div className="relative container-prose">
           <Reveal className="max-w-3xl mx-auto text-center">
             <span className="eyebrow text-secondary">Laboratorio de Grounding</span>
             <h2 className="mt-3 font-display text-3xl md:text-5xl leading-tight">
@@ -323,8 +329,7 @@ export function GroundingBlanket() {
             </p>
           </Reveal>
 
-          <div className="mt-14 grid md:grid-cols-3 gap-6">
-            {[
+          {(() => { const labs = [
               {
                 icon: BookOpen,
                 eyebrow: "¿Qué es?",
@@ -343,22 +348,21 @@ export function GroundingBlanket() {
                 title: "¿Por qué dejamos de conectar?",
                 body: "Cada vez vivimos más lejos de la naturaleza y más cerca de las pantallas. Manta Origen ayuda a recuperar ese pequeño hábito de conexión, integrándolo fácilmente a tu rutina diaria.",
               },
-            ].map((c, i) => {
-              const Icon = c.icon;
-              return (
-                <Reveal key={c.title} delay={i * 100}>
-                  <div className="h-full p-7 rounded-3xl bg-primary-foreground/5 border border-primary-foreground/10 backdrop-blur">
-                    <div className="h-11 w-11 rounded-full bg-primary-foreground/10 text-secondary inline-flex items-center justify-center">
-                      <Icon size={18} strokeWidth={1.4} />
-                    </div>
-                    <p className="eyebrow text-secondary mt-4">{c.eyebrow}</p>
-                    <h3 className="mt-2 font-display text-xl">{c.title}</h3>
-                    <details className="mt-4"><summary className="cursor-pointer text-sm text-secondary">Leer más</summary><p className="mt-3 text-sm text-primary-foreground/80 leading-relaxed">{c.body}</p></details>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
+            ]; const L = labs[activeLab]; const LIcon = L.icon; return (
+          <Reveal className="mt-12 max-w-4xl mx-auto">
+            <div role="tablist" className="grid grid-cols-3 gap-2 md:gap-3">
+              {labs.map((c, i) => { const Icon = c.icon; const on = i === activeLab; return (
+                <button key={c.title} role="tab" aria-selected={on} type="button" onClick={() => setActiveLab(i)}
+                  className={`flex flex-col items-center gap-2 p-3 md:p-5 rounded-2xl border transition-all duration-500 ${on ? "bg-secondary text-primary border-secondary" : "bg-primary-foreground/5 border-primary-foreground/15 hover:bg-primary-foreground/10"}`}>
+                  <span className={`h-10 w-10 md:h-12 md:w-12 rounded-full inline-flex items-center justify-center ${on ? "bg-primary/10" : "bg-primary-foreground/10 text-secondary"}`}><Icon size={20} strokeWidth={1.4} /></span>
+                  <span className="text-[0.65rem] md:text-xs uppercase tracking-[0.18em] text-center">{c.eyebrow}</span>
+                </button>); })}
+            </div>
+            <div key={L.title} role="tabpanel" className="mt-4 grid md:grid-cols-[auto_1fr] gap-5 items-center p-6 md:p-8 rounded-3xl bg-primary-foreground/10 border border-primary-foreground/15 backdrop-blur animate-rise">
+              <div className="h-16 w-16 rounded-full bg-secondary text-primary inline-flex items-center justify-center animate-float"><LIcon size={28} strokeWidth={1.3} /></div>
+              <div><h3 className="font-display text-2xl">{L.title}</h3><p className="mt-2 text-sm md:text-base text-primary-foreground/85 leading-relaxed">{L.body}</p></div>
+            </div>
+          </Reveal>); })()}
 
           <Reveal className="mt-14">
             <p className="eyebrow text-secondary mb-4 text-center">Ver investigaciones</p>
