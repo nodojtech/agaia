@@ -1,5 +1,5 @@
 import { PageBanner } from "@/components/site/PageBanner";
-import bannerPhoto from "@/assets/productos-banner-kit-v3.jpg";
+import bannerPhoto from "@/assets/productos-banner-kit-v4.jpg";
 import { createFileRoute } from "@tanstack/react-router";
 import { Products } from "@/components/site/Products";
 import { BestSellers } from "@/components/site/BestSellers";
@@ -21,7 +21,7 @@ export const Route = createFileRoute("/productos")({
 function ProductosPage() {
   return (
     <div className="">
-      <PageBanner eyebrow="Colección botánica" title="Productos AGAIA" image={bannerPhoto} imagePosition="85% 60%" tall imageAlt="Jabón Energía Vital, Agua de Linos Gratitud y Roll-On Calma AGAIA sobre piedras naturales" />
+      <PageBanner eyebrow="Colección botánica" title="Productos AGAIA" image={bannerPhoto} imagePosition="85% 58%" tall imageAlt="Jabón Energía Vital, Agua de Linos Gratitud y Roll-On Calma AGAIA sobre piedras naturales" />
       <div className="pt-10"><Products /></div>
       <BestSellers />
     </div>
