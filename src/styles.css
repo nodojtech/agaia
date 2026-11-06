@@ -58,6 +58,7 @@
   --color-deep: var(--deep);
   --color-sand: var(--sand);
   --color-overlay: var(--overlay);
+  --color-on-deep: var(--on-deep);
 
   --font-display: "Powell", "Cormorant Garamond", ui-serif, Georgia, serif;
   --font-body: "Citrine", "Inter", ui-sans-serif, system-ui, sans-serif;
@@ -84,6 +85,8 @@
   --mist: oklch(0.91 0.04 230);
   --secondary: oklch(0.91 0.04 230);
   --secondary-foreground: oklch(0.32 0.06 246);
+  /* Light brand color painted on the dark footer panel. */
+  --on-deep: #BBE0EF;
 
   /* warm off-white paper */
   --sand: oklch(0.985 0.008 90);
@@ -212,7 +215,7 @@
 }
 [data-theme="azul"] {
   --deep: #295275; --primary: #295275; --ring: #295275; --primary-foreground: oklch(0.98 0.01 230);
-  --mist: #BBE0EF; --secondary: #BBE0EF; --accent: #BBE0EF;
+  --mist: #BBE0EF; --secondary: #BBE0EF; --accent: #BBE0EF; --on-deep: #BBE0EF;
   --secondary-foreground: #295275; --accent-foreground: #295275;
   --background: color-mix(in srgb, #BBE0EF 12%, white); --foreground: #295275; --card-foreground: #295275; --popover-foreground: #295275;
   --muted: color-mix(in srgb, #BBE0EF 14%, white); --muted-foreground: color-mix(in srgb, #295275 80%, white);
@@ -220,7 +223,7 @@
 }
 [data-theme="verde"] {
   --deep: #23331A; --primary: #23331A; --ring: #23331A; --primary-foreground: oklch(0.98 0.01 230);
-  --mist: color-mix(in srgb, #A4BB5F 35%, white); --secondary: var(--mist); --accent: var(--mist);
+  --mist: color-mix(in srgb, #A4BB5F 35%, white); --secondary: var(--mist); --accent: var(--mist); --on-deep: #A4BB5F;
   --secondary-foreground: #23331A; --accent-foreground: #23331A;
   --background: color-mix(in srgb, #A4BB5F 10%, white); --foreground: #23331A; --card-foreground: #23331A; --popover-foreground: #23331A;
   --muted: color-mix(in srgb, #A4BB5F 14%, white); --muted-foreground: color-mix(in srgb, #23331A 80%, white);
@@ -228,7 +231,7 @@
 }
 [data-theme="tierra"] {
   --deep: #463220; --primary: #463220; --ring: #463220; --primary-foreground: oklch(0.98 0.01 230);
-  --mist: color-mix(in srgb, #F2EBCE 35%, white); --secondary: var(--mist); --accent: var(--mist);
+  --mist: color-mix(in srgb, #F2EBCE 35%, white); --secondary: var(--mist); --accent: var(--mist); --on-deep: #F2EBCE;
   --secondary-foreground: #463220; --accent-foreground: #463220;
   --background: color-mix(in srgb, #F2EBCE 45%, white); --foreground: #463220; --card-foreground: #463220; --popover-foreground: #463220;
   --muted: color-mix(in srgb, #F2EBCE 14%, white); --muted-foreground: color-mix(in srgb, #463220 80%, white);
@@ -236,7 +239,7 @@
 }
 [data-theme="terracota"] {
   --deep: #673028; --primary: #673028; --ring: #673028; --primary-foreground: oklch(0.98 0.01 230);
-  --mist: color-mix(in srgb, #DC7F70 35%, white); --secondary: var(--mist); --accent: var(--mist);
+  --mist: color-mix(in srgb, #DC7F70 35%, white); --secondary: var(--mist); --accent: var(--mist); --on-deep: #DC7F70;
   --secondary-foreground: #673028; --accent-foreground: #673028;
   --background: color-mix(in srgb, #DC7F70 8%, white); --foreground: #673028; --card-foreground: #673028; --popover-foreground: #673028;
   --muted: color-mix(in srgb, #DC7F70 14%, white); --muted-foreground: color-mix(in srgb, #673028 80%, white);

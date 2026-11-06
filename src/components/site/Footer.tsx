@@ -18,7 +18,7 @@ export function Footer() {
     <footer className="bg-primary text-primary-foreground">
       <div className="container-prose py-20 grid md:grid-cols-12 gap-12">
         <div className="md:col-span-5">
-          <span role="img" aria-label="AGAIA — Laboratorio de Bienestar" className="brand-logo w-full max-w-sm text-primary-foreground" style={{ ["--logo-url" as string]: `url(${logoAsset.url})` }} />
+          <span role="img" aria-label="AGAIA — Laboratorio de Bienestar" className="brand-logo w-full max-w-sm text-on-deep" style={{ ["--logo-url" as string]: `url(${logoAsset.url})` }} />
           <p className="mt-6 text-sm text-primary-foreground/70 max-w-sm leading-relaxed">
             Elementos simples y naturales para acompañar momentos de calma, presencia y bienestar.
           </p>
